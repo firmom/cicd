@@ -1,0 +1,15 @@
+{
+  "name": "buildWebslotsTask",
+  "entrypoint": true,
+  "extends": ["cloneWebslotsTask"],
+  "locks": ["webslots:archive", "webslots:deploy"],
+  "executor": "onlylast",
+  "trigger": ["deployWebslotsTask", "buildBeerpolyCITask"],
+  "script": {
+    "cwd": "data/code/webslots",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "goatcms/beerpoly"]
+    }]
+  }
+}

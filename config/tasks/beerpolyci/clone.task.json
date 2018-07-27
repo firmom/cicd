@@ -1,0 +1,13 @@
+{
+  "name": "cloneBeerpolyCITask",
+  "entrypoint": false,
+  "extends": [],
+  "locks": [],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/beerpolyci/clone.sh"]
+    }]
+  }
+}

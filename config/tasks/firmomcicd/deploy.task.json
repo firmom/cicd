@@ -1,0 +1,14 @@
+{
+  "name": "deployFirmomCICDTask",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["firmomcicd:deploy"],
+  "executor": "onlylast",
+  "script": {
+    "cwd": "data/code/firmomcicd",
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/firmomcicd/deploy.sh"]
+    }]
+  }
+}

@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  cicd:
+    image: gameinpl/beerpoly-ci
+    environment:
+      TZ: 'Europe/Warsaw'
+    restart: always
+    environment:
+      - "APP_BASE_URL=http://ci.gamein.pl"
+      - "OAUTH_GITHUB_APP=Insert_your_app_id"
+      - "OAUTH_GITHUB_SECRET=Insert_your_app_secret"
+
+      - "SLOT_buildBeerpoly_SECRET_1=Insert_your_secret"
+      - "SLOT_buildBeerpolyHome_SECRET_1=Insert_your_secret"
+
+      - "DOCKER_USERNAME=Insert_your_secret"
+      - "DOCKER_PASSWORD=Insert_your_secret"
+
+      - "USER_1_USERNAME=spozoga"
+      - "USER_1_FIRSTNAME=Sebastian"
+      - "USER_1_LASTNAME=Pozoga"
+      - "USER_1_EMAIL=sebastian@pozoga.eu"
+      - "USER_1_CONNECT_GITHUB=sebastian@pozoga.eu"
+    ports:
+      - 8085:5555
+      - 8086:8080
+      - 8087:8081

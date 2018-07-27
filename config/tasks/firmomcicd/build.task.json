@@ -1,0 +1,15 @@
+{
+  "name": "buildFirmomCICDTask",
+  "entrypoint": true,
+  "extends": ["cloneFirmomCICDTask"],
+  "locks": ["firmomcicd:deploy"],
+  "executor": "onlylast",
+  "trigger": ["deployFirmomCICDTask"],
+  "script": {
+    "cwd": "data/code/firmomcicd",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "firmom/firmom-cicd"]
+    }]
+  }
+}

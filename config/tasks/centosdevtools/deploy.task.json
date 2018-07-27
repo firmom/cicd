@@ -1,0 +1,14 @@
+{
+  "name": "deployCentosDevtoolsTask",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["centosdevtools:deploy"],
+  "executor": "onlylast",
+  "script": {
+    "cwd": "data/code/centosdevtools",
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/centosdevtools/deploy.sh"]
+    }]
+  }
+}

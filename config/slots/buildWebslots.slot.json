@@ -1,0 +1,5 @@
+{
+  "name": "buildWebslots",
+  "secret": [],
+  "task": "buildWebslotsTask"
+}

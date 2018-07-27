@@ -1,0 +1,14 @@
+{
+  "name": "deployBeerpolyCITask",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["beerpolyci:deploy"],
+  "executor": "onlylast",
+  "script": {
+    "cwd": "data/code/beerpolyci",
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/beerpolyci/deploy.sh"]
+    }]
+  }
+}
