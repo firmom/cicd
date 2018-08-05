@@ -1,0 +1,15 @@
+{
+  "name": "BuildGoatcmsGoatcore",
+  "entrypoint": true,
+  "extends": ["CloneGoatcmsGoatcore"],
+  "locks": [],
+  "executor": "onlylast",
+  "trigger": ["BuildGoatcmsGoatcms", "BuildGoatcmsGoatcli"],
+  "script": {
+    "cwd": "data/code/goatcms/goatcore",
+    "commands": [{
+      "command": "go",
+      "args": ["test", "./..."]
+    }]
+  }
+}

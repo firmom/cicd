@@ -1,0 +1,16 @@
+{
+  "name": "ArchiveGameinplBeerpolyHome",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["data/code/gameinpl/beerpoly-home:archive"],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "mkdir",
+      "args": ["-p", "data/archive/gameinpl/beerpoly-home"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "config/tasks/gameinpl/beerpoly-home/archive.sh"]
+    }]
+  }
+}

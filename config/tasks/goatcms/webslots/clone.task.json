@@ -1,0 +1,13 @@
+{
+  "name": "CloneGoatcmsWebslots",
+  "entrypoint": false,
+  "extends": [],
+  "locks": [],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/webslots/clone.sh"]
+    }]
+  }
+}

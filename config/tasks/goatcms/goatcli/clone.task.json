@@ -1,0 +1,13 @@
+{
+  "name": "CloneGoatcmsGoatcli",
+  "entrypoint": false,
+  "extends": [],
+  "locks": ["data/code/goatcms/goatcli"],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/goatcms/goatcli/clone.sh"]
+    }]
+  }
+}

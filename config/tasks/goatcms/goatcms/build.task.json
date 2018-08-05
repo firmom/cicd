@@ -1,0 +1,24 @@
+{
+  "name": "BuildGoatcmsGoatcms",
+  "entrypoint": true,
+  "extends": ["CloneGoatcmsGoatcms"],
+  "locks": ["data/code/goatcms/goatcms:deploy", "data/code/goatcms/goatcms:archive"],
+  "executor": "onlylast",
+  "trigger": ["DeployGoatcmsGoatcms", "BuildGoatcmsWebslots", "BuildGoatcmsEmptyapp"],
+  "script": {
+    "cwd": "data/code/goatcms/goatcms",
+    "commands": [{
+      "command": "go",
+      "args": ["test", "./cmsapp/..."]
+    }, {
+      "command": "go",
+      "args": ["build", "./main", "-o", "goatcms"]
+    }, {
+      "command": "rm",
+      "args": ["/go/bin/goatcms"]
+    }, {
+      "command": "mv",
+      "args": ["./goatcms", "/go/bin"]
+    }]
+  }
+}

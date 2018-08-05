@@ -1,0 +1,15 @@
+{
+  "name": "BuildFirmomCentosDevtools",
+  "entrypoint": true,
+  "extends": ["CloneFirmomCentosDevtools"],
+  "locks": ["data/code/firmom/centosdevtools:deploy"],
+  "executor": "onlylast",
+  "trigger": ["DeployFirmomCentosDevtools"],
+  "script": {
+    "cwd": "data/code/firmom/centosdevtools",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "firmom/centos-devtools"]
+    }]
+  }
+}

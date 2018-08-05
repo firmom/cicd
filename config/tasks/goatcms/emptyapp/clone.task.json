@@ -1,0 +1,13 @@
+{
+  "name": "CloneGoatcmsEmptyapp",
+  "entrypoint": false,
+  "extends": [],
+  "locks": [],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/goatcms/emptyapp/clone.sh"]
+    }]
+  }
+}

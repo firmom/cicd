@@ -1,0 +1,15 @@
+{
+  "name": "BuildGoatcmsWebslots",
+  "entrypoint": true,
+  "extends": ["CloneGoatcmsWebslots"],
+  "locks": ["data/code/goatcms/webslots:deploy"],
+  "executor": "onlylast",
+  "trigger": ["DeployGoatcmsWebslots"],
+  "script": {
+    "cwd": "data/code/goatcms/webslots",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "goatcms/beerpoly"]
+    }]
+  }
+}

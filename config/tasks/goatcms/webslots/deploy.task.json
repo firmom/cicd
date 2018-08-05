@@ -1,0 +1,14 @@
+{
+  "name": "deploys-goatcms-webslots",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["data/code/goatcms/webslots:deploy"],
+  "executor": "onlylast",
+  "script": {
+    "cwd": "data/code/goatcms/webslots",
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/webslots/deploy.sh"]
+    }]
+  }
+}

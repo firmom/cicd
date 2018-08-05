@@ -1,0 +1,21 @@
+{
+  "name": "BuildGoatcmsEmptyapp",
+  "entrypoint": true,
+  "extends": ["CloneGoatcmsEmptyapp"],
+  "locks": ["code/goatcms/emptyapp"],
+  "executor": "onlylast",
+  "trigger": [],
+  "script": {
+    "cwd": "data/code/goatcms/emptyapp",
+    "commands": [{
+      "command": "goatcli",
+      "args": ["build"]
+    }, {
+      "command": "dep",
+      "args": ["ensure"]
+    }, {
+      "command": "go",
+      "args": ["build", "./main", "-o", "emptyapp"]
+    }]
+  }
+}

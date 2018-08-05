@@ -2,27 +2,57 @@ version: '3.4'
 
 services:
   cicd:
-    image: gameinpl/beerpoly-ci
+    image: firmom/cicd
     environment:
       TZ: 'Europe/Warsaw'
     restart: always
     environment:
-      - "APP_BASE_URL=http://ci.gamein.pl"
+      # App settings and secrets
+      - "APP_HOST=cicd.firmom.pl"
+      - "APP_BASE_URL=http://cicd.firmom.pl"
       - "OAUTH_GITHUB_APP=Insert_your_app_id"
       - "OAUTH_GITHUB_SECRET=Insert_your_app_secret"
 
-      - "SLOT_buildBeerpoly_SECRET_1=Insert_your_secret"
-      - "SLOT_buildBeerpolyHome_SECRET_1=Insert_your_secret"
+      # firmom slots
+      - "SLOT_BuildFirmomCentosDevtools_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildFirmomCICD_SECRET_1=Insert_your_secret"
 
-      - "DOCKER_USERNAME=Insert_your_secret"
-      - "DOCKER_PASSWORD=Insert_your_secret"
+      # gameinpl slots
+      - "SLOT_BuildGameinplBeerpolyHome_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildGameinplBeerpoly_SECRET_1=Insert_your_secret"
 
+      # gotcms slots
+      - "SLOT_BuildGoatcmsEmptyapp_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildGoatcmsGoatcli_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildGoatcmsGoatcms_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildGoatcmsGoatcore_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildGoatcmsWebslots_SECRET_1=Insert_your_secret"
+
+      # docker secrets
+      - "DOCKER_USERNAME=Insert_your_docker_username"
+      - "DOCKER_PASSWORD=Insert_your_docker_passwrod"
+
+      # example users
       - "USER_1_USERNAME=spozoga"
       - "USER_1_FIRSTNAME=Sebastian"
       - "USER_1_LASTNAME=Pozoga"
       - "USER_1_EMAIL=sebastian@pozoga.eu"
       - "USER_1_CONNECT_GITHUB=sebastian@pozoga.eu"
+
+      - "USER_2_USERNAME=JakubJakubiak"
+      - "USER_2_FIRSTNAME=Jakub"
+      - "USER_2_LASTNAME=Jakubiak"
+      - "USER_2_EMAIL=jebacyuu@gmail.com"
+      - "USER_2_ROLES=superadmin"
+      - "USER_2_CONNECT_GITHUB=JakubJakubiak"
+    volumes:
+      - "firmom-cicd-data:/go/src/github.com/goatcms/webslots/data"
     ports:
-      - 8085:5555
-      - 8086:8080
-      - 8087:8081
+      - 80:80
+      - 1333:1333
+      - 2077:2077
+      - 2078:2078
+      - 2079:2079
+
+volumes:
+  firmom-cicd-data:
