@@ -42,7 +42,7 @@ services:
       - "USER_2_USERNAME=Insert_Webslots_Account_Username"
       - "USER_2_LASTNAME=Insert_Webslots_Account_Lastname"
       - "USER_2_EMAIL=Insert_Webslots_Account_Email"
-      - "USER_1_ROLES=Insert_Webslots_ACL_Roles_Like_superadmin"
+      - "USER_2_ROLES=Insert_Webslots_ACL_Roles_Like_superadmin"
       - "USER_2_CONNECT_GITHUB=Insert_Github_Account_Login"
     volumes:
       - "firmom-cicd-data:/go/src/github.com/goatcms/webslots/data"
