@@ -1,5 +1,5 @@
 {
-  "name": "deploys-goatcms-webslots",
+  "name": "DeployGoatcmsWebslots",
   "entrypoint": true,
   "extends": [],
   "locks": ["data/code/goatcms/webslots:deploy"],
