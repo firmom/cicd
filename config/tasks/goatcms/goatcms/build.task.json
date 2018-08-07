@@ -8,6 +8,12 @@
   "script": {
     "cwd": "data/code/goatcms/goatcms",
     "commands": [{
+      "command": "goatcli",
+      "args": ["build"]
+    }, {
+      "command": "dep",
+      "args": ["ensure"]
+    }, {
       "command": "go",
       "args": ["test", "./cmsapp/..."]
     }, {
