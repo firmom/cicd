@@ -5,10 +5,9 @@
   "locks": ["data/code/goatcms/webslots:deploy"],
   "executor": "onlylast",
   "script": {
-    "cwd": "data/code/goatcms/webslots",
     "commands": [{
       "command": "sh",
-      "args": ["-x", "config/tasks/webslots/deploy.sh"]
+      "args": ["-x", "config/tasks/goatcms/webslots/deploy.sh"]
     }]
   }
 }

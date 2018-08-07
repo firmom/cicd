@@ -7,7 +7,7 @@
   "script": {
     "commands": [{
       "command": "sh",
-      "args": ["-x", "config/tasks/webslots/clone.sh"]
+      "args": ["-x", "config/tasks/goatcms/webslots/clone.sh"]
     }]
   }
 }

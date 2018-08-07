@@ -8,6 +8,15 @@
   "script": {
     "cwd": "data/code/goatcms/webslots",
     "commands": [{
+      "command": "goatcli",
+      "args": ["build"]
+    }, {
+      "command": "dep",
+      "args": ["ensure"]
+    }, {
+      "command": "go",
+      "args": ["test", "./slotsapp/..."]
+    }, {
       "command": "docker",
       "args": ["build", ".", "-t", "goatcms/beerpoly"]
     }]
