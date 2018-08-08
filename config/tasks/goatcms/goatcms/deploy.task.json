@@ -2,27 +2,27 @@
   "name": "DeployGoatcmsGoatcms",
   "entrypoint": true,
   "extends": [],
-  "locks": ["data/code/goatcms/goatcms:deploy"],
+  "locks": ["/data/code/goatcms/goatcms:deploy"],
   "executor": "onlylast",
   "script": {
     "commands": [{
       "command": "mkdir",
-      "args": ["-p", "data/serve/goatcms/goatcms"]
+      "args": ["-p", "/data/serve/goatcms/goatcms"]
     }, {
       "command": "rm",
-      "args": ["-rf", "data/serve/goatcms/goatcms/*"]
+      "args": ["-rf", "/data/serve/goatcms/goatcms/*"]
     }, {
       "command": "cp",
-      "args": ["-a", "data/code/goatcms/goatcms/.", "data/serve/goatcms/goatcms/"]
+      "args": ["-a", "/data/code/goatcms/goatcms/.", "/data/serve/goatcms/goatcms/"]
     }, {
       "command": "rm",
-      "args": ["-rf", "data/serve/goatcms/goatcms/.git"]
+      "args": ["-rf", "/data/serve/goatcms/goatcms/.git"]
     }, {
-      "cwd": "data/serve/goatcms/goatcms",
+      "cwd": "/data/serve/goatcms/goatcms",
       "command": "killall",
       "args": ["goatcms"]
     }, {
-      "cwd": "data/serve/goatcms/goatcms",
+      "cwd": "/data/serve/goatcms/goatcms",
       "command": "goatcms",
       "args": ["run", "--loglvl=dev"]
     }]

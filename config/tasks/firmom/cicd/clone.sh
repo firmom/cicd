@@ -2,7 +2,7 @@
 set -e
 
 REPO_URL="https://github.com/firmom/cicd"
-DIRECTORY="data/code/firmom/cicd"
+DIRECTORY="/data/code/firmom/cicd"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"

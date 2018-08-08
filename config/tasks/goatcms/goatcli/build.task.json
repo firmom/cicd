@@ -2,11 +2,11 @@
   "name": "BuildGoatcmsGoatcli",
   "entrypoint": true,
   "extends": ["CloneGoatcmsGoatcli"],
-  "locks": ["data/code/goatcms/goatcli"],
+  "locks": ["/data/code/goatcms/goatcli"],
   "executor": "onlylast",
   "trigger": [],
   "script": {
-    "cwd": "data/code/goatcms/goatcli",
+    "cwd": "/data/code/goatcms/goatcli",
     "commands": [{
       "command": "go",
       "args": ["test", "./cliapp/..."]

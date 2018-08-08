@@ -2,7 +2,7 @@
   "name": "CloneGoatcmsGoatcms",
   "entrypoint": false,
   "extends": [],
-  "locks": ["data/code/goatcms/goatcms:deploy", "data/code/goatcms/goatcms:archive"],
+  "locks": ["/data/code/goatcms/goatcms:deploy", "/data/code/goatcms/goatcms:archive"],
   "executor": "fifo",
   "script": {
     "commands": [{

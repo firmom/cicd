@@ -2,7 +2,7 @@
   "name": "CloneGameinplBeerpolyHome",
   "entrypoint": false,
   "extends": [],
-  "locks": ["data/code/gameinpl/beerpoly-home:deploy", "data/code/gameinpl/beerpoly-home:archive"],
+  "locks": ["/data/code/gameinpl/beerpoly-home:deploy", "/data/code/gameinpl/beerpoly-home:archive"],
   "executor": "fifo",
   "script": {
     "commands": [{

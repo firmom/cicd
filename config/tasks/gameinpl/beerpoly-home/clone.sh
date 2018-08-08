@@ -2,7 +2,7 @@
 set -e
 
 REPO_URL="https://github.com/gameinpl/beerpoly-home"
-DIRECTORY="data/code/gameinpl/beerpoly-home"
+DIRECTORY="/data/code/gameinpl/beerpoly-home"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"

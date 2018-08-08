@@ -2,21 +2,21 @@
   "name": "DeployGameinplBeerpoly",
   "entrypoint": true,
   "extends": [],
-  "locks": ["data/code/gameinpl/beerpoly:deploy"],
+  "locks": ["/data/code/gameinpl/beerpoly:deploy"],
   "executor": "onlylast",
   "script": {
     "commands": [{
       "command": "mkdir",
-      "args": ["-p", "data/serve/gameinpl/beerpoly/"]
+      "args": ["-p", "/data/serve/gameinpl/beerpoly/"]
     }, {
       "command": "rm",
-      "args": ["-rf", "data/serve/gameinpl/beerpoly/*"]
+      "args": ["-rf", "/data/serve/gameinpl/beerpoly/*"]
     }, {
       "command": "cp",
-      "args": ["-a", "data/code/gameinpl/beerpoly/dist/.", "data/serve/gameinpl/beerpoly/"]
+      "args": ["-a", "/data/code/gameinpl/beerpoly/dist/.", "/data/serve/gameinpl/beerpoly/"]
     }, {
       "command": "rm",
-      "args": ["-rf", "data/serve/gameinpl/beerpoly/.git"]
+      "args": ["-rf", "/data/serve/gameinpl/beerpoly/.git"]
     }]
   }
 }

@@ -46,7 +46,7 @@ services:
       - "USER_2_ROLES=Insert_Webslots_ACL_Roles_Like_superadmin"
       - "USER_2_CONNECT_GITHUB=Insert_Github_Account_Login"
     volumes:
-      - "firmom-cicd-data:/go/src/github.com/goatcms/webslots/data"
+      - "firmom-cicd-data:/data"
     ports:
       - 80:80
       - 1333:1333

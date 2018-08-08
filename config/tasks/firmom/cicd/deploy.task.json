@@ -2,7 +2,7 @@
   "name": "DeployFirmomCICD",
   "entrypoint": true,
   "extends": [],
-  "locks": ["data/code/firmom/cicd:deploy"],
+  "locks": ["/data/code/firmom/cicd:deploy"],
   "executor": "onlylast",
   "script": {
     "commands": [{

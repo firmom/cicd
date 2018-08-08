@@ -2,12 +2,12 @@
   "name": "ArchiveGoatcmsGoatcms",
   "entrypoint": true,
   "extends": [],
-  "locks": ["data/code/goatcms/goatcms:archive"],
+  "locks": ["/data/code/goatcms/goatcms:archive"],
   "executor": "onlylast",
   "script": {
     "commands": [{
       "command": "mkdir",
-      "args": ["-p", "data/archive/goatcms/goatcms"]
+      "args": ["-p", "/data/archive/goatcms/goatcms"]
     }, {
       "command": "sh",
       "args": ["-x", "config/tasks/goatcms/goatcms/archive.sh"]

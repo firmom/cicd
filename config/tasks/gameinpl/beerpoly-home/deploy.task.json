@@ -2,21 +2,21 @@
   "name": "DeployGameinplBeerpolyHome",
   "entrypoint": true,
   "extends": [],
-  "locks": ["data/code/gameinpl/beerpoly-home:deploy"],
+  "locks": ["/data/code/gameinpl/beerpoly-home:deploy"],
   "executor": "onlylast",
   "script": {
     "commands": [{
       "command": "mkdir",
-      "args": ["-p", "data/serve/gameinpl/beerpoly-home/"]
+      "args": ["-p", "/data/serve/gameinpl/beerpoly-home/"]
     }, {
       "command": "rm",
-      "args": ["-rf", "data/serve/gameinpl/beerpoly-home/*"]
+      "args": ["-rf", "/data/serve/gameinpl/beerpoly-home/*"]
     }, {
       "command": "cp",
-      "args": ["-a", "data/code/gameinpl/beerpoly-home/.", "data/serve/gameinpl/beerpoly-home/"]
+      "args": ["-a", "/data/code/gameinpl/beerpoly-home/.", "/data/serve/gameinpl/beerpoly-home/"]
     }, {
       "command": "rm",
-      "args": ["-rf", "data/serve/gameinpl/beerpoly-home/.git"]
+      "args": ["-rf", "/data/serve/gameinpl/beerpoly-home/.git"]
     }]
   }
 }

@@ -6,7 +6,7 @@
   "executor": "onlylast",
   "trigger": ["BuildGoatcmsGoatcms", "BuildGoatcmsGoatcli"],
   "script": {
-    "cwd": "data/code/goatcms/goatcore",
+    "cwd": "/data/code/goatcms/goatcore",
     "commands": [{
       "command": "go",
       "args": ["test", "./..."]

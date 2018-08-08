@@ -2,10 +2,10 @@
   "name": "DeployFirmomCentosDevtools",
   "entrypoint": true,
   "extends": [],
-  "locks": ["data/code/firmom/centosdevtools:deploy"],
+  "locks": ["/data/code/firmom/centosdevtools:deploy"],
   "executor": "onlylast",
   "script": {
-    "cwd": "data/code/firmom/centosdevtools",
+    "cwd": "/data/code/firmom/centosdevtools",
     "commands": [{
       "command": "sh",
       "args": ["-x", "config/tasks/firmom/centosdevtools/deploy.sh"]

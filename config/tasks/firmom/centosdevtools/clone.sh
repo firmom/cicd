@@ -2,7 +2,7 @@
 set -e
 
 REPO_URL="https://github.com/firmom/centos-devtools"
-DIRECTORY="data/code/firmom/centosdevtools"
+DIRECTORY="/data/code/firmom/centosdevtools"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"

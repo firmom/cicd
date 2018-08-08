@@ -2,12 +2,12 @@
   "name": "ArchiveGameinplBeerpoly",
   "entrypoint": true,
   "extends": [],
-  "locks": ["data/code/gameinpl/beerpoly:archive"],
+  "locks": ["/data/code/gameinpl/beerpoly:archive"],
   "executor": "fifo",
   "script": {
     "commands": [{
       "command": "mkdir",
-      "args": ["-p", "data/archive/gameinpl/beerpoly"]
+      "args": ["-p", "/data/archive/gameinpl/beerpoly"]
     }, {
       "command": "sh",
       "args": ["-x", "config/tasks/gameinpl/beerpoly/archive.sh"]

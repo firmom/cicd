@@ -40,14 +40,14 @@ RUN gem install sass
 RUN go get -u github.com/m3ng9i/ran
 
 # Add config
-COPY config/slots /go/src/github.com/goatcms/webslots/config/slots
-COPY config/tasks /go/src/github.com/goatcms/webslots/config/tasks
+COPY config/slots /app/config/slots
+COPY config/tasks /app/config/tasks
 
 # Add home template
-COPY home /go/src/github.com/goatcms/webslots/staticdata/home
+COPY home /staticdata/home
 
 # entrypoint
-COPY custom-entrypoint.sh "/go/src/github.com/goatcms/webslots/docker/custom-entrypoint.sh"
-RUN chmod +x "/go/src/github.com/goatcms/webslots/docker/custom-entrypoint.sh"
-ENTRYPOINT ["/go/src/github.com/goatcms/webslots/docker/custom-entrypoint.sh"]
+COPY custom-entrypoint.sh "/app/docker/custom-entrypoint.sh"
+RUN chmod +x "/app/docker/custom-entrypoint.sh"
+ENTRYPOINT ["/app/docker/custom-entrypoint.sh"]
 CMD []

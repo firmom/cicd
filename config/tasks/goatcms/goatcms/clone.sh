@@ -2,7 +2,7 @@
 set -e
 
 REPO_URL="https://github.com/goatcms/goatcms"
-DIRECTORY="data/code/goatcms/goatcms"
+DIRECTORY="/data/code/goatcms/goatcms"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"
@@ -16,4 +16,4 @@ if [ ! -d "$DIRECTORY" ]; then
 fi
 
 rm -rf /go/src/github.com/goatcms/goatcms ||:
-ln -s "$DIRECTORY" /go/src/github.com/goatcms/goatcms
+ln -s //data/code/goatcms/goatcms /go/src/github.com/goatcms/goatcms
