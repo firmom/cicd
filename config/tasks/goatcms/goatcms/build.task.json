@@ -17,14 +17,9 @@
       "command": "go",
       "args": ["test", "./cmsapp/..."]
     }, {
+      "cwd": "",
       "command": "go",
-      "args": ["build", "./main", "-o", "goatcms"]
-    }, {
-      "command": "rm",
-      "args": ["/go/bin/goatcms"]
-    }, {
-      "command": "mv",
-      "args": ["./goatcms", "/go/bin"]
+      "args": ["build", "./main", "-o", "data/archive/goatcms/goatcms/goatcms-latest"]
     }]
   }
 }
