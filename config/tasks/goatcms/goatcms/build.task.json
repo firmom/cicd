@@ -6,7 +6,7 @@
   "executor": "onlylast",
   "trigger": ["DeployGoatcmsGoatcms", "BuildGoatcmsWebslots", "BuildGoatcmsEmptyapp"],
   "script": {
-    "cwd": "data/code/goatcms/goatcms",
+    "cwd": "/go/src/github.com/goatcms/goatcms",
     "commands": [{
       "cwd": ".",
       "command": "sh",

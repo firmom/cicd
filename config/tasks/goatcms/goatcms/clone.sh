@@ -14,3 +14,6 @@ fi
 if [ ! -d "$DIRECTORY" ]; then
   git clone "$REPO_URL" "$DIRECTORY"
 fi
+
+rm -rf /go/src/github.com/goatcms/goatcms ||:
+ln -s "$DIRECTORY" /go/src/github.com/goatcms/goatcms
