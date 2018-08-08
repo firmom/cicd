@@ -8,6 +8,10 @@
   "script": {
     "cwd": "data/code/goatcms/goatcms",
     "commands": [{
+      "cwd": ".",
+      "command": "sh",
+      "args": ["-x", "config/tasks/goatcms/goatcms/build-secrets.sh"]
+    }, {
       "command": "goatcli",
       "args": ["build"]
     }, {
