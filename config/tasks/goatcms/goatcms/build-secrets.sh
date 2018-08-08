@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cat > data/code/goatcms/goatcms/.goat/secrets.json << EndOfMessage
+cat > /go/src/github.com/goatcms/goatcms/.goat/secrets.json << EndOfMessage
 {
   "database": {
     "host": "",
