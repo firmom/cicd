@@ -5,7 +5,7 @@ set -e
 echo $DOCKER_PASSWORD > $DOCKER_PASSWORD_FILE
 
 # prepare index
-sed -i "s|<<APP_HOST>>|$APP_HOST|g" staticdata/home/index.html
+sed -i "s|<<APP_HOST>>|$APP_HOST|g" /staticdata/home/index.html
 
 # run static files serve
 mkdir -p /data/serve/gameinpl/beerpoly
