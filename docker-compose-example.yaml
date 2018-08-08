@@ -13,6 +13,11 @@ services:
       - "OAUTH_GITHUB_APP=Insert_your_app_id"
       - "OAUTH_GITHUB_SECRET=Insert_your_app_secret"
 
+      # docker secrets
+      - "DOCKER_PASSWORD_FILE=/docker-password"
+      - "DOCKER_USERNAME=Insert_your_docker_username"
+      - "DOCKER_PASSWORD=Insert_your_docker_passwrod"
+
       # firmom slots
       - "SLOT_BuildFirmomCentosDevtools_SECRET_1=Insert_your_secret"
       - "SLOT_BuildFirmomCICD_SECRET_1=Insert_your_secret"
@@ -27,10 +32,6 @@ services:
       - "SLOT_BuildGoatcmsGoatcms_SECRET_1=Insert_your_secret"
       - "SLOT_BuildGoatcmsGoatcore_SECRET_1=Insert_your_secret"
       - "SLOT_BuildGoatcmsWebslots_SECRET_1=Insert_your_secret"
-
-      # docker secrets
-      - "DOCKER_USERNAME=Insert_your_docker_username"
-      - "DOCKER_PASSWORD=Insert_your_docker_passwrod"
 
       # example users
       - "USER_1_USERNAME=Insert_Webslots_Account_Username"

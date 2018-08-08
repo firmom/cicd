@@ -2,7 +2,6 @@
 set -e
 
 # prepare docker password file
-export DOCKER_PASSWORD_FILE="/docker-password"
 echo $DOCKER_PASSWORD > $DOCKER_PASSWORD_FILE
 
 # prepare index
