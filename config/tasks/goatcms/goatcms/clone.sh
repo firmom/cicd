@@ -16,4 +16,4 @@ if [ ! -d "$DIRECTORY" ]; then
 fi
 
 rm -rf /go/src/github.com/goatcms/goatcms ||:
-ln -s //data/code/goatcms/goatcms /go/src/github.com/goatcms/goatcms
+ln -s /data/code/goatcms/goatcms /go/src/github.com/goatcms/goatcms
