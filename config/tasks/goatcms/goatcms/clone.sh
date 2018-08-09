@@ -2,7 +2,7 @@
 set -e
 
 REPO_URL="https://github.com/goatcms/goatcms"
-DIRECTORY="/data/code/goatcms/goatcms"
+DIRECTORY="/go/src/github.com/goatcms/goatcms"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"
@@ -14,6 +14,3 @@ fi
 if [ ! -d "$DIRECTORY" ]; then
   git clone "$REPO_URL" "$DIRECTORY"
 fi
-
-rm -rf /go/src/github.com/goatcms/goatcms ||:
-ln -s /data/code/goatcms/goatcms /go/src/github.com/goatcms/goatcms
