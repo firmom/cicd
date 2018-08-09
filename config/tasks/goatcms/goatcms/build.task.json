@@ -2,7 +2,7 @@
   "name": "BuildGoatcmsGoatcms",
   "entrypoint": true,
   "extends": ["CloneGoatcmsGoatcms"],
-  "locks": ["/data/code/goatcms/goatcms:deploy", "/data/code/goatcms/goatcms:archive"],
+  "locks": ["/go/src/github.com/goatcms/goatcms:deploy", "/go/src/github.com/goatcms/goatcms:archive"],
   "executor": "onlylast",
   "trigger": ["DeployGoatcmsGoatcms", "BuildGoatcmsWebslots", "BuildGoatcmsEmptyapp"],
   "script": {
@@ -22,7 +22,7 @@
       "args": ["test", "./cmsapp/..."]
     }, {
       "command": "go",
-      "args": ["build", "-o", "/data/archive/goatcms/goatcms/goatcms-latest", "./main.go"]
+      "args": ["build", "-o", "/data/archive/goatcms/goatcms/goatcms-latest-dev", "./main.go"]
     }]
   }
 }

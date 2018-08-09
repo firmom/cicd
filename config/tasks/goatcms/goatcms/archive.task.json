@@ -2,7 +2,7 @@
   "name": "ArchiveGoatcmsGoatcms",
   "entrypoint": true,
   "extends": [],
-  "locks": ["/data/code/goatcms/goatcms:archive"],
+  "locks": ["/go/src/github.com/goatcms/goatcms:archive"],
   "executor": "onlylast",
   "script": {
     "commands": [{
