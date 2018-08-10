@@ -6,7 +6,7 @@
   "executor": "onlylast",
   "trigger": [],
   "script": {
-    "cwd": "/data/code/goatcms/emptyapp",
+    "cwd": "/go/src/github.com/goatcms/emptyapp",
     "commands": [{
       "command": "goatcli",
       "args": ["build"]
@@ -15,7 +15,7 @@
       "args": ["ensure"]
     }, {
       "command": "go",
-      "args": ["build", "./main", "-o", "emptyapp"]
+      "args": ["build", "-o", "/data/archive/goatcms/emptyapp/emptyapp-latest-dev", "./main.go"]
     }]
   }
 }
