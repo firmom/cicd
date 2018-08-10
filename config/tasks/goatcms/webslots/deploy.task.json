@@ -2,7 +2,7 @@
   "name": "DeployGoatcmsWebslots",
   "entrypoint": true,
   "extends": [],
-  "locks": ["/data/code/goatcms/webslots:deploy"],
+  "locks": ["/go/src/github.com/goatcms/webslots:deploy"],
   "executor": "onlylast",
   "script": {
     "commands": [{

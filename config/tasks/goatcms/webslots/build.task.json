@@ -2,12 +2,16 @@
   "name": "BuildGoatcmsWebslots",
   "entrypoint": true,
   "extends": ["CloneGoatcmsWebslots"],
-  "locks": ["/data/code/goatcms/webslots:deploy"],
+  "locks": ["/go/src/github.com/goatcms/webslots:clone"],
   "executor": "onlylast",
   "trigger": ["DeployGoatcmsWebslots"],
   "script": {
-    "cwd": "/data/code/goatcms/webslots",
+    "cwd": "/go/src/github.com/goatcms/webslots",
     "commands": [{
+      "cwd": ".",
+      "command": "sh",
+      "args": ["-x", "config/tasks/goatcms/webslots/build-secrets.sh"]
+    }, {
       "command": "goatcli",
       "args": ["build"]
     }, {
@@ -18,7 +22,7 @@
       "args": ["test", "./slotsapp/..."]
     }, {
       "command": "docker",
-      "args": ["build", ".", "-t", "goatcms/beerpoly"]
+      "args": ["build", ".", "-t", "goatcms/webslots"]
     }]
   }
 }
