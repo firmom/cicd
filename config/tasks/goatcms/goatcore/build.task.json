@@ -6,8 +6,15 @@
   "executor": "onlylast",
   "trigger": ["BuildGoatcmsGoatcms", "BuildGoatcmsGoatcli"],
   "script": {
-    "cwd": "/data/code/goatcms/goatcore",
+    "cwd": "/go/src/github.com/goatcms/goatcore",
     "commands": [{
+      "command": "dep",
+      "args": ["ensure"]
+    }, {
+      "cwd": ".",
+      "command": "sh",
+      "args": ["-x", "config/tasks/goatcms/goatcore/build-secrets.sh"]
+    }, {
       "command": "go",
       "args": ["test", "./..."]
     }]
