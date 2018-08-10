@@ -2,7 +2,7 @@
   "name": "CloneGoatcmsGoatcli",
   "entrypoint": false,
   "extends": [],
-  "locks": ["/data/code/goatcms/goatcli"],
+  "locks": ["/go/src/github.com/goatcms/goatcli"],
   "executor": "fifo",
   "script": {
     "commands": [{

@@ -2,7 +2,7 @@
 set -e
 
 REPO_URL="https://github.com/goatcms/goatcli"
-DIRECTORY="/data/code/goatcms/goatcli"
+DIRECTORY="/go/src/github.com/goatcms/goatcli"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"
