@@ -13,7 +13,7 @@
       "args": ["-x", "config/tasks/goatcms/goatcms/build-secrets.sh"]
     }, {
       "command": "goatcli",
-      "args": ["build"]
+      "args": ["build", "--interactive=false"]
     }, {
       "command": "dep",
       "args": ["ensure"]

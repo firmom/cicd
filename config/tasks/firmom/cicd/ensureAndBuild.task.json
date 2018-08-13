@@ -1,0 +1,14 @@
+{
+  "name": "EnsureAndBuildFirmomCICD",
+  "entrypoint": false,
+  "extends": [],
+  "locks": ["/go/src/github.com/goatcms/webslots:deploy"],
+  "executor": "onlylast",
+  "trigger": ["BuildFirmomCICD"],
+  "script": {
+    "commands": [{
+      "command": "docker",
+      "args": ["pull", "goatcms/webslots"]
+    }]
+  }
+}
