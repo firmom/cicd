@@ -1,0 +1,20 @@
+{
+  "name": "SelfClean",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/self/clean/volumes.sh"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "config/tasks/self/clean/networks.sh"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "config/tasks/self/clean/images.sh"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "config/tasks/self/clean/containers.sh"]
+    }]
+  }
+}

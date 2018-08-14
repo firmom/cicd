@@ -13,6 +13,9 @@ services:
       - "OAUTH_GITHUB_APP=Insert_your_app_id"
       - "OAUTH_GITHUB_SECRET=Insert_your_app_secret"
 
+      # self-clean
+      - "SLOT_SelfClean_SECRET_1=Insert_your_secret"
+
       # docker secrets
       - "DOCKER_PASSWORD_FILE=/docker-password"
       - "DOCKER_USERNAME=Insert_your_docker_username"
