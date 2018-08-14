@@ -1,0 +1,13 @@
+{
+  "name": "DeployStableFirmomCICD",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["/data/code/firmom/cicd:deploy"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/firmom/cicd/deploy.sh"]
+    }]
+  }
+}
