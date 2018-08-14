@@ -2,5 +2,5 @@
   "name": "SelfClean",
   "entrypoint": true,
   "executor": "onlylast",
-  "extends": ["SelfCleanContainers", "SelfCleanImages", "SelfCleanNetworks", "SelfCleanVolumes"],
+  "extends": ["SelfCleanContainers", "SelfCleanImages", "SelfCleanNetworks", "SelfCleanVolumes"]
 }
