@@ -4,7 +4,7 @@
   "extends": ["CloneGoatcmsWebslots"],
   "locks": ["/go/src/github.com/goatcms/webslots:clone"],
   "executor": "onlylast",
-  "trigger": ["DeployGoatcmsWebslots"],
+  "trigger": ["DeployGoatcmsWebslots", "BuildFirmomCICD"],
   "script": {
     "cwd": "/go/src/github.com/goatcms/webslots",
     "commands": [{
