@@ -1,0 +1,11 @@
+{
+  "name": "SelfCleanNetworks",
+  "entrypoint": false,
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "docker",
+      "args": ["network", "prune", "-f"]
+    }]
+  }
+}

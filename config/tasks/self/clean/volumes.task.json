@@ -1,0 +1,11 @@
+{
+  "name": "SelfCleanVolumes",
+  "entrypoint": false,
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/self/clean/volumes.sh"]
+    }]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "SelfCleanImages",
+  "entrypoint": false,
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/self/clean/images.sh"]
+    }]
+  }
+}
