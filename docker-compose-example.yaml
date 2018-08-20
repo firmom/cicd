@@ -48,8 +48,13 @@ services:
       - "USER_2_EMAIL=Insert_Webslots_Account_Email"
       - "USER_2_ROLES=Insert_Webslots_ACL_Roles_Like_superadmin"
       - "USER_2_CONNECT_GITHUB=Insert_Github_Account_Login"
+
+      # Remote SSH keys
+      - "REMOTE_DEPLOYMENT_MACHINE_SSH_PUB=Insert_Your_Remote_Deployment_Machine_Public_SSH_Key"
     volumes:
-      - "firmom-cicd-data:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/dockerdata/firmom/cicd/data:/data"
+      - "/dockerdata/firmom/cicd/ssh:/root/.ssh"
     ports:
       - 80:80
       - 1333:1333
