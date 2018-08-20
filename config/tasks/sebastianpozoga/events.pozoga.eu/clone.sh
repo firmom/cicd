@@ -2,7 +2,7 @@
 set -e
 
 REPO_URL="https://github.com/sebastianpozoga/events.pozoga.eu"
-DIRECTORY="/go/src/github.com/sebastianpozoga/events.pozoga.eu"
+DIRECTORY="/data/code/sebastianpozoga/events.pozoga.eu"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"
