@@ -13,6 +13,10 @@ services:
       - "OAUTH_GITHUB_APP=Insert_your_app_id"
       - "OAUTH_GITHUB_SECRET=Insert_your_app_secret"
 
+      # Deploy
+      - "DEPLOY_DEV_REMOTE_USER=someuser"
+      - "DEPLOY_DEV_REMOTE_HOST=somehost"
+
       # self-clean
       - "SLOT_SelfClean_SECRET_1=Insert_your_secret"
 
@@ -35,6 +39,17 @@ services:
       - "SLOT_BuildGoatcmsGoatcms_SECRET_1=Insert_your_secret"
       - "SLOT_BuildGoatcmsGoatcore_SECRET_1=Insert_your_secret"
       - "SLOT_BuildGoatcmsWebslots_SECRET_1=Insert_your_secret"
+
+      # sebastianpozoga slots
+      - "SLOT_BuildEventsPozogaEu_SECRET_1=Insert_your_secret"
+
+      # Project events.pozoga.eu config
+      - "EVENTS_POZOGA_EU_DB_USER=Insert_events_pozoga_eu_database_username"
+      - "EVENTS_POZOGA_EU_DB_PASS=Insert_events_pozoga_eu_database_username"
+      - "EVENTS_POZOGA_EU_WP_HOST=Insert_events_pozoga_eu_wordpress_host"
+      - "EVENTS_POZOGA_EU_WP_USER_NAME=Insert_events_pozoga_eu_admin_username"
+      - "EVENTS_POZOGA_EU_WP_USER_PASS=Insert_events_pozoga_eu_admin_password"
+      - "EVENTS_POZOGA_EU_WP_USER_EMAIL=Insert_events_pozoga_eu_admin_email"
 
       # example users
       - "USER_1_USERNAME=Insert_Webslots_Account_Username"

@@ -1,0 +1,15 @@
+{
+  "name": "BuildEventsPozogaEu",
+  "entrypoint": true,
+  "extends": ["CloneEventsPozogaEu"],
+  "locks": ["/data/code/sebastianpozoga/events.pozoga.eu:deploy"],
+  "executor": "onlylast",
+  "trigger": ["DeployPiPDockerEventsPozogaEu"],
+  "script": {
+    "cwd": "/data/code/sebastianpozoga/events.pozoga.eu",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "spozoga/events.pozoga.eu"]
+    }]
+  }
+}

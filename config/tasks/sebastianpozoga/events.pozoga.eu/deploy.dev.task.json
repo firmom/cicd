@@ -1,0 +1,15 @@
+{
+  "name": "DeployDevEventsPozogaEu",
+  "entrypoint": true,
+  "extends": [],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/sebastianpozoga/events.pozoga.eu/deploy.config.dev.sh"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "config/tasks/sebastianpozoga/events.pozoga.eu/deploy.dev.sh"]
+    }]
+  }
+}
