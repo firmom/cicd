@@ -5,6 +5,7 @@ set -e
 echo $DOCKER_PASSWORD > $DOCKER_PASSWORD_FILE
 
 # add ssh key
+eval `ssh-agent -s`
 if [ -f "/root/.ssh/id_rsa" ]; then
   ssh-add /root/.ssh/id_rsa
 fi
