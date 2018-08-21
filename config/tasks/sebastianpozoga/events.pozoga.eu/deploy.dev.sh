@@ -5,7 +5,7 @@ ssh -o "StrictHostKeyChecking no" $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOS
 #commands to run on remote host
 set -e
 
-cd ~/sebastianpozoga/events.pozoga.eu
+cd ~/sebastianpozoga/events.pozoga.eu-dev
 docker-compose rm --force --stop -v
 docker-compose up -d
 

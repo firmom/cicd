@@ -29,7 +29,7 @@ services:
     volumes:
       - "/dockerdata/sebastianpozoga/events.pozoga.eu/uploads:/var/www/html/wp-content/uploads"
     ports:
-      - 2012:8080
+      - 2012:80
   db:
     image: mariadb
     restart: always
@@ -53,5 +53,5 @@ services:
 
 EndOfMessage
 
-ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST 'mkdir -p ~/sebastianpozoga/events.pozoga.eu/'
-scp -o "StrictHostKeyChecking no" /data/docker/sebastianpozoga/events.pozoga.eu/docker-compose.yaml $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/sebastianpozoga/events.pozoga.eu/docker-compose.yaml
+ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST 'mkdir -p ~/sebastianpozoga/events.pozoga.eu-dev/'
+scp -o "StrictHostKeyChecking no" /data/docker/sebastianpozoga/events.pozoga.eu-dev/docker-compose.yaml $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/sebastianpozoga/events.pozoga.eu/docker-compose.yaml
