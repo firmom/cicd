@@ -52,4 +52,5 @@ services:
 
 EndOfMessage
 
+ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST 'mkdir -p ~/sebastianpozoga/events.pozoga.eu/'
 scp -o "StrictHostKeyChecking no" /data/docker/sebastianpozoga/events.pozoga.eu/docker-compose.yaml $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/sebastianpozoga/events.pozoga.eu/docker-compose.yaml
