@@ -1,0 +1,15 @@
+{
+  "name": "DeployProdEventsPozogaEu",
+  "entrypoint": true,
+  "extends": [],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/tasks/sebastianpozoga/events.pozoga.eu/deploy.config.prod.sh"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "config/tasks/sebastianpozoga/events.pozoga.eu/deploy.prod.sh"]
+    }]
+  }
+}
