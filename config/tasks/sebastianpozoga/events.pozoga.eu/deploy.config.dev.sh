@@ -3,7 +3,7 @@ set -e
 
 mkdir -p /data/docker/sebastianpozoga/events.pozoga.eu
 
-cat > /data/docker/sebastianpozoga/events.pozoga.eu/docker-compose.yaml << EndOfMessage
+cat > /data/docker/sebastianpozoga/events.pozoga.eu-dev/docker-compose.yaml << EndOfMessage
 version: '3.4'
 
 services:
