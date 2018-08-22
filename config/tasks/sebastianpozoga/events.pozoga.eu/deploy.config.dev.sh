@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-mkdir -p /data/docker/sebastianpozoga/events.pozoga.eu
+mkdir -p /data/docker/sebastianpozoga/events.pozoga.eu-dev
 
 cat > /data/docker/sebastianpozoga/events.pozoga.eu-dev/docker-compose.yaml << EndOfMessage
 version: '3.4'
