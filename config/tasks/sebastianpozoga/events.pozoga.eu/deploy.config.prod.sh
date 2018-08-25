@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-mkdir -p /data/docker/sebastianpozoga/events.pozoga.eu
+mkdir -p /data/docker/sebastianpozoga/events.pozoga.eu-prod
 
-cat > /data/docker/sebastianpozoga/events.pozoga.eu/docker-compose.yaml << EndOfMessage
+cat > /data/docker/sebastianpozoga/events.pozoga.eu-prod/docker-compose.yaml << EndOfMessage
 version: '3.4'
 
 services:
@@ -28,7 +28,7 @@ services:
       - "WP_HOST=events.pozoga.eu"
       - "WP_TITLE=Events Poznań"
     volumes:
-      - "/dockerdata/sebastianpozoga/events.pozoga.eu/prod/uploads:/var/www/html/wp-content/uploads"
+      - "/dockerdata/sebastianpozoga/events.pozoga.eu/prod/uploads:/app/wp-content/uploads"
     expose:
       - 80
   db:
@@ -65,4 +65,4 @@ networks:
 EndOfMessage
 
 ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST 'mkdir -p ~/sebastianpozoga/events.pozoga.eu-prod/'
-scp -o "StrictHostKeyChecking no" /data/docker/sebastianpozoga/events.pozoga.eu-prod/docker-compose.yaml $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/sebastianpozoga/events.pozoga.eu/docker-compose.yaml
+scp -o "StrictHostKeyChecking no" /data/docker/sebastianpozoga/events.pozoga.eu-prod/docker-compose.yaml $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/sebastianpozoga/events.pozoga.eu-prod/docker-compose.yaml
