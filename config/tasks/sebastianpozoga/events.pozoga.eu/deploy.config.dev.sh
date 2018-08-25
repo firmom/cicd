@@ -27,7 +27,7 @@ services:
       - "MIGRATE_FROM=http://events.pozoga.eu"
       - "MIGRATE_TO=http://$DEPLOY_DEV_REMOTE_HOST:2012"
     volumes:
-      - "/dockerdata/sebastianpozoga/events.pozoga.eu/dev/uploads:/var/www/html/wp-content/uploads"
+      - "/dockerdata/sebastianpozoga/events.pozoga.eu/dev/uploads:/app/wp-content/uploads"
       - "/dockerdata/sebastianpozoga/events.pozoga.eu/dev/snapshots:/data/snapshots"
     ports:
       - 2012:80
