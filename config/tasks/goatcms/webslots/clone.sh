@@ -6,8 +6,8 @@ DIRECTORY="/go/src/github.com/goatcms/webslots"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"
-  git reset --hard
-  git clean -f -d
+  git fetch --all
+  git reset --hard origin/master
   git pull
 fi
 
