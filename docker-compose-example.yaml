@@ -3,10 +3,14 @@ version: '3.4'
 services:
   cicd:
     image: firmom/cicd
-    environment:
-      TZ: 'Europe/Warsaw'
+    networks:
+      - nproxy
     restart: always
     environment:
+      TZ: 'Europe/Warsaw'
+      # routing
+      - "VIRTUAL_HOST=cicd.firmom.com"
+
       # App settings and secrets
       - "APP_HOST=cicd.firmom.pl"
       - "APP_BASE_URL=http://cicd.firmom.pl"
@@ -67,12 +71,39 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/dockerdata/firmom/cicd/data:/data"
       - "/dockerdata/firmom/cicd/ssh:/root/.ssh"
+    expose:
+      - 80
     ports:
-      - 80:80
       - 1333:1333
       - 2077:2077
       - 2078:2078
       - 2079:2079
+  # nginx-proxy is useful docker image to generates reverse proxy
+  # from environment automatically.
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    restart: always
+    environment:
+      - "ENABLE_IPV6=true"
+    networks:
+      - nproxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+  # Every build make your docker data grow up and grow up...
+  # docker-cleaner remove unused images / indirect images
+  # and remove exited container
+  # the script is running every two hours by CRON
+  cleaner:
+    image: spozoga/docker-cleaner
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
 
 volumes:
+  nproxy:
+    external:
+      name: nproxy
+  default:
   firmom-cicd-data:
