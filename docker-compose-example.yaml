@@ -7,7 +7,8 @@ services:
       - nproxy
     restart: always
     environment:
-      TZ: 'Europe/Warsaw'
+      - "TZ=Europe/Warsaw"
+
       # routing
       - "VIRTUAL_HOST=cicd.firmom.com"
 
@@ -20,9 +21,6 @@ services:
       # Deploy
       - "DEPLOY_DEV_REMOTE_USER=someuser"
       - "DEPLOY_DEV_REMOTE_HOST=somehost"
-
-      # self-clean
-      - "SLOT_SelfClean_SECRET_1=Insert_your_secret"
 
       # docker secrets
       - "DOCKER_PASSWORD_FILE=/docker-password"

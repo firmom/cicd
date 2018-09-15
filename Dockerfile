@@ -18,9 +18,6 @@ RUN add-apt-repository \
 RUN apt-get update
 RUN apt-get -y install docker-ce
 
-# install cron
-RUN apt-get -y install cron
-
 # nodejs
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
@@ -48,11 +45,6 @@ COPY config/tasks /app/config/tasks
 
 # Add home template
 COPY home /staticdata/home
-
-# add cron script
-ADD cron/selfclean /etc/cron.d/selfclean-cron
-RUN chmod 0644 /etc/cron.d/selfclean-cron
-RUN crontab /etc/cron.d/selfclean-cron
 
 # entrypoint
 COPY custom-entrypoint.sh "/app/docker/custom-entrypoint.sh"
