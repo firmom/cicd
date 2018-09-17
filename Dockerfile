@@ -40,6 +40,7 @@ RUN gem install sass
 RUN go get -u github.com/m3ng9i/ran
 
 # Add config
+COPY config/helpers /app/config/helpers
 COPY config/slots /app/config/slots
 COPY config/tasks /app/config/tasks
 
