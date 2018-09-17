@@ -7,7 +7,7 @@
     "cwd": "/data/code/gameinpl/beerpoly-home:dev",
     "commands": [{
       "command": "goatcli",
-      "args": ["build"]
+      "args": ["build", "--interactive=false"]
     }, {
       "command": "dep",
       "args": ["ensure"]
