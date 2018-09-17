@@ -99,9 +99,8 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
 
-volumes:
+networks:
   nproxy:
     external:
       name: nproxy
   default:
-  firmom-cicd-data:

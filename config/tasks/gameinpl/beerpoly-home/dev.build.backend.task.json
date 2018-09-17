@@ -1,0 +1,16 @@
+{
+  "name": "BuildBackendDevGameinplBeerpolyHome",
+  "entrypoint": false,
+  "extends": ["CloneDevGameinplBeerpolyHome"],
+  "executor": "onlylast",
+  "script": {
+    "cwd": "/data/code/gameinpl/beerpoly-home:dev",
+    "commands": [{
+      "command": "goatcli",
+      "args": ["build"]
+    }, {
+      "command": "dep",
+      "args": ["ensure"]
+    }]
+  }
+}
