@@ -1,0 +1,16 @@
+{
+  "name": "BuildFrontendDevGameinplBeerpolyHome",
+  "entrypoint": false,
+  "extends": ["CloneDevGameinplBeerpolyHome"],
+  "executor": "onlylast",
+  "script": {
+    "cwd": "/data/code/gameinpl/beerpoly-home:dev/web",
+    "commands": [{
+      "command": "npm",
+      "args": ["i"]
+    }, {
+      "command": "npm",
+      "args": ["run", "build"]
+    }]
+  }
+}
