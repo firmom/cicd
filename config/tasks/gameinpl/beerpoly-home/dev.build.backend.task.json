@@ -6,8 +6,14 @@
   "script": {
     "cwd": "/data/code/gameinpl/beerpoly-home:dev",
     "commands": [{
+      "command": "sh",
+      "args": ["-x", "config/helpers/goatcms-secrets.sh", "gameinpl/beerpoly-home:dev"]
+    }, {
       "command": "goatcli",
       "args": ["build", "--interactive=false"]
+    }, {
+      "command": "rm",
+      "args": ["-rf", "vendor"]
     }, {
       "command": "dep",
       "args": ["ensure"]

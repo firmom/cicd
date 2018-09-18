@@ -6,8 +6,11 @@
   "script": {
     "cwd": "/data/code/gameinpl/beerpoly-home:dev/web",
     "commands": [{
+      "command": "rm",
+      "args": ["-rf", "node_modules"]
+    }, {
       "command": "npm",
-      "args": ["i"]
+      "args": ["install"]
     }, {
       "command": "npm",
       "args": ["run", "build"]
