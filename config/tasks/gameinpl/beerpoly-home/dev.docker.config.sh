@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-IMAGE = $1
-DEST_DIR_PATH = "/data/docker/$IMAGE"
-DEST_FILE_PATH = "$DEST_DIR_PATH/docker-compose.yaml"
+IMAGE="$1"
+DEST_DIR_PATH="/data/docker/$IMAGE"
+DEST_FILE_PATH="$DEST_DIR_PATH/docker-compose.yaml"
 
 mkdir -p $DEST_DIR_PATH
 

@@ -3,11 +3,12 @@
   "entrypoint": false,
   "extends": ["CloneDevGameinplBeerpolyHome"],
   "executor": "onlylast",
+  "locks": ["BuildBackendDevGameinplBeerpolyHome"],
   "script": {
-    "cwd": "/data/code/gameinpl/beerpoly-home:dev",
+    "cwd": "/data/code/gameinpl/beerpoly-home-dev/src/github.com/gameinpl/beerpoly-home",
     "commands": [{
       "command": "sh",
-      "args": ["-x", "config/helpers/goatcms-secrets.sh", "gameinpl/beerpoly-home:dev"]
+      "args": ["-x", "/app/config/helpers/golang/goatcms-secrets.sh", "github.com", "gameinpl/beerpoly-home", "dev"]
     }, {
       "command": "goatcli",
       "args": ["build", "--interactive=false"]
@@ -15,8 +16,8 @@
       "command": "rm",
       "args": ["-rf", "vendor"]
     }, {
-      "command": "dep",
-      "args": ["ensure"]
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "gameinpl/beerpoly-home", "dev"]
     }]
   }
 }

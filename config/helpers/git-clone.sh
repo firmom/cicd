@@ -4,7 +4,7 @@ set -e
 REPO_URL="$1"
 BRANCH="$2"
 IMAGE="$3"
-DIRECTORY="/data/code/$IMAGE"
+DIRECTORY="/go/src/github/$IMAGE"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"

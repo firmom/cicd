@@ -4,7 +4,7 @@
   "extends": ["CloneDevGameinplBeerpolyHome"],
   "executor": "onlylast",
   "script": {
-    "cwd": "/data/code/gameinpl/beerpoly-home:dev/web",
+    "cwd": "/data/code/gameinpl/beerpoly-home-dev/src/github.com/gameinpl/beerpoly-home/web",
     "commands": [{
       "command": "rm",
       "args": ["-rf", "node_modules"]

@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e
 
-IMAGE="$1"
-SECRETS_PATH="/go/src/github/$IMAGE/.goat/secrets.json"
+HOST="$1"
+REPO="$2"
+TAG="$3"
+SECRETS_PATH="/data/code/$REPO-$TAG/src/$HOST/$REPO/.goat/secrets.json"
 
 cat > $SECRETS_PATH << EndOfMessage
 {

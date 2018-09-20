@@ -2,15 +2,15 @@
   "name": "DeployDevGameinplBeerpolyHome",
   "entrypoint": true,
   "extends": [],
-  "locks": ["/data/code/gameinpl/beerpoly-home:dev!deploy"],
+  "locks": ["/data/code/gameinpl/beerpoly-home-dev!deploy"],
   "executor": "onlylast",
   "script": {
     "commands": [{
       "command": "sh",
-      "args": ["-x", "config/tasks/gameinpl/beerpoly-home/dev.docker.config.sh", "gameinpl/beerpoly-home:dev"]
+      "args": ["/app/config/tasks/gameinpl/beerpoly-home/dev.docker.config.sh", "gameinpl/beerpoly-home:dev"]
     }, {
       "command": "sh",
-      "args": ["-x", "config/helpers/docker-deploy.sh", "gameinpl/beerpoly-home:dev"]
+      "args": ["-x", "/app/config/helpers/golang/docker-deploy.sh", "gameinpl/beerpoly-home:dev"]
     }]
   }
 }

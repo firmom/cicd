@@ -1,13 +1,12 @@
 {
   "name": "CloneDevGameinplBeerpolyHome",
   "entrypoint": false,
-  "extends": [],
-  "locks": ["/data/code/gameinpl/beerpoly-home:dev!build"],
+  "locks": ["/data/code/gameinpl/beerpoly-home-dev"],
   "executor": "fifo",
   "script": {
     "commands": [{
       "command": "sh",
-      "args": ["-x", "config/helpers/git-clone.sh", "https://github.com/gameinpl/beerpoly-home", "master", "gameinpl/beerpoly-home:dev"]
+      "args": ["-x", "/app/config/helpers/golang/git-clone.sh", "github.com", "gameinpl/beerpoly-home", "goatcms", "dev"]
     }]
   }
 }
