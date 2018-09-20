@@ -6,7 +6,7 @@
   "script": {
     "commands": [{
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/golang/git-clone.sh", "github.com", "gameinpl/beerpoly-home", "goatcms", "dev"]
+      "args": ["-x", "/app/config/helpers/golang/git-clone.sh", "github.com", "gameinpl/beerpoly-home", "dev", "dev"]
     }]
   }
 }
