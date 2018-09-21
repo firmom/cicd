@@ -1,8 +1,10 @@
 #!/bin/sh
 set -e
 
-IMAGE="$1"
-DEST_DIR_PATH="/data/docker/$IMAGE"
+REPO="$1"
+TAG="$2"
+IMAGE="$REPO:$TAG"
+DEST_DIR_PATH="/data/docker/$REPO-$TAG"
 DEST_FILE_PATH="$DEST_DIR_PATH/docker-compose.yaml"
 
 mkdir -p $DEST_DIR_PATH
@@ -42,7 +44,7 @@ done
 # Add rest of config file
 cat >> $DEST_FILE_PATH << EndOfMessage
     volumes:
-      - "/dockerdata/$IMAGE/data:/data"
+      - "/dockerdata/$REPO-$TAG/data:/data"
     ports:
      - 2078:80
 

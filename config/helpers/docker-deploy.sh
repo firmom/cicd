@@ -1,11 +1,13 @@
 #!/bin/sh
 set -e
 
-IMAGE="$1"
+REPO="$1"
+TAG="$2"
+IMAGE="$REPO:$TAG"
 
 # Deploy config
-ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST "mkdir -p ~/$IMAGE/"
-scp -o "StrictHostKeyChecking no" /data/docker/$IMAGE/docker-compose.yaml $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/$IMAGE/docker-compose.yaml
+ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST "mkdir -p ~/$REPO-$TAG/"
+scp -o "StrictHostKeyChecking no" "/data/docker/$REPO-$TAG/docker-compose.yaml" "$DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/$REPO-$TAG/docker-compose.yaml"
 
 # Deploy App
 ssh -o "StrictHostKeyChecking no" $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST << ENDSSH
@@ -13,7 +15,7 @@ ssh -o "StrictHostKeyChecking no" $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOS
 set -e
 
 docker pull $IMAGE
-cd ~/$IMAGE
+cd ~/$REPO-$TAG
 docker-compose rm --force --stop -v
 docker-compose up -d
 

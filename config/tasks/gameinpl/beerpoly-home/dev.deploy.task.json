@@ -10,7 +10,7 @@
       "args": ["/app/config/tasks/gameinpl/beerpoly-home/dev.docker.config.sh", "gameinpl/beerpoly-home:dev"]
     }, {
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "gameinpl/beerpoly-home:dev"]
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "gameinpl/beerpoly-home", "dev"]
     }]
   }
 }
