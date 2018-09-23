@@ -74,7 +74,6 @@ services:
     ports:
       - 1333:1333
       - 2077:2077
-      - 2078:2078
       - 2079:2079
   # nginx-proxy is useful docker image to generates reverse proxy
   # from environment automatically.
