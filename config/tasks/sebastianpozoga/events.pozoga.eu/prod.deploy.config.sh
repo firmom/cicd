@@ -1,14 +1,21 @@
 #!/bin/sh
 set -e
 
-mkdir -p /data/docker/sebastianpozoga/events.pozoga.eu-prod
+REPO="$1"
+TAG="$2"
+IMAGE="$REPO:$TAG"
+DEST_DIR_PATH="/data/docker/$REPO-$TAG"
+DEST_FILE_PATH="$DEST_DIR_PATH/docker-compose.yaml"
 
-cat > /data/docker/sebastianpozoga/events.pozoga.eu-prod/docker-compose.yaml << EndOfMessage
+mkdir -p $DEST_DIR_PATH
+
+# Add config file
+cat > $DEST_FILE_PATH << EndOfMessage
 version: '3.4'
 
 services:
   events:
-    image: spozoga/events.pozoga.eu
+    image: $IMAGE
     restart: always
     networks:
       - nproxy
@@ -17,6 +24,8 @@ services:
       TZ: 'Europe/Warsaw'
     environment:
       - "VIRTUAL_HOST=events.pozoga.eu"
+      - "VIRTUAL_PROTO=https"
+      - "VIRTUAL_PORT=443"
       - "DB_HOST=db"
       - "DB_PORT=3306"
       - "DB_NAME=prod.events.pozoga.eu"
@@ -31,6 +40,7 @@ services:
       - "/dockerdata/sebastianpozoga/events.pozoga.eu/prod/uploads:/app/wp-content/uploads"
     expose:
       - 80
+      - 443
   db:
     image: mariadb
     restart: always
@@ -63,6 +73,3 @@ networks:
   default:
 
 EndOfMessage
-
-ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST 'mkdir -p ~/sebastianpozoga/events.pozoga.eu-prod/'
-scp -o "StrictHostKeyChecking no" /data/docker/sebastianpozoga/events.pozoga.eu-prod/docker-compose.yaml $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/sebastianpozoga/events.pozoga.eu-prod/docker-compose.yaml

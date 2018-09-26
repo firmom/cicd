@@ -1,14 +1,21 @@
 #!/bin/sh
 set -e
 
-mkdir -p /data/docker/sebastianpozoga/events.pozoga.eu-dev
+REPO="$1"
+TAG="$2"
+IMAGE="$REPO:$TAG"
+DEST_DIR_PATH="/data/docker/$REPO-$TAG"
+DEST_FILE_PATH="$DEST_DIR_PATH/docker-compose.yaml"
 
-cat > /data/docker/sebastianpozoga/events.pozoga.eu-dev/docker-compose.yaml << EndOfMessage
+mkdir -p $DEST_DIR_PATH
+
+# Add config file
+cat > $DEST_FILE_PATH << EndOfMessage
 version: '3.4'
 
 services:
   events:
-    image: spozoga/events.pozoga.eu
+    image: $IMAGE
     environment:
       TZ: 'Europe/Warsaw'
     restart: always
@@ -27,8 +34,9 @@ services:
       - "MIGRATE_FROM=http://events.pozoga.eu"
       - "MIGRATE_TO=http://$DEPLOY_DEV_REMOTE_HOST:2012"
     volumes:
-      - "/dockerdata/sebastianpozoga/events.pozoga.eu/dev/uploads:/app/wp-content/uploads"
-      - "/dockerdata/sebastianpozoga/events.pozoga.eu/dev/snapshots:/data/snapshots"
+      - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
+      - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
+      - "/dockerdata/$REPO/$TAG/certs:/certs"
     ports:
       - 2012:80
   db:
@@ -40,7 +48,7 @@ services:
       - "MYSQL_PASSWORD=$EVENTS_POZOGA_EU_DB_PASS"
       - "MYSQL_ROOT_PASSWORD=$EVENTS_POZOGA_EU_DB_PASS"
     volumes:
-      - "/dockerdata/sebastianpozoga/events.pozoga.eu/dev/mysql:/var/lib/mysql"
+      - "/dockerdata/$REPO/$TAG/mysql:/var/lib/mysql"
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
@@ -53,6 +61,3 @@ services:
       - "PMA_ARBITRARY=1"
 
 EndOfMessage
-
-ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST 'mkdir -p ~/sebastianpozoga/events.pozoga.eu-dev/'
-scp -o "StrictHostKeyChecking no" /data/docker/sebastianpozoga/events.pozoga.eu-dev/docker-compose.yaml $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/sebastianpozoga/events.pozoga.eu-dev/docker-compose.yaml

@@ -1,0 +1,18 @@
+{
+  "name": "BuildDevEventsPozogaEu",
+  "entrypoint": true,
+  "extends": ["CloneDevEventsPozogaEu"],
+  "locks": ["/data/code/sebastianpozoga/events.pozoga.eu-dev", "docker!events.pozoga.eu:dev"],
+  "executor": "onlylast",
+  "trigger": ["DeployDevDockerEventsPozogaEu"],
+  "script": {
+    "cwd": "/data/code/sebastianpozoga/events.pozoga.eu-dev",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "spozoga/events.pozoga.eu:dev"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-push.sh", "spozoga/events.pozoga.eu:dev"]
+    }]
+  }
+}

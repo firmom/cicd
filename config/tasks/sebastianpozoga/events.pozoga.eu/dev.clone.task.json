@@ -1,0 +1,13 @@
+{
+  "name": "CloneDevEventsPozogaEu",
+  "entrypoint": false,
+  "extends": [],
+  "locks": ["/data/code/sebastianpozoga/events.pozoga.eu-dev"],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/git-clone.sh", "github.com", "sebastianpozoga/events.pozoga.eu", "dev", "dev"]
+    }]
+  }
+}

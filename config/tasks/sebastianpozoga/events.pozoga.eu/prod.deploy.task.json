@@ -1,0 +1,22 @@
+{
+  "name": "DeployProdEventsPozogaEu",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["docker!events.pozoga.eu:prod"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-domain.sh", "pozoga.eu"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-deploy.sh", "sebastianpozoga/events.pozoga.eu", "prod", "pozoga.eu"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/tasks/sebastianpozoga/events.pozoga.eu/prod.deploy.config.sh", "sebastianpozoga/events.pozoga.eu", "prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "sebastianpozoga/events.pozoga.eu", "prod"]
+    }]
+  }
+}

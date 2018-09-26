@@ -1,10 +1,12 @@
 #!/bin/sh
 set -e
 
-REPO_URL="$1"
-BRANCH="$2"
-IMAGE="$3"
-DIRECTORY="/go/src/github/$IMAGE"
+HOST="$1"
+REPO="$2"
+BRANCH="$3"
+TAG="$4"
+DIRECTORY="/data/code/$REPO-$TAG"
+GIT_REPO="https://$HOST/$REPO.git"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"
@@ -14,5 +16,5 @@ if [ -d "$DIRECTORY" ]; then
 fi
 
 if [ ! -d "$DIRECTORY" ]; then
-  git clone -b "$BRANCH" "$REPO_URL" "$DIRECTORY"
+  git clone -b "$BRANCH" "$GIT_REPO" "$DIRECTORY"
 fi

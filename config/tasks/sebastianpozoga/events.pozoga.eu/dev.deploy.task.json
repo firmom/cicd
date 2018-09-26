@@ -1,0 +1,22 @@
+{
+  "name": "DeployDevEventsPozogaEu",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["docker!events.pozoga.eu:dev"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-domain.sh", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-deploy.sh", "sebastianpozoga/events.pozoga.eu", "dev", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/tasks/sebastianpozoga/events.pozoga.eu/dev.deploy.config.sh", "sebastianpozoga/events.pozoga.eu", "dev"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "sebastianpozoga/events.pozoga.eu", "dev"]
+    }]
+  }
+}

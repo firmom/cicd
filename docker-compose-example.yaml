@@ -9,6 +9,9 @@ services:
     environment:
       - "TZ=Europe/Warsaw"
 
+      # letsencrypt
+      - "CERT_EMAIL=your@email.address"
+
       # routing
       - "VIRTUAL_HOST=cicd.firmom.com"
 

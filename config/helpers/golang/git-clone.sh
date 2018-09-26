@@ -6,7 +6,7 @@ REPO="$2"
 BRANCH="$3"
 TAG="$4"
 DIRECTORY="/data/code/$REPO-$TAG/src/$HOST/$REPO"
-GIT_REPO="https://github.com/$REPO.git"
+GIT_REPO="https://$HOST/$REPO.git"
 
 if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"

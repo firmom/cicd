@@ -1,6 +1,0 @@
-{
-  "name": "DeployPiPDockerEventsPozogaEu",
-  "entrypoint": false,
-  "extends": ["DeployDockerEventsPozogaEu"],
-  "trigger": ["DeployDevEventsPozogaEu"]
-}
