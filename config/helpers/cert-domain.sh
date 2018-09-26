@@ -17,5 +17,6 @@ else
     -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
     -v "/var/logs/letsencrypt:/var/logs/letsencrypt" \
     certbot/certbot \
-    renew --cert-name "$DOMAIN" --email "$CERT_EMAIL" --noninteractive --agree-tos
+    renew --cert-name "$DOMAIN" --email "$CERT_EMAIL" --noninteractive --agree-tos \
+    ||:
 fi
