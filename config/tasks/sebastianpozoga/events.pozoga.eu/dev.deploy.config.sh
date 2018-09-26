@@ -15,7 +15,7 @@ version: '3.4'
 
 services:
   events:
-    image: $IMAGE
+    image: spozoga/events.pozoga.eu:$TAG
     environment:
       TZ: 'Europe/Warsaw'
     restart: always
