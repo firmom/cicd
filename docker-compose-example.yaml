@@ -69,6 +69,7 @@ services:
       - "USER_2_ROLES=Insert_Webslots_ACL_Roles_Like_superadmin"
       - "USER_2_CONNECT_GITHUB=Insert_Github_Account_Login"
     volumes:
+      - "/etc/letsencrypt:/etc/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/dockerdata/firmom/cicd/data:/data"
       - "/dockerdata/firmom/cicd/ssh:/root/.ssh"

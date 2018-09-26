@@ -9,4 +9,4 @@ DEST="/dockerdata/$REPO/$TAG/certs/$DOMAIN"
 
 # Deploy certs
 ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST "mkdir -p $DEST"
-scp -orp "StrictHostKeyChecking no" "$SRC" "$DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:$DEST"
+scp -rp -o "StrictHostKeyChecking no" "$SRC" "$DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:$DEST"
