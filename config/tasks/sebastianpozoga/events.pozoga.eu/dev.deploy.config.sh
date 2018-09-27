@@ -3,7 +3,7 @@ set -e
 
 REPO="$1"
 TAG="$2"
-IMAGE="$REPO:$TAG"
+IMAGE="$3"
 DEST_DIR_PATH="/data/docker/$REPO-$TAG"
 DEST_FILE_PATH="$DEST_DIR_PATH/docker-compose.yaml"
 
@@ -15,7 +15,7 @@ version: '3.4'
 
 services:
   events:
-    image: spozoga/events.pozoga.eu:$TAG
+    image: $IMAGE
     environment:
       TZ: 'Europe/Warsaw'
     restart: always

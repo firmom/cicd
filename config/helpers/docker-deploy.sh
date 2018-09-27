@@ -3,7 +3,7 @@ set -e
 
 REPO="$1"
 TAG="$2"
-IMAGE="$REPO:$TAG"
+IMAGE="$3"
 
 # Deploy config
 ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST "mkdir -p ~/$REPO-$TAG/"

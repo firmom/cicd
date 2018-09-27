@@ -3,7 +3,7 @@ set -e
 
 REPO="$1"
 TAG="$2"
-IMAGE="$REPO:$TAG"
+IMAGE="$3"
 DEST_DIR_PATH="/data/docker/$REPO-$TAG"
 DEST_FILE_PATH="$DEST_DIR_PATH/docker-compose.yaml"
 
