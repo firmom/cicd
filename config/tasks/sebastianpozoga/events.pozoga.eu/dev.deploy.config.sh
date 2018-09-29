@@ -20,6 +20,8 @@ services:
       TZ: 'Europe/Warsaw'
     restart: always
     environment:
+      - "MODE=SSL"
+      - "DOMAIN=firmom.com:2012"
       - "DB_HOST=db"
       - "DB_PORT=3306"
       - "DB_NAME=dev.events.pozoga.eu"
