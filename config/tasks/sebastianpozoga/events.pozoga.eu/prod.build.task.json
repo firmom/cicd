@@ -4,7 +4,7 @@
   "extends": ["CloneProdEventsPozogaEu"],
   "locks": ["/data/code/sebastianpozoga/events.pozoga.eu-prod", "docker!events.pozoga.eu:prod"],
   "executor": "onlylast",
-  "trigger": ["DeployProdDockerEventsPozogaEu"],
+  "trigger": ["DeployProdEventsPozogaEu"],
   "script": {
     "cwd": "/data/code/sebastianpozoga/events.pozoga.eu-prod",
     "commands": [{
