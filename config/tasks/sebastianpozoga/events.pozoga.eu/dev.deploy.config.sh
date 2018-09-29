@@ -38,7 +38,7 @@ services:
     volumes:
       - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
       - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
-      - "/dockerdata/$REPO/$TAG/firmom.com/certs:/certs"
+      - "/dockerdata/$REPO/$TAG/certs/firmom.com:/certs"
     ports:
       - 2012:443
   db:

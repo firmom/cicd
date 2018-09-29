@@ -40,7 +40,7 @@ services:
       - "WP_TITLE=Events Poznań"
     volumes:
       - "/dockerdata/sebastianpozoga/events.pozoga.eu/prod/uploads:/app/wp-content/uploads"
-      - "/dockerdata/$REPO/$TAG/pozoga.eu/certs:/certs"
+      - "/dockerdata/$REPO/$TAG/certs/pozoga.eu:/certs"
     expose:
       - 80
       - 443
