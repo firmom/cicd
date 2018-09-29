@@ -38,9 +38,9 @@ services:
     volumes:
       - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
       - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
-      - "/dockerdata/$REPO/$TAG/certs:/certs"
+      - "/dockerdata/$REPO/$TAG/firmom.com/certs:/certs"
     ports:
-      - 2012:80
+      - 2012:443
   db:
     image: mariadb
     restart: always

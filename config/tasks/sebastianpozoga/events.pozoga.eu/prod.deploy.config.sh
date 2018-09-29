@@ -23,6 +23,8 @@ services:
     environment:
       TZ: 'Europe/Warsaw'
     environment:
+      - "MODE=SSL"
+      - "DOMAIN=events.pozoga.eu"
       - "VIRTUAL_HOST=events.pozoga.eu"
       - "VIRTUAL_PROTO=https"
       - "VIRTUAL_PORT=443"
@@ -38,6 +40,7 @@ services:
       - "WP_TITLE=Events Poznań"
     volumes:
       - "/dockerdata/sebastianpozoga/events.pozoga.eu/prod/uploads:/app/wp-content/uploads"
+      - "/dockerdata/$REPO/$TAG/pozoga.eu/certs:/certs"
     expose:
       - 80
       - 443
