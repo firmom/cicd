@@ -22,8 +22,8 @@
       "command": "sh",
       "args": ["-x", "/app/config/helpers/golang/test.sh", "github.com", "goatcms/goatcms", "dev", "./cmsapp/..."]
     }, {
-      "command": "go",
-      "args": ["build", "-o", "/data/archive/goatcms/goatcms/goatcms", "./main.go"]
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/build.sh", "github.com", "goatcms/goatcms", "dev", "./main.go", "/data/archive/goatcms/goatcms/goatcms"]
     }]
   }
 }
