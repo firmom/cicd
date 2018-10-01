@@ -19,8 +19,8 @@
       "command": "sh",
       "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "goatcms/goatcms", "dev"]
     }, {
-      "command": "go",
-      "args": ["test", "./cmsapp/..."]
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/test.sh", "github.com", "goatcms/goatcms", "dev", "./cmsapp/..."]
     }, {
       "command": "go",
       "args": ["build", "-o", "/data/archive/goatcms/goatcms/goatcms", "./main.go"]
