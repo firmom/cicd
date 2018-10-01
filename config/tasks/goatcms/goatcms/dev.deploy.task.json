@@ -16,7 +16,7 @@
       "args": ["/app/config/tasks/goatcms/goatcms/dev.deploy.config.sh", "goatcms/goatcms", "dev"]
     }, {
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "goatcms/goatcms", "dev"]
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "goatcms/goatcms", "dev", "goatcms/goatcms:dev"]
     }]
   }
 }

@@ -14,7 +14,7 @@ cat > $DEST_FILE_PATH << EndOfMessage
 version: '3.4'
 
 services:
-  beerpolyhome:
+  goatcms:
     image: $IMAGE
     networks:
       - nproxy
