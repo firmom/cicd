@@ -1,0 +1,12 @@
+{
+  "name": "CloneDevGoatcmsGoatcms",
+  "entrypoint": false,
+  "locks": ["/data/code/goatcms/goatcms-dev"],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/git-clone.sh", "github.com", "goatcms/goatcms", "dev", "dev"]
+    }]
+  }
+}

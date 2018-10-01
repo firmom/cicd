@@ -1,0 +1,29 @@
+{
+  "name": "BuildBackendDevGoatcmsGoatcms",
+  "entrypoint": false,
+  "extends": ["CloneDevGoatcmsGoatcms"],
+  "executor": "onlylast",
+  "locks": ["BuildBackendDevGoatcmsGoatcms"],
+  "script": {
+    "cwd": "/data/code/goatcms/goatcms-dev/src/github.com/goatcms/goatcms",
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/goatcms-secrets.sh", "github.com", "goatcms/goatcms", "dev"]
+    }, {
+      "command": "goatcli",
+      "args": ["build", "--interactive=false"]
+    }, {
+      "command": "rm",
+      "args": ["-rf", "vendor"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "goatcms/goatcms", "dev"]
+    }, {
+      "command": "go",
+      "args": ["test", "./cmsapp/..."]
+    }, {
+      "command": "go",
+      "args": ["build", "-o", "/data/archive/goatcms/goatcms/goatcms", "./main.go"]
+    }]
+  }
+}
