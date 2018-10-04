@@ -9,6 +9,7 @@ SECRETS_PATH="/data/code/$REPO-$TAG/src/$HOST/$REPO/.goat/secrets.json"
 cat > $SECRETS_PATH << EndOfMessage
 {
   "database": {
+    "engine": "sqlite",
     "host": "",
     "name": "",
     "password": "",
