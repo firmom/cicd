@@ -1,0 +1,13 @@
+{
+  "name": "ArchiveDevGoatcmsWebslots",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["/data/archive/goatcms/webslots"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/archive.sh", "goatcms/webslots", "dev", "webslots"]
+    }]
+  }
+}

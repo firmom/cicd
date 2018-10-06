@@ -1,0 +1,22 @@
+{
+  "name": "BuildProdGoatcmsGoatcms",
+  "entrypoint": true,
+  "extends": [
+    "CloneProdGoatcmsGoatcms",
+    "BuildBackendProdGoatcmsGoatcms",
+    "BuildFrontendProdGoatcmsGoatcms"
+  ],
+  "locks": ["/data/code/goatcms/goatcms-prod!deploy"],
+  "executor": "onlylast",
+  "trigger": ["DeployProdGoatcmsGoatcms"],
+  "script": {
+    "cwd": "/data/code/goatcms/goatcms-prod/src/github.com/goatcms/goatcms",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "goatcms/goatcms:prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-push.sh", "goatcms/goatcms:prod"]
+    }]
+  }
+}

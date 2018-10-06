@@ -1,0 +1,19 @@
+{
+  "name": "BuildFrontendProdGoatcmsGoatcms",
+  "entrypoint": false,
+  "extends": ["CloneProdGoatcmsGoatcms"],
+  "executor": "onlylast",
+  "script": {
+    "cwd": "/data/code/goatcms/goatcms-prod/src/github.com/goatcms/goatcms/web",
+    "commands": [{
+      "command": "rm",
+      "args": ["-rf", "node_modules"]
+    }, {
+      "command": "npm",
+      "args": ["install"]
+    }, {
+      "command": "npm",
+      "args": ["run", "build"]
+    }]
+  }
+}

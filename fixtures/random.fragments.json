@@ -1,0 +1,48 @@
+[{"ID": 1, "Lang": "pl", "Name": "view.custom.home.main.introduction", "Content": "
+# Witamy w Firmom CI/CD
+Zobacz [archiwum](/archive/). Listę projektów
+
+## cicd
+* [Development](https://cicd.firmom.com:1333), branch [master](https://github.com/firmom/cicd)
+* [Production](https://cicd.firmom.com), branch [master](https://github.com/firmom/cicd)
+
+## beerpoly (gra)
+* [Development](https://cicd.firmom.com:2077), branch [master](https://github.com/gameinpl/beerpoly)
+* [Production](https://go-beerpoly.gamein.pl), branch [master](https://github.com/gameinpl/beerpoly)
+
+## beerpoly-home
+* [Development](https://cicd.firmom.com:2078), branch [dev](https://github.com/GameInPL/beerpoly-home/tree/dev)
+* [Production](https://beerpoly.gamein.pl), branch [master](https://github.com/GameInPL/beerpoly-home)
+
+## goatcms
+* [Development](https://cicd.firmom.com:2011/), branch [dev](https://github.com/goatcms/goatcms/tree/dev)
+
+## events.pozoga.eu
+* [Development](https://cicd.firmom.com:2012/), branch [dev](https://github.com/SebastianPozoga/events.pozoga.eu/tree/dev)
+* [Dev PHPMyAdmin](https://cicd.firmom.com:2013/),
+* [Production](https://events.pozoga.eu/), branch [master](https://github.com/SebastianPozoga/events.pozoga.eu)
+"}, {"ID": 1, "Lang": "en", "Name": "view.custom.home.main.introduction", "Content": "
+# Index of Firmom CI/CD
+See [archiwum](/archives/). Project list:
+
+## cicd
+* [Development](https://cicd.firmom.com:1333), branch [master](https://github.com/firmom/cicd)
+* [Production](https://cicd.firmom.com), branch [master](https://github.com/firmom/cicd)
+
+## beerpoly (gra)
+* [Development](https://cicd.firmom.com:2077), branch [master](https://github.com/gameinpl/beerpoly)
+* [Production](https://go-beerpoly.gamein.pl), branch [master](https://github.com/gameinpl/beerpoly)
+
+## beerpoly-home
+* [Development](https://cicd.firmom.com:2078), branch [dev](https://github.com/GameInPL/beerpoly-home/tree/dev)
+* [Production](https://beerpoly.gamein.pl), branch [master](https://github.com/GameInPL/beerpoly-home)
+
+## goatcms
+* [Development](https://cicd.firmom.com:2011/), branch [dev](https://github.com/goatcms/goatcms/tree/dev)
+
+## events.pozoga.eu
+* [Development](https://cicd.firmom.com:2012/), branch [dev](https://github.com/SebastianPozoga/events.pozoga.eu/tree/dev)
+* [Dev PHPMyAdmin](https://cicd.firmom.com:2013/),
+* [Production](https://events.pozoga.eu/), branch [master](https://github.com/SebastianPozoga/events.pozoga.eu)
+"}
+]

@@ -1,4 +1,4 @@
-FROM goatcms/webslots
+FROM goatcms/webslots:prod
 RUN apt-get update
 
 # install docker dependencies
@@ -36,16 +36,10 @@ RUN apt-get install -y ruby-full
 # sass install
 RUN gem install sass
 
-# RAN static file server
-RUN go get -u github.com/m3ng9i/ran
-
 # Add config
 COPY config/helpers /app/config/helpers
 COPY config/slots /app/config/slots
 COPY config/tasks /app/config/tasks
-
-# Add home template
-COPY home /staticdata/home
 
 # entrypoint
 COPY custom-entrypoint.sh "/app/docker/custom-entrypoint.sh"

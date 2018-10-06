@@ -1,28 +1,14 @@
 {
   "name": "BuildGoatcmsWebslots",
   "entrypoint": true,
-  "extends": ["CloneGoatcmsWebslots"],
-  "locks": ["/go/src/github.com/goatcms/webslots:clone"],
   "executor": "onlylast",
-  "trigger": ["DeployGoatcmsWebslots", "BuildFirmomCICD"],
   "script": {
-    "cwd": "/go/src/github.com/goatcms/webslots",
     "commands": [{
-      "cwd": ".",
       "command": "sh",
-      "args": ["-x", "config/tasks/goatcms/webslots/build-secrets.sh"]
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/webslots", "dev", "BuildDevGoatcmsWebslots"]
     }, {
-      "command": "goatcli",
-      "args": ["build", "--interactive=false"]
-    }, {
-      "command": "dep",
-      "args": ["ensure"]
-    }, {
-      "command": "go",
-      "args": ["test", "./slotsapp/..."]
-    }, {
-      "command": "docker",
-      "args": ["build", ".", "-t", "goatcms/webslots"]
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/webslots", "prod", "BuildProdGoatcmsWebslots"]
     }]
   }
 }

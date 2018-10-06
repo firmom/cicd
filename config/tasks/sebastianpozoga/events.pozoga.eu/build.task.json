@@ -1,0 +1,14 @@
+{
+  "name": "BuildEventsPozogaEu",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "sebastianpozoga/events.pozoga.eu", "dev", "BuildDevEventsPozogaEu"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "sebastianpozoga/events.pozoga.eu", "prod", "BuildProdEventsPozogaEu"]
+    }]
+  }
+}

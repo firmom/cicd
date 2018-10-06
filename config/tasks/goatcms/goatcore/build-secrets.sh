@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cat > /go/src/github.com/goatcms/goatcore/tests/smtp.json << EndOfMessage
+cat > /data/code/goatcms/goatcore-prod/src/github.com/goatcms/goatcore/tests/smtp.json << EndOfMessage
 {
   "sender": {
     "smtpAddr": "smtp.gmail.com:465",

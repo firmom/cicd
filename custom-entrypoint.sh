@@ -13,14 +13,17 @@ fi
 # prepare index
 sed -i "s|<<APP_HOST>>|$APP_HOST|g" /staticdata/home/index.html
 
-# run static files serve
-mkdir -p /data/serve/gameinpl/beerpoly
-mkdir -p /data/serve/gameinpl/beerpoly-home
+# Routing
 mkdir -p /data/archive
-
-ran -p=80 -r=/staticdata/home -l=true &
-ran -p=2077 -r=/data/serve/gameinpl/beerpoly -l=true &
-ran -p=2079 -r=/data/archive -l=true &
+cat > /app/config/routing.json << EndOfMessage
+{"static":[{
+  "prefix": "/static/",
+  "path": "./web/dist/"
+},{
+  "prefix": "/archive/",
+  "path": "/data/archive/"
+}]}
+EndOfMessage
 
 # run base entrypoint
 sh -x "/app/docker/entrypoint.sh"

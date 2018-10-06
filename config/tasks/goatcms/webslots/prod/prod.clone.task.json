@@ -1,0 +1,12 @@
+{
+  "name": "CloneProdGoatcmsWebslots",
+  "entrypoint": false,
+  "locks": ["/data/code/goatcms/webslots-prod"],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/git-clone.sh", "github.com", "goatcms/webslots", "master", "prod"]
+    }]
+  }
+}

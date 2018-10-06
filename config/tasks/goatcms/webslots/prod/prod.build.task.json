@@ -1,0 +1,22 @@
+{
+  "name": "BuildProdGoatcmsWebslots",
+  "entrypoint": true,
+  "extends": [
+    "CloneProdGoatcmsWebslots",
+    "BuildBackendProdGoatcmsWebslots",
+    "BuildFrontendProdGoatcmsWebslots"
+  ],
+  "locks": ["/data/code/goatcms/webslots-prod!deploy"],
+  "executor": "onlylast",
+  "trigger": [],
+  "script": {
+    "cwd": "/data/code/goatcms/webslots-prod/src/github.com/goatcms/webslots",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "goatcms/webslots:prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-push.sh", "goatcms/webslots:prod"]
+    }]
+  }
+}

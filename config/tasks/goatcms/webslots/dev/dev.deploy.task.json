@@ -1,0 +1,22 @@
+{
+  "name": "DeployDevGoatcmsWebslots",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["/data/code/goatcms/webslots-dev!deploy"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-domain.sh", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-deploy.sh", "goatcms/webslots", "dev", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/tasks/goatcms/webslots/dev/dev.deploy.config.sh", "goatcms/webslots", "dev"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "goatcms/webslots", "dev", "goatcms/webslots:dev"]
+    }]
+  }
+}

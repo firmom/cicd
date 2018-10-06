@@ -1,0 +1,29 @@
+{
+  "name": "BuildBackendProdGoatcmsWebslots",
+  "entrypoint": false,
+  "extends": ["CloneProdGoatcmsWebslots"],
+  "executor": "onlylast",
+  "locks": ["BuildBackendProdGoatcmsWebslots"],
+  "script": {
+    "cwd": "/data/code/goatcms/webslots-prod/src/github.com/goatcms/webslots",
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/goatcms-secrets.sh", "github.com", "goatcms/webslots", "prod"]
+    }, {
+      "command": "goatcli",
+      "args": ["build", "--interactive=false"]
+    }, {
+      "command": "rm",
+      "args": ["-rf", "vendor"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "goatcms/webslots", "prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/test.sh", "github.com", "goatcms/webslots", "prod", "./cmsapp/..."]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/build.sh", "github.com", "goatcms/webslots", "prod", "./main.go", "/data/archive/goatcms/webslots/goatcms"]
+    }]
+  }
+}

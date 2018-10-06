@@ -13,10 +13,10 @@ cat > $SECRETS_PATH << EndOfMessage
     "username": ""
   },
   "smtp": {
-    "address": "",
-    "identity": "",
-    "password": "",
-    "user": ""
+    "address": "smtp.gmail.com:465",
+    "user": "$SMTP_USERNAME",
+    "password": $SMTP_PASSWRD",
+    "identity": ""
   },
   "oauth": {
     "github": {

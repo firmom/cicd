@@ -1,0 +1,19 @@
+{
+  "name": "BuildFrontendProdGoatcmsWebslots",
+  "entrypoint": false,
+  "extends": ["CloneProdGoatcmsWebslots"],
+  "executor": "onlylast",
+  "script": {
+    "cwd": "/data/code/goatcms/webslots-prod/src/github.com/goatcms/webslots/web",
+    "commands": [{
+      "command": "rm",
+      "args": ["-rf", "node_modules"]
+    }, {
+      "command": "npm",
+      "args": ["install"]
+    }, {
+      "command": "npm",
+      "args": ["run", "build"]
+    }]
+  }
+}
