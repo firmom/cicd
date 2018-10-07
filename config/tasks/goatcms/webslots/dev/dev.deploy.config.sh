@@ -23,7 +23,6 @@ services:
       - "TZ=Europe/Warsaw"
       # routing
       - "SECURITY_MODE=TLS"
-      # - "VIRTUAL_HOST=goatcms.org"
       # App settings and secrets
       - "APP_HOST=goatcms.org"
       - "APP_BASE_URL=https://goatcms.org"

@@ -21,7 +21,7 @@ services:
     restart: always
     environment:
       - "TZ=Europe/Warsaw"
-      - "MODE=SSL"
+      - "MODE=HTTPS"
       - "DOMAIN=events.pozoga.eu"
       - "VIRTUAL_HOST=events.pozoga.eu"
       - "VIRTUAL_PROTO=https"

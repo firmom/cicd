@@ -21,12 +21,10 @@ services:
     restart: always
     environment:
       - "TZ=Europe/Warsaw"
-      # routing
-      - "SECURITY_MODE=TLS"
-      # - "VIRTUAL_HOST=goatcms.org"
+      - "MODE=HTTP"
       # App settings and secrets
-      - "APP_HOST=goatcms.org"
-      - "APP_BASE_URL=https://goatcms.org"
+      - "APP_HOST=cicd.firmom.com:2011"
+      - "APP_BASE_URL=https://cicd.firmom.com:2011"
       - "OAUTH_GITHUB_APP=Insert_your_app_id"
       - "OAUTH_GITHUB_SECRET=Insert_your_app_secret"
       # Users
