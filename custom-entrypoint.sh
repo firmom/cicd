@@ -10,9 +10,6 @@ if [ -f "/root/.ssh/id_rsa" ]; then
   ssh-add /root/.ssh/id_rsa
 fi
 
-# prepare index
-sed -i "s|<<APP_HOST>>|$APP_HOST|g" /staticdata/home/index.html
-
 # Routing
 mkdir -p /data/archive
 cat > /app/config/routing.json << EndOfMessage
