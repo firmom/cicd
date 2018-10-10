@@ -40,6 +40,12 @@ RUN gem install sass
 COPY config/helpers /app/config/helpers
 COPY config/slots /app/config/slots
 COPY config/tasks /app/config/tasks
+COPY fixtures /app/fixtures
+
+# load fixtures (contains fragments)
+RUN rm data
+RUN ./webslots db:build
+RUN ./webslots db:fixtures:load -path=fixtures
 
 # entrypoint
 COPY custom-entrypoint.sh "/app/docker/custom-entrypoint.sh"

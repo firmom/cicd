@@ -8,7 +8,7 @@
   ],
   "locks": ["/data/code/goatcms/webslots-prod!deploy"],
   "executor": "onlylast",
-  "trigger": ["DeployProdWebslots", BuildFirmomCICD],
+  "trigger": ["DeployProdWebslots", "BuildFirmomCICD"],
   "script": {
     "cwd": "/data/code/goatcms/webslots-prod/src/github.com/goatcms/webslots",
     "commands": [{

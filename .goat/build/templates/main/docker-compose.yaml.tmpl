@@ -17,16 +17,16 @@ services:
 {{- $prodCert := (index $ctx.Data (print "app." $key ".prod.cert")) -}}
 
 {{- if and (ne $prodPort "") (ne $prodPort "!") }}
-      - "PROXY_{{upper $name}}_FROM={{$prodHost}}"
-      - "PROXY_{{upper $name}}_CERT={{$prodCert}}"
-      - "PROXY_{{upper $name}}_TO={{$cicdHost}}"
-      - "PROXY_{{upper $name}}_PORT={{$prodPort}}"
+      - "PROXY_Build{{camelcaseuf $name}}_FROM={{$prodHost}}"
+      - "PROXY_Build{{camelcaseuf $name}}_CERT={{$prodCert}}"
+      - "PROXY_Build{{camelcaseuf $name}}_TO={{$cicdHost}}"
+      - "PROXY_Build{{camelcaseuf $name}}_PORT={{$prodPort}}"
 {{- end }}
 {{- end }}
-      - "PROXY_CICD_FROM={{$cicdHost}}"
-      - "PROXY_CICD_CERT={{$cicdCert}}"
-      - "PROXY_CICD_TO={{$cicdHost}}"
-      - "PROXY_CICD_PORT=1333"
+      - "PROXY_BuildFirmomCICD_FROM={{$cicdHost}}"
+      - "PROXY_BuildFirmomCICD_CERT={{$cicdCert}}"
+      - "PROXY_BuildFirmomCICD_TO={{$cicdHost}}"
+      - "PROXY_BuildFirmomCICD_PORT=1333"
     networks:
       - nproxy
     ports:

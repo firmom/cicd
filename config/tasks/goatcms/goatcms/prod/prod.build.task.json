@@ -8,7 +8,7 @@
   ],
   "locks": ["/data/code/goatcms/goatcms-prod!deploy"],
   "executor": "onlylast",
-  "trigger": ["DeployProdGoatCMS", BuildWebslots, BuildBeerpolyHome],
+  "trigger": ["DeployProdGoatCMS", "BuildWebslots", "BuildBeerpolyHome"],
   "script": {
     "cwd": "/data/code/goatcms/goatcms-prod/src/github.com/goatcms/goatcms",
     "commands": [{
