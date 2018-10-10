@@ -1,0 +1,26 @@
+{
+  "app": {
+    "goatcmsemptyapp": {
+      "dev": {
+        "port": "2079"
+      },
+      "docker": {
+        "image": "goatcms/emptyapp"
+      },
+      "name": "GoatCMSEmptyapp",
+      "prod": {
+        "cert": "",
+        "host": "",
+        "port": ""
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "goatcms/emptyapp"
+      },
+      "stage": {
+        "port": ""
+      },
+      "type": "goatcms"
+    }
+  }
+}

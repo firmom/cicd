@@ -1,0 +1,18 @@
+{
+  "name": "BuildProdGoatCore",
+  "entrypoint": true,
+  "extends": ["CloneProdGoatCore"],
+  "locks": ["/data/code/goatcms/goatcore-prod"],
+  "executor": "onlylast",
+  "trigger": ["DeployProdGoatCore", BuildGoatCLI, BuildGoatCMS, BuildCentosDevtools],
+  "script": {
+    "cwd": "/data/code/goatcms/goatcore-prod",
+    "commands": [{
+      "command": "rm",
+      "args": ["-rf", "vendor"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "goatcms/goatcore", "prod"]
+    }]
+  }
+}

@@ -1,0 +1,15 @@
+{{- define "docker.install.sh" -}}
+{{- $ctx := . -}}
+
+####
+## Generate certificates
+## (for https websites and services)
+####
+
+# We use certbot by docker
+{{template "install-docker" $ctx}}
+
+#
+
+
+{{- end -}}

@@ -1,0 +1,19 @@
+{
+  "name": "BuildFrontendProdBeerpolyHome",
+  "entrypoint": false,
+  "extends": ["CloneProdBeerpolyHome"],
+  "executor": "onlylast",
+  "script": {
+    "cwd": "/data/code/gameinpl/beerpoly-home-prod/src/github.com/gameinpl/beerpoly-home/web",
+    "commands": [{
+      "command": "rm",
+      "args": ["-rf", "node_modules"]
+    }, {
+      "command": "npm",
+      "args": ["install"]
+    }, {
+      "command": "npm",
+      "args": ["run", "build"]
+    }]
+  }
+}

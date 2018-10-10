@@ -1,0 +1,11 @@
+{
+  "name": "RefreshCentosDevtools",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "firmom/centos-devtools", "master", "BuildProdCentosDevtools"]
+    }]
+  }
+}

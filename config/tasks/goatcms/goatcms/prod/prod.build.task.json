@@ -1,14 +1,14 @@
 {
-  "name": "BuildProdGoatcmsGoatcms",
+  "name": "BuildProdGoatCMS",
   "entrypoint": true,
   "extends": [
-    "CloneProdGoatcmsGoatcms",
-    "BuildBackendProdGoatcmsGoatcms",
-    "BuildFrontendProdGoatcmsGoatcms"
+    "CloneProdGoatCMS",
+    "BuildBackendProdGoatCMS",
+    "BuildFrontendProdGoatCMS"
   ],
   "locks": ["/data/code/goatcms/goatcms-prod!deploy"],
   "executor": "onlylast",
-  "trigger": ["DeployProdGoatcmsGoatcms"],
+  "trigger": ["DeployProdGoatCMS", BuildWebslots, BuildBeerpolyHome],
   "script": {
     "cwd": "/data/code/goatcms/goatcms-prod/src/github.com/goatcms/goatcms",
     "commands": [{

@@ -1,0 +1,26 @@
+{
+  "app": {
+    "beerpoly": {
+      "dev": {
+        "port": "2077"
+      },
+      "docker": {
+        "image": "gameinpl/beerpoly"
+      },
+      "name": "Beerpoly",
+      "prod": {
+        "cert": "gamein.pl",
+        "host": "beerpolygo.gamein.pl",
+        "port": "4077"
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "gameinpl/beerpoly"
+      },
+      "stage": {
+        "port": ""
+      },
+      "type": "dockerapp"
+    }
+  }
+}

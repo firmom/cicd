@@ -1,5 +1,0 @@
-{
-  "name": "BuildFirmomCICD",
-  "secret": [],
-  "task": "EnsureAndBuildFirmomCICD"
-}

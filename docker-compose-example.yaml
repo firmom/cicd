@@ -1,101 +1,58 @@
 version: '3.4'
 
 services:
-  cicd:
-    image: firmom/cicd
-    networks:
-      - nproxy
+  reverseproxy:
+    image: firmom/docker-proxy
     restart: always
     environment:
-      - "TZ=Europe/Warsaw"
-
-      # letsencrypt
-      - "CERT_EMAIL=your@email.address"
-
-      # routing
-      - "VIRTUAL_HOST=cicd.firmom.com"
-
-      # App settings and secrets
-      - "APP_HOST=cicd.firmom.pl"
-      - "APP_BASE_URL=http://cicd.firmom.pl"
-      - "OAUTH_GITHUB_APP=Insert_your_app_id"
-      - "OAUTH_GITHUB_SECRET=Insert_your_app_secret"
-
-      # Deploy
-      - "DEPLOY_DEV_REMOTE_USER=someuser"
-      - "DEPLOY_DEV_REMOTE_HOST=somehost"
-
-      # docker secrets
-      - "DOCKER_PASSWORD_FILE=/docker-password"
-      - "DOCKER_USERNAME=Insert_your_docker_username"
-      - "DOCKER_PASSWORD=Insert_your_docker_passwrod"
-
-      # firmom slots
-      - "SLOT_BuildFirmomCentosDevtools_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildFirmomCICD_SECRET_1=Insert_your_secret"
-
-      # gameinpl slots
-      - "SLOT_BuildGameinplBeerpolyHome_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildGameinplBeerpoly_SECRET_1=Insert_your_secret"
-
-      # gotcms slots
-      - "SLOT_BuildGoatcmsEmptyapp_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildGoatcmsGoatcli_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildGoatcmsGoatcms_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildGoatcmsGoatcore_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildGoatcmsWebslots_SECRET_1=Insert_your_secret"
-
-      # sebastianpozoga slots
-      - "SLOT_BuildEventsPozogaEu_SECRET_1=Insert_your_secret"
-
-      # Project events.pozoga.eu config
-      - "EVENTS_POZOGA_EU_DB_USER=Insert_events_pozoga_eu_database_username"
-      - "EVENTS_POZOGA_EU_DB_PASS=Insert_events_pozoga_eu_database_username"
-      - "EVENTS_POZOGA_EU_WP_HOST=Insert_events_pozoga_eu_wordpress_host"
-      - "EVENTS_POZOGA_EU_WP_USER_NAME=Insert_events_pozoga_eu_admin_username"
-      - "EVENTS_POZOGA_EU_WP_USER_PASS=Insert_events_pozoga_eu_admin_password"
-      - "EVENTS_POZOGA_EU_WP_USER_EMAIL=Insert_events_pozoga_eu_admin_email"
-
-      # example users
-      - "USER_1_USERNAME=Insert_Webslots_Account_Username"
-      - "USER_1_LASTNAME=Insert_Webslots_Account_Lastname"
-      - "USER_1_EMAIL=Insert_Webslots_Account_Email"
-      - "USER_1_ROLES=Insert_Webslots_ACL_Roles_Like_superadmin"
-      - "USER_1_CONNECT_GITHUB=Insert_Github_Account_Login"
-
-      - "USER_2_USERNAME=Insert_Webslots_Account_Username"
-      - "USER_2_LASTNAME=Insert_Webslots_Account_Lastname"
-      - "USER_2_EMAIL=Insert_Webslots_Account_Email"
-      - "USER_2_ROLES=Insert_Webslots_ACL_Roles_Like_superadmin"
-      - "USER_2_CONNECT_GITHUB=Insert_Github_Account_Login"
-    volumes:
-      - "/etc/letsencrypt:/etc/letsencrypt"
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/dockerdata/firmom/cicd/data:/data"
-      - "/dockerdata/firmom/cicd/ssh:/root/.ssh"
-    expose:
-      - 80
-    ports:
-      - 1333:1333
-      - 2077:2077
-      - 2079:2079
-  # nginx-proxy is useful docker image to generates reverse proxy
-  # from environment automatically.
-  nginx-proxy:
-    image: jwilder/nginx-proxy
-    restart: always
-    environment:
-      - "ENABLE_IPV6=true"
+      - "PROXY_BEERPOLY_FROM=beerpolygo.gamein.pl"
+      - "PROXY_BEERPOLY_CERT=gamein.pl"
+      - "PROXY_BEERPOLY_TO=cicd.firmom.com"
+      - "PROXY_BEERPOLY_PORT=4077"
+      - "PROXY_BEERPOLYHOME_FROM=beerpolygo.gamein.pl"
+      - "PROXY_BEERPOLYHOME_CERT=gamein.pl"
+      - "PROXY_BEERPOLYHOME_TO=cicd.firmom.com"
+      - "PROXY_BEERPOLYHOME_PORT=4078"
+      - "PROXY_EVENTSPOZOGAEU_FROM=events.pozoga.eu"
+      - "PROXY_EVENTSPOZOGAEU_CERT=pozoga.eu"
+      - "PROXY_EVENTSPOZOGAEU_TO=cicd.firmom.com"
+      - "PROXY_EVENTSPOZOGAEU_PORT=4011"
+      - "PROXY_GOATCMS_FROM=goatcms.org"
+      - "PROXY_GOATCMS_CERT=goatcms.org"
+      - "PROXY_GOATCMS_TO=cicd.firmom.com"
+      - "PROXY_GOATCMS_PORT=4011"
+      - "PROXY_WEBSLOTS_FROM=goatcms.org"
+      - "PROXY_WEBSLOTS_CERT=goatcms.org"
+      - "PROXY_WEBSLOTS_TO=cicd.firmom.com"
+      - "PROXY_WEBSLOTS_PORT=4333"
+      - "PROXY_CICD_FROM=cicd.firmom.com"
+      - "PROXY_CICD_CERT=firmom.com"
+      - "PROXY_CICD_TO=cicd.firmom.com"
+      - "PROXY_CICD_PORT=1333"
     networks:
       - nproxy
     ports:
       - "80:80"
+      - "443:443"
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-  # Every build make your docker data grow up and grow up...
-  # docker-cleaner remove unused images / indirect images
-  # and remove exited container
-  # the script is running every two hours by CRON
+      - "/Users/goatcore/work/proxy/certs:/certs"
+
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - 5000:5000
+    environment:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+    volumes:
+      - /dockerdata/_registry/registry:/var/lib/registry
+      - /dockerdata/_registry/certs:/certs
+      - /dockerdata/_registry/auth:/auth
+
   cleaner:
     image: spozoga/docker-cleaner
     restart: always

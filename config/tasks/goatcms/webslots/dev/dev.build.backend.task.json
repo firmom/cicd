@@ -1,29 +1,13 @@
 {
-  "name": "BuildBackendDevGoatcmsWebslots",
-  "entrypoint": false,
-  "extends": ["CloneDevGoatcmsWebslots"],
+  "name": "ArchiveDevWebslots",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["/data/archive/goatcms/webslots"],
   "executor": "onlylast",
-  "locks": ["BuildBackendDevGoatcmsWebslots"],
   "script": {
-    "cwd": "/data/code/goatcms/webslots-dev/src/github.com/goatcms/webslots",
     "commands": [{
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/golang/goatcms-secrets.sh", "github.com", "goatcms/webslots", "dev"]
-    }, {
-      "command": "goatcli",
-      "args": ["build", "--interactive=false"]
-    }, {
-      "command": "rm",
-      "args": ["-rf", "vendor"]
-    }, {
-      "command": "sh",
-      "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "goatcms/webslots", "dev"]
-    }, {
-      "command": "sh",
-      "args": ["-x", "/app/config/helpers/golang/test.sh", "github.com", "goatcms/webslots", "dev", "./cmsapp/..."]
-    }, {
-      "command": "sh",
-      "args": ["-x", "/app/config/helpers/golang/build.sh", "github.com", "goatcms/webslots", "dev", "./main.go", "/data/archive/goatcms/webslots/goatcms"]
+      "args": ["-x", "/app/config/helpers/archive.sh", "goatcms/webslots", "dev", "webslots"]
     }]
   }
 }

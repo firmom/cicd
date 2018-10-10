@@ -1,0 +1,25 @@
+{
+  "app": {
+    "events": {
+      "type": "wordpress",
+      "docker.image": "spozoga/events.pozoga.eu",
+      "dev": {
+        "port": "2011"
+      },
+      "name": "EventsPozogaEu",
+      "prod": {
+        "cert": "pozoga.eu",
+        "host": "events.pozoga.eu",
+        "port": "4011",
+        "trigger": {}
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "sebastianpozoga/events.pozoga.eu"
+      },
+      "stage": {
+        "port": "3011"
+      }
+    }
+  }
+}

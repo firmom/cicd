@@ -1,0 +1,14 @@
+{
+  "name": "RefreshFirmomCICD",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "firmom/cicd", "dev", "BuildDevFirmomCICD"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "firmom/cicd", "master", "BuildProdFirmomCICD"]
+    }]
+  }
+}

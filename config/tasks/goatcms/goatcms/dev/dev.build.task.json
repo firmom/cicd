@@ -1,14 +1,14 @@
 {
-  "name": "BuildDevGoatcmsGoatcms",
+  "name": "BuildDevGoatCMS",
   "entrypoint": true,
   "extends": [
-    "CloneDevGoatcmsGoatcms",
-    "BuildBackendDevGoatcmsGoatcms",
-    "BuildFrontendDevGoatcmsGoatcms"
+    "CloneDevGoatCMS",
+    "BuildBackendDevGoatCMS",
+    "BuildFrontendDevGoatCMS"
   ],
   "locks": ["/data/code/goatcms/goatcms-dev!deploy"],
   "executor": "onlylast",
-  "trigger": ["DeployDevGoatcmsGoatcms"],
+  "trigger": ["DeployDevGoatCMS"],
   "script": {
     "cwd": "/data/code/goatcms/goatcms-dev/src/github.com/goatcms/goatcms",
     "commands": [{

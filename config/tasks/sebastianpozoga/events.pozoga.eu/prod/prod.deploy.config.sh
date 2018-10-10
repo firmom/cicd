@@ -16,63 +16,48 @@ version: '3.4'
 services:
   events:
     image: $IMAGE
-    restart: always
-    networks:
-      - nproxy
-      - default
     environment:
       TZ: 'Europe/Warsaw'
+    restart: always
     environment:
       - "MODE=SSL"
-      - "DOMAIN=events.pozoga.eu"
-      - "VIRTUAL_HOST=events.pozoga.eu"
-      - "VIRTUAL_PROTO=https"
-      - "VIRTUAL_PORT=443"
+      - "DOMAIN=events.pozoga.eu:4011"
       - "DB_HOST=db"
       - "DB_PORT=3306"
-      - "DB_NAME=prod.events.pozoga.eu"
-      - "DB_USER=$EVENTS_POZOGA_EU_DB_USER"
-      - "DB_PASS=$EVENTS_POZOGA_EU_DB_PASS"
-      - "WP_USER=$EVENTS_POZOGA_EU_WP_USER_NAME"
-      - "WP_PASS=$EVENTS_POZOGA_EU_WP_USER_PASS"
-      - "WP_EMAIL=$EVENTS_POZOGA_EU_WP_USER_EMAIL"
-      - "WP_HOST=events.pozoga.eu"
+      - "DB_NAME=prod.EventsPozogaEu"
+      - "DB_USER=$EVENTSPOZOGAEU_DB_USER"
+      - "DB_SNAPSHOT=$EVENTSPOZOGAEU_DB_SNAPSHOT"
+      - "DB_PASS=$EVENTSPOZOGAEU_DB_PASS"
+      - "WP_USER=$EVENTSPOZOGAEU_WP_USER_NAME"
+      - "WP_PASS=$EVENTSPOZOGAEU_WP_USER_PASS"
+      - "WP_EMAIL=$EVENTSPOZOGAEU_WP_USER_EMAIL"
+      - "WP_HOST=$DEPLOY_DEV_REMOTE_HOST:4011"
       - "WP_TITLE=Events Poznań"
     volumes:
-      - "/dockerdata/sebastianpozoga/events.pozoga.eu/prod/uploads:/app/wp-content/uploads"
+      - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
+      - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
       - "/dockerdata/$REPO/$TAG/certs/pozoga.eu:/certs"
-    expose:
-      - 80
-      - 443
+    ports:
+      - 4011:443
   db:
     image: mariadb
     restart: always
-    networks:
-      - default
     environment:
-      - "MYSQL_DATABASE=prod.events.pozoga.eu"
-      - "MYSQL_USER=$EVENTS_POZOGA_EU_DB_USER"
-      - "MYSQL_PASSWORD=$EVENTS_POZOGA_EU_DB_PASS"
-      - "MYSQL_ROOT_PASSWORD=$EVENTS_POZOGA_EU_DB_PASS"
+      - "MYSQL_DATABASE=prod.EventsPozogaEu"
+      - "MYSQL_USER=$EVENTSPOZOGAEU_DB_USER"
+      - "MYSQL_PASSWORD=$EVENTSPOZOGAEU_DB_PASS"
+      - "MYSQL_ROOT_PASSWORD=$EVENTSPOZOGAEU_DB_PASS"
     volumes:
-      - "/dockerdata/sebastianpozoga/events.pozoga.eu/prod/mysql:/var/lib/mysql"
+      - "/dockerdata/$REPO/$TAG/mysql:/var/lib/mysql"
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
-    networks:
-      - default
     ports:
-     - 2014:80
+     - 14011:80
     environment:
       - "PMA_HOST=db"
-      - "PMA_VERBOSE=prod.events.pozoga.eu"
+      - "PMA_VERBOSE=prod.EventsPozogaEu"
       - "PMA_PORT=3306"
       - "PMA_ARBITRARY=1"
-
-networks:
-  nproxy:
-    external:
-      name: nproxy
-  default:
 
 EndOfMessage

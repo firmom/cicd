@@ -1,14 +1,6 @@
 {
-  "name": "BuildGoatcmsWebslots",
+  "name": "BuildWebslots",
   "entrypoint": true,
   "executor": "onlylast",
-  "script": {
-    "commands": [{
-      "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/webslots", "dev", "BuildDevGoatcmsWebslots"]
-    }, {
-      "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/webslots", "prod", "BuildProdGoatcmsWebslots"]
-    }]
-  }
+  "trigger": ["BuildDevWebslots", "BuildProdWebslots"]
 }

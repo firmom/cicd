@@ -1,0 +1,27 @@
+{
+  "app": {
+    "goatcli": {
+      "dev": {
+        "port": "!"
+      },
+      "docker": {
+        "image": ""
+      },
+      "name": "GoatCLI",
+      "prod": {
+        "cert": "",
+        "host": "",
+        "port": "!"
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "goatcms/goatcli"
+      },
+      "stage": {
+        "port": ""
+      },
+      "test": "./cliapp/...",
+      "type": "goapp"
+    }
+  }
+}

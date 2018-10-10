@@ -1,0 +1,39 @@
+{{- define "dockerapp.refresh_task_json" -}}
+
+{{- $ctx := . -}}
+{{- $name := (index $ctx.Data (print $ctx.From ".name")) -}}
+{{- $repo := (index $ctx.Data (print $ctx.From ".repo.path")) -}}
+{{- $type := (index $ctx.Data (print $ctx.From ".type")) -}}
+{{- $image := (index $ctx.Data (print $ctx.From ".docker.image")) -}}
+{{- $devPort := (index $ctx.Data (print $ctx.From ".dev.port")) -}}
+{{- $stagePort := (index $ctx.Data (print $ctx.From ".stage.port")) -}}
+{{- $prodPort := (index $ctx.Data (print $ctx.From ".prod.port")) -}}
+
+{
+  "name": "Refresh{{camelcaseuf $name}}",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "script": {
+    "commands": [
+{{- if ne $devPort "" -}}
+    {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "{{$repo}}", "dev", "BuildDev{{camelcaseuf $name}}"]
+    }
+{{- end -}}
+{{- if ne $stagePort "" -}}
+    {{- if ne $devPort "" -}}, {{end}}{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "{{$repo}}", "stage", "BuildStage{{camelcaseuf $name}}"]
+    }
+{{- end -}}
+{{- if ne $prodPort "" -}}
+    {{- if (or (ne $devPort "") (ne $stagePort "")) -}}, {{ end -}}{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "{{$repo}}", "master", "BuildProd{{camelcaseuf $name}}"]
+    }
+{{- end -}}]
+  }
+}
+
+{{- end -}}

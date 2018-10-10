@@ -1,0 +1,17 @@
+{
+  "name": "RefreshGoatCMS",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/goatcms", "dev", "BuildDevGoatCMS"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/goatcms", "stage", "BuildStageGoatCMS"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/goatcms", "master", "BuildProdGoatCMS"]
+    }]
+  }
+}

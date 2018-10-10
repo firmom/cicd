@@ -1,0 +1,21 @@
+{
+  "name": "BuildProdGoatCLI",
+  "entrypoint": true,
+  "extends": ["CloneProdGoatCLI"],
+  "locks": ["/data/code/goatcms/goatcli-prod"],
+  "executor": "onlylast",
+  "trigger": ["DeployProdGoatCLI"],
+  "script": {
+    "cwd": "/data/code/goatcms/goatcli-prod",
+    "commands": [{
+      "command": "rm",
+      "args": ["-rf", "vendor"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "goatcms/goatcli", "prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/test.sh", "github.com", "goatcms/goatcli", "prod", "./cliapp/..."]
+    }]
+  }
+}

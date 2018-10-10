@@ -1,0 +1,22 @@
+{
+  "name": "DeployProdWebslots",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["docker!goatcms/webslots:prod"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-domain.sh", "goatcms.org"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-deploy.sh", "goatcms/webslots", "prod", "goatcms.org"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/tasks/goatcms/webslots/prod.deploy.config.sh", "goatcms/webslots", "prod", "goatcms/webslots:prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "goatcms/webslots", "prod", "goatcms/webslots:prod"]
+    }]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "BuildDevBeerpolyHome",
+  "entrypoint": true,
+  "extends": [
+    "CloneDevBeerpolyHome",
+    "BuildBackendDevBeerpolyHome",
+    "BuildFrontendDevBeerpolyHome"
+  ],
+  "locks": ["/data/code/gameinpl/beerpoly-home-dev!deploy"],
+  "executor": "onlylast",
+  "trigger": ["DeployDevBeerpolyHome"],
+  "script": {
+    "cwd": "/data/code/gameinpl/beerpoly-home-dev/src/github.com/gameinpl/beerpoly-home",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "gameinpl/beerpoly-home:dev"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-push.sh", "gameinpl/beerpoly-home:dev"]
+    }]
+  }
+}

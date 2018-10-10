@@ -1,0 +1,18 @@
+{
+  "name": "BuildProdFirmomCICD",
+  "entrypoint": true,
+  "extends": ["CloneProdFirmomCICD"],
+  "locks": ["/data/code/firmom/cicd-prod"],
+  "executor": "onlylast",
+  "trigger": [],
+  "script": {
+    "cwd": "/data/code/firmom/cicd-prod",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "firmom/cicd:prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-push.sh", "firmom/cicd:prod"]
+    }]
+  }
+}

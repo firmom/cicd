@@ -1,7 +1,7 @@
 {
-  "name": "BuildFrontendDevGoatcmsWebslots",
+  "name": "BuildFrontendDevWebslots",
   "entrypoint": false,
-  "extends": ["CloneDevGoatcmsWebslots"],
+  "extends": ["CloneDevWebslots"],
   "executor": "onlylast",
   "script": {
     "cwd": "/data/code/goatcms/webslots-dev/src/github.com/goatcms/webslots/web",

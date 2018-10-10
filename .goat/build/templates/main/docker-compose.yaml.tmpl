@@ -1,0 +1,67 @@
+{{- define "docker_compose_yaml" -}}
+{{- $ctx := . -}}
+{{- $cicdHost := (index $ctx.Properties.Project "cicd.host") -}}
+{{- $cicdCert := (index $ctx.Properties.Project "cicd.cert") -}}
+
+version: '3.4'
+
+services:
+  reverseproxy:
+    image: firmom/docker-proxy
+    restart: always
+    environment:
+{{- range $index, $key := (keys .Data "app.") -}}
+{{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
+{{- $prodHost := (index $ctx.Data (print "app." $key ".prod.host")) -}}
+{{- $prodPort := (index $ctx.Data (print "app." $key ".prod.port")) -}}
+{{- $prodCert := (index $ctx.Data (print "app." $key ".prod.cert")) -}}
+
+{{- if and (ne $prodPort "") (ne $prodPort "!") }}
+      - "PROXY_{{upper $name}}_FROM={{$prodHost}}"
+      - "PROXY_{{upper $name}}_CERT={{$prodCert}}"
+      - "PROXY_{{upper $name}}_TO={{$cicdHost}}"
+      - "PROXY_{{upper $name}}_PORT={{$prodPort}}"
+{{- end }}
+{{- end }}
+      - "PROXY_CICD_FROM={{$cicdHost}}"
+      - "PROXY_CICD_CERT={{$cicdCert}}"
+      - "PROXY_CICD_TO={{$cicdHost}}"
+      - "PROXY_CICD_PORT=1333"
+    networks:
+      - nproxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/Users/goatcore/work/proxy/certs:/certs"
+
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - 5000:5000
+    environment:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+    volumes:
+      - /dockerdata/_registry/registry:/var/lib/registry
+      - /dockerdata/_registry/certs:/certs
+      - /dockerdata/_registry/auth:/auth
+
+  cleaner:
+    image: spozoga/docker-cleaner
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+
+networks:
+  nproxy:
+    external:
+      name: nproxy
+  default:
+
+
+{{- end -}}

@@ -1,0 +1,8 @@
+{{- $ctx := . -}}
+
+{{- $path := (print $ctx.To "/install.sh") -}}
+{{- if not ($ctx.Filesystem.IsFile $path) -}}
+  {{- $ctx.Out.File $path -}}
+    {{- template "certs.install.sh" $ctx -}}
+  {{- $ctx.Out.EOF -}}
+{{- end -}}

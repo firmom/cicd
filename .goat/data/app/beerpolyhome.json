@@ -1,0 +1,26 @@
+{
+  "app": {
+    "beerpolyhome": {
+      "dev": {
+        "port": "2078"
+      },
+      "docker": {
+        "image": "gameinpl/beerpoly-home"
+      },
+      "name": "BeerpolyHome",
+      "prod": {
+        "cert": "gamein.pl",
+        "host": "beerpolygo.gamein.pl",
+        "port": "4078"
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "gameinpl/beerpoly-home"
+      },
+      "stage": {
+        "port": ""
+      },
+      "type": "goatcms"
+    }
+  }
+}

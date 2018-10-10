@@ -1,21 +1,6 @@
 {
-  "name": "BuildGoatcmsGoatcli",
+  "name": "BuildGoatCLI",
   "entrypoint": true,
-  "extends": ["CloneGoatcmsGoatcli"],
-  "locks": ["/go/src/github.com/goatcms/goatcli", "/go/src/github.com/goatcms/goatcli:archive"],
   "executor": "onlylast",
-  "trigger": [],
-  "script": {
-    "cwd": "/go/src/github.com/goatcms/goatcli",
-    "commands": [{
-      "command": "dep",
-      "args": ["ensure"]
-    }, {
-      "command": "go",
-      "args": ["test", "./cliapp/..."]
-    }, {
-      "command": "go",
-      "args": ["build", "-o", "/data/archive/goatcms/goatcli/goatcli-latest-dev", "./main.go"]
-    }]
-  }
+  "trigger": ["BuildDevGoatCLI", "BuildProdGoatCLI"]
 }

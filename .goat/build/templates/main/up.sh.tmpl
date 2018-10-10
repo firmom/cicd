@@ -1,0 +1,7 @@
+{{- define "up_sh" -}}
+{{- $ctx := . -}}
+
+docker-compose up
+cd services/cicdservice && docker-compose up 
+
+{{- end -}}

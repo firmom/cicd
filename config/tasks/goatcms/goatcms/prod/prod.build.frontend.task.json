@@ -1,7 +1,7 @@
 {
-  "name": "BuildFrontendProdGoatcmsGoatcms",
+  "name": "BuildFrontendProdGoatCMS",
   "entrypoint": false,
-  "extends": ["CloneProdGoatcmsGoatcms"],
+  "extends": ["CloneProdGoatCMS"],
   "executor": "onlylast",
   "script": {
     "cwd": "/data/code/goatcms/goatcms-prod/src/github.com/goatcms/goatcms/web",

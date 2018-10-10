@@ -1,0 +1,13 @@
+{
+  "name": "CloneProdGoatCLI",
+  "entrypoint": false,
+  "extends": [],
+  "locks": ["/data/code/goatcms/goatcli-prod"],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/git-clone.sh", "github.com", "goatcms/goatcli", "master", "prod"]
+    }]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "CloneDevBeerpolyHome",
+  "entrypoint": false,
+  "extends": [],
+  "locks": ["/data/code/gameinpl/beerpoly-home-dev"],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/git-clone.sh", "github.com", "gameinpl/beerpoly-home", "dev", "dev"]
+    }]
+  }
+}

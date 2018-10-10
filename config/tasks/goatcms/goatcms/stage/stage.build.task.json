@@ -1,0 +1,22 @@
+{
+  "name": "BuildStageGoatCMS",
+  "entrypoint": true,
+  "extends": [
+    "CloneStageGoatCMS",
+    "BuildBackendStageGoatCMS",
+    "BuildFrontendStageGoatCMS"
+  ],
+  "locks": ["/data/code/goatcms/goatcms-stage!deploy"],
+  "executor": "onlylast",
+  "trigger": ["DeployStageGoatCMS"],
+  "script": {
+    "cwd": "/data/code/goatcms/goatcms-stage/src/github.com/goatcms/goatcms",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "goatcms/goatcms:stage"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-push.sh", "goatcms/goatcms:stage"]
+    }]
+  }
+}
