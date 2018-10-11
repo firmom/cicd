@@ -1,0 +1,97 @@
+[{"ID": 1, "Lang": "pl", "Name": "view.custom.home.main.introduction", "Content": "
+# Witamy w Firmom CI/CD
+Zobacz [archiwum](/archive/). Lista projektów:
+
+## beerpoly
+[Repozytorium](https://github.com/gameinpl/beerpoly)
+  * [Deweloperska](https://cicd.firmom.com:2077), branch [dev](https://github.com/gameinpl/beerpoly/tree/dev)
+  * [Produkcja](https://cicd.firmom.com:2077), branch [master](https://github.com/gameinpl/beerpoly/tree/master)
+
+## beerpolyhome
+[Repozytorium](https://github.com/gameinpl/beerpoly-home)
+  * [Deweloperska](https://cicd.firmom.com:2078), branch [dev](https://github.com/gameinpl/beerpoly-home/tree/dev)
+  * [Produkcja](https://cicd.firmom.com:2078), branch [master](https://github.com/gameinpl/beerpoly-home/tree/master)
+
+## centosdevtools
+[Repozytorium](https://github.com/firmom/centos-devtools)
+
+## firmomcicd
+[Repozytorium](https://github.com/firmom/cicd)
+  * [Deweloperska](https://cicd.firmom.com:1510), branch [dev](https://github.com/firmom/cicd/tree/dev)
+
+## eventspozogaeu
+[Repozytorium](https://github.com/sebastianpozoga/events.pozoga.eu)
+  * [Deweloperska](https://cicd.firmom.com:2011), branch [dev](https://github.com/sebastianpozoga/events.pozoga.eu/tree/dev)
+  * [Testowa](https://cicd.firmom.com:2011), branch [stage](https://github.com/sebastianpozoga/events.pozoga.eu/tree/stage)
+  * [Produkcja](https://cicd.firmom.com:2011), branch [master](https://github.com/sebastianpozoga/events.pozoga.eu/tree/master)
+
+## goatcli
+[Repozytorium](https://github.com/goatcms/goatcli)
+
+## goatcms
+[Repozytorium](https://github.com/goatcms/goatcms)
+  * [Deweloperska](https://cicd.firmom.com:2011), branch [dev](https://github.com/goatcms/goatcms/tree/dev)
+  * [Testowa](https://cicd.firmom.com:2011), branch [stage](https://github.com/goatcms/goatcms/tree/stage)
+  * [Produkcja](https://cicd.firmom.com:2011), branch [master](https://github.com/goatcms/goatcms/tree/master)
+
+## goatcmsemptyapp
+[Repozytorium](https://github.com/goatcms/emptyapp)
+  * [Deweloperska](https://cicd.firmom.com:2079), branch [dev](https://github.com/goatcms/emptyapp/tree/dev)
+
+## goatcore
+[Repozytorium](https://github.com/goatcms/goatcore)
+
+## webslots
+[Repozytorium](https://github.com/goatcms/webslots)
+  * [Deweloperska](https://cicd.firmom.com:2333), branch [dev](https://github.com/goatcms/webslots/tree/dev)
+  * [Produkcja](https://cicd.firmom.com:2333), branch [master](https://github.com/goatcms/webslots/tree/master)
+
+"}, {"ID": 2, "Lang": "en", "Name": "view.custom.home.main.introduction", "Content": "
+# Index of Firmom CI/CD
+See [archiwum](/archives/). Projects list:
+
+## beerpoly
+[Repository](https:///)
+  * Development, branch [dev](https:////tree/dev)
+  * Production, branch [master](https:////tree/master)
+
+## beerpolyhome
+[Repository](https:///)
+  * Development, branch [dev](https:////tree/dev)
+  * Production, branch [master](https:////tree/master)
+
+## centosdevtools
+[Repository](https:///)
+
+## firmomcicd
+[Repository](https:///)
+  * Development, branch [dev](https:////tree/dev)
+
+## eventspozogaeu
+[Repository](https:///)
+  * Development, branch [dev](https:////tree/dev)
+  * Stage, branch [stage](https:////tree/stage)
+  * Production, branch [master](https:////tree/master)
+
+## goatcli
+[Repository](https:///)
+
+## goatcms
+[Repository](https:///)
+  * Development, branch [dev](https:////tree/dev)
+  * Stage, branch [stage](https:////tree/stage)
+  * Production, branch [master](https:////tree/master)
+
+## goatcmsemptyapp
+[Repository](https:///)
+  * Development, branch [dev](https:////tree/dev)
+
+## goatcore
+[Repository](https:///)
+
+## webslots
+[Repository](https:///)
+  * Development, branch [dev](https:////tree/dev)
+  * Production, branch [master](https:////tree/master)
+"}
+]

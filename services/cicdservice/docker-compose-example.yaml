@@ -27,16 +27,16 @@ services:
       - "DOCKER_PASSWORD=Insert_your_dockerhub_password_to_deploy_app_image"
 
       # slots
-      - "SLOT_BEERPOLY_SECRET_1=Insert_your_secret"
-      - "SLOT_BEERPOLYHOME_SECRET_1=Insert_your_secret"
-      - "SLOT_CENTOSDEVTOOLS_SECRET_1=Insert_your_secret"
-      - "SLOT_FIRMOMCICD_SECRET_1=Insert_your_secret"
-      - "SLOT_EVENTSPOZOGAEU_SECRET_1=Insert_your_secret"
-      - "SLOT_GOATCLI_SECRET_1=Insert_your_secret"
-      - "SLOT_GOATCMS_SECRET_1=Insert_your_secret"
-      - "SLOT_GOATCMSEMPTYAPP_SECRET_1=Insert_your_secret"
-      - "SLOT_GOATCORE_SECRET_1=Insert_your_secret"
-      - "SLOT_WEBSLOTS_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildBeerpoly_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildBeerpolyHome_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildCentosDevtools_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildFirmomCICD_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildEventsPozogaEu_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildGoatCLI_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildGoatCMS_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildGoatCMSEmptyapp_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildGoatCore_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildWebslots_SECRET_1=Insert_your_secret"
 
       # Projects
       - "EVENTSPOZOGAEU_DB_USER=Insert_your_database_username"

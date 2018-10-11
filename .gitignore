@@ -1,6 +1,6 @@
 # docker
-/docker-compose.yaml
-/docker-compose-old.yaml
+/services/docker-compose.yaml
+/services/docker-compose-old.yaml
 /services/cicdservice/docker-compose.yaml
 /services/cicdservice/docker-compose-old.yaml
 

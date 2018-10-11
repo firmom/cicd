@@ -1,34 +1,34 @@
 {{- $ctx := . -}}
 
-{{- $path := (print $ctx.To "docker-compose.yaml") -}}
+{{- $path := (print $ctx.To "/docker-compose.yaml") -}}
 {{- if not ($ctx.Filesystem.IsFile $path) -}}
   {{- $ctx.Out.File $path -}}
     {{- template "docker_compose_yaml" $ctx -}}
   {{- $ctx.Out.EOF -}}
 {{- end -}}
 
-{{- $path := (print $ctx.To "docker-compose-example.yaml") -}}
+{{- $path := (print $ctx.To "/docker-compose-example.yaml") -}}
 {{- if not ($ctx.Filesystem.IsFile $path) -}}
   {{- $ctx.Out.File $path -}}
     {{- template "docker_compose_example_yaml" $ctx -}}
   {{- $ctx.Out.EOF -}}
 {{- end -}}
 
-{{- $path := (print $ctx.To "/services/cicdservice/docker-compose-example.yaml") -}}
+{{- $path := (print $ctx.To "/cicdservice/docker-compose-example.yaml") -}}
 {{- if not ($ctx.Filesystem.IsFile $path) -}}
   {{- $ctx.Out.File $path -}}
-    {{- template "services_cicd_docker_compose_example_yaml" $ctx -}}
+    {{- template "cicdservice_docker_compose_example_yaml" $ctx -}}
   {{- $ctx.Out.EOF -}}
 {{- end -}}
 
-{{- $path := (print $ctx.To "/services/cicdservice/docker-compose.yaml") -}}
+{{- $path := (print $ctx.To "/cicdservice/docker-compose.yaml") -}}
 {{- if not ($ctx.Filesystem.IsFile $path) -}}
   {{- $ctx.Out.File $path -}}
-    {{- template "services_cicd_docker_compose_yaml" $ctx -}}
+    {{- template "cicdservice_docker_compose_yaml" $ctx -}}
   {{- $ctx.Out.EOF -}}
 {{- end -}}
 
-{{- $path := (print $ctx.To "up.sh") -}}
+{{- $path := (print $ctx.To "/up.sh") -}}
 {{- if not ($ctx.Filesystem.IsFile $path) -}}
   {{- $ctx.Out.File $path -}}
     {{- template "up_sh" $ctx -}}

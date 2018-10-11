@@ -1,4 +1,4 @@
-{{- define "services_cicd_docker_compose_example_yaml" -}}
+{{- define "cicdservice_docker_compose_example_yaml" -}}
 {{- $ctx := . -}}
 {{- $cicdHost := (index $ctx.Properties.Project "cicd.host") -}}
 {{- $cicdCert := (index $ctx.Properties.Project "cicd.cert") -}}
@@ -34,7 +34,7 @@ services:
       # slots
 {{- range $index, $key := (keys .Data "app.") -}}
 {{- $name := (index $ctx.Data (print "app." $key ".name")) }}
-      - "SLOT_{{upper $name}}_SECRET_1=Insert_your_secret"
+      - "SLOT_Build{{camelcaseuf $name}}_SECRET_1=Insert_your_secret"
 {{- end }}
 
       # Projects

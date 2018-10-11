@@ -14,6 +14,9 @@
   "to":"config/tasks",
   "template":"tasks",
 },{
-  "to":"/",
-  "template":"main",
+  "to":"/fixtures",
+  "template":"fixtures",
+},{
+  "to":"/services",
+  "template":"services",
 }]
