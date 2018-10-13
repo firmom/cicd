@@ -6,7 +6,7 @@
   "executor": "onlylast",
   "trigger": ["DeployProdGoatCore", "BuildGoatCLI", "BuildGoatCMS", "BuildCentosDevtools"],
   "script": {
-    "cwd": "/data/code/goatcms/goatcore-prod/{$repoHost}/goatcms/goatcore",
+    "cwd": "/data/code/goatcms/goatcore-prod/github.com/goatcms/goatcore",
     "commands": [{
       "command": "rm",
       "args": ["-rf", "vendor"]

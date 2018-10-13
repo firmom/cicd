@@ -6,7 +6,7 @@
   "executor": "onlylast",
   "trigger": ["DeployProdGoatCLI"],
   "script": {
-    "cwd": "/data/code/goatcms/goatcli-prod/{$repoHost}/goatcms/goatcli",
+    "cwd": "/data/code/goatcms/goatcli-prod/github.com/goatcms/goatcli",
     "commands": [{
       "command": "rm",
       "args": ["-rf", "vendor"]
