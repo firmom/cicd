@@ -37,7 +37,7 @@ RUN apt-get install -y ruby-full
 RUN gem install sass
 
 # load fixtures (contains fragments)
-RUN rm -rf data && rm -rf config
+RUN rm -rf data && rm -rf config && rm -rf data
 RUN rm main.db ||:
 
 COPY config/helpers /app/config/helpers

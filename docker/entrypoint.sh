@@ -18,6 +18,9 @@ if [ -f "/root/.ssh/id_rsa" ]; then
   ssh-add /root/.ssh/id_rsa
 fi
 
+# link data directory
+ln -s /data /app/data 
+
 # prepare config
 /bin/bash -x /app/docker/config.sh
 
