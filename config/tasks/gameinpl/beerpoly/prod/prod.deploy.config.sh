@@ -23,7 +23,7 @@ services:
     volumes:
       - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
       - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
-      - "/dockerdata/$REPO/$TAG/certs/gamein.pl:/certs"
+      - "/dockerdata/certs/gamein.pl:/certs"
     ports:
       - 4077:443
   db:

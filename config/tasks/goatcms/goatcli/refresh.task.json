@@ -5,9 +5,6 @@
   "script": {
     "commands": [{
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/goatcli", "dev", "BuildDevGoatCLI"]
-    }, {
-      "command": "sh",
       "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/goatcli", "master", "BuildProdGoatCLI"]
     }]
   }

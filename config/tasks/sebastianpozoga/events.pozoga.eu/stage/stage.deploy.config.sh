@@ -26,19 +26,19 @@ services:
       - "DB_PORT=3306"
       - "DB_NAME=stage.EventsPozogaEu"
       - "DB_USER=$EVENTSPOZOGAEU_DB_USER"
-      - "DB_SNAPSHOT=$EVENTSPOZOGAEU_DB_SNAPSHOT"
       - "DB_PASS=$EVENTSPOZOGAEU_DB_PASS"
       - "WP_USER=$EVENTSPOZOGAEU_WP_USER_NAME"
       - "WP_PASS=$EVENTSPOZOGAEU_WP_USER_PASS"
       - "WP_EMAIL=$EVENTSPOZOGAEU_WP_USER_EMAIL"
       - "WP_HOST=$DEPLOY_DEV_REMOTE_HOST:3011"
       - "WP_TITLE=Events Poznań"
+      - "DB_SNAPSHOT=$EVENTSPOZOGAEU_DB_SNAPSHOT"
       - "MIGRATE_FROM=events.pozoga.eu"
       - "MIGRATE_TO=cicd.firmom.com:3011"
     volumes:
       - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
       - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
-      - "/dockerdata/$REPO/$TAG/certs/firmom.com:/certs"
+      - "/dockerdata/certs/firmom.com:/certs"
     ports:
       - 3011:443
   db:

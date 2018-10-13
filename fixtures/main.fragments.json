@@ -4,94 +4,94 @@ Zobacz [archiwum](/archive/). Lista projektów:
 
 ## beerpoly
 [Repozytorium](https://github.com/gameinpl/beerpoly)
-  * [Deweloperska](https://cicd.firmom.com:2077), branch [dev](https://github.com/gameinpl/beerpoly/tree/dev)
-  * [Produkcja](https://cicd.firmom.com:2077), branch [master](https://github.com/gameinpl/beerpoly/tree/master)
+* [Deweloperska](https://cicd.firmom.com:2077), branch [dev](https://github.com/gameinpl/beerpoly/tree/dev)
+* [Produkcja](https://cicd.firmom.com:2077), branch [master](https://github.com/gameinpl/beerpoly/tree/master)
 
 ## beerpolyhome
 [Repozytorium](https://github.com/gameinpl/beerpoly-home)
-  * [Deweloperska](https://cicd.firmom.com:2078), branch [dev](https://github.com/gameinpl/beerpoly-home/tree/dev)
-  * [Produkcja](https://cicd.firmom.com:2078), branch [master](https://github.com/gameinpl/beerpoly-home/tree/master)
+* [Deweloperska](https://cicd.firmom.com:2078), branch [dev](https://github.com/gameinpl/beerpoly-home/tree/dev)
+* [Produkcja](https://cicd.firmom.com:2078), branch [master](https://github.com/gameinpl/beerpoly-home/tree/master)
 
 ## centosdevtools
 [Repozytorium](https://github.com/firmom/centos-devtools)
 
 ## firmomcicd
 [Repozytorium](https://github.com/firmom/cicd)
-  * [Deweloperska](https://cicd.firmom.com:1510), branch [dev](https://github.com/firmom/cicd/tree/dev)
+* [Deweloperska](https://cicd.firmom.com:1510), branch [dev](https://github.com/firmom/cicd/tree/dev)
 
 ## eventspozogaeu
 [Repozytorium](https://github.com/sebastianpozoga/events.pozoga.eu)
-  * [Deweloperska](https://cicd.firmom.com:2011), branch [dev](https://github.com/sebastianpozoga/events.pozoga.eu/tree/dev)
-  * [Testowa](https://cicd.firmom.com:2011), branch [stage](https://github.com/sebastianpozoga/events.pozoga.eu/tree/stage)
-  * [Produkcja](https://cicd.firmom.com:2011), branch [master](https://github.com/sebastianpozoga/events.pozoga.eu/tree/master)
+* [Deweloperska](https://cicd.firmom.com:2011), branch [dev](https://github.com/sebastianpozoga/events.pozoga.eu/tree/dev)
+* [Testowa](https://cicd.firmom.com:2011), branch [stage](https://github.com/sebastianpozoga/events.pozoga.eu/tree/stage)
+* [Produkcja](https://cicd.firmom.com:2011), branch [master](https://github.com/sebastianpozoga/events.pozoga.eu/tree/master)
 
 ## goatcli
 [Repozytorium](https://github.com/goatcms/goatcli)
 
 ## goatcms
 [Repozytorium](https://github.com/goatcms/goatcms)
-  * [Deweloperska](https://cicd.firmom.com:2011), branch [dev](https://github.com/goatcms/goatcms/tree/dev)
-  * [Testowa](https://cicd.firmom.com:2011), branch [stage](https://github.com/goatcms/goatcms/tree/stage)
-  * [Produkcja](https://cicd.firmom.com:2011), branch [master](https://github.com/goatcms/goatcms/tree/master)
+* [Deweloperska](https://cicd.firmom.com:2011), branch [dev](https://github.com/goatcms/goatcms/tree/dev)
+* [Testowa](https://cicd.firmom.com:2011), branch [stage](https://github.com/goatcms/goatcms/tree/stage)
+* [Produkcja](https://cicd.firmom.com:2011), branch [master](https://github.com/goatcms/goatcms/tree/master)
 
 ## goatcmsemptyapp
 [Repozytorium](https://github.com/goatcms/emptyapp)
-  * [Deweloperska](https://cicd.firmom.com:2079), branch [dev](https://github.com/goatcms/emptyapp/tree/dev)
+* [Deweloperska](https://cicd.firmom.com:2079), branch [dev](https://github.com/goatcms/emptyapp/tree/dev)
 
 ## goatcore
 [Repozytorium](https://github.com/goatcms/goatcore)
 
 ## webslots
 [Repozytorium](https://github.com/goatcms/webslots)
-  * [Deweloperska](https://cicd.firmom.com:2333), branch [dev](https://github.com/goatcms/webslots/tree/dev)
-  * [Produkcja](https://cicd.firmom.com:2333), branch [master](https://github.com/goatcms/webslots/tree/master)
+* [Deweloperska](https://cicd.firmom.com:2333), branch [dev](https://github.com/goatcms/webslots/tree/dev)
+* [Produkcja](https://cicd.firmom.com:2333), branch [master](https://github.com/goatcms/webslots/tree/master)
 
 "}, {"ID": 2, "Lang": "en", "Name": "view.custom.home.main.introduction", "Content": "
 # Index of Firmom CI/CD
 See [archiwum](/archives/). Projects list:
 
 ## beerpoly
-[Repository](https:///)
-  * Development, branch [dev](https:////tree/dev)
-  * Production, branch [master](https:////tree/master)
+[Repository](https://github.com/gameinpl/beerpoly)
+* Development, branch [dev](https://github.com/gameinpl/beerpoly/tree/dev)
+* Production, branch [master](https://github.com/gameinpl/beerpoly/tree/master)
 
 ## beerpolyhome
-[Repository](https:///)
-  * Development, branch [dev](https:////tree/dev)
-  * Production, branch [master](https:////tree/master)
+[Repository](https://github.com/gameinpl/beerpoly-home)
+* Development, branch [dev](https://github.com/gameinpl/beerpoly-home/tree/dev)
+* Production, branch [master](https://github.com/gameinpl/beerpoly-home/tree/master)
 
 ## centosdevtools
-[Repository](https:///)
+[Repository](https://github.com/firmom/centos-devtools)
 
 ## firmomcicd
-[Repository](https:///)
-  * Development, branch [dev](https:////tree/dev)
+[Repository](https://github.com/firmom/cicd)
+* Development, branch [dev](https://github.com/firmom/cicd/tree/dev)
 
 ## eventspozogaeu
-[Repository](https:///)
-  * Development, branch [dev](https:////tree/dev)
-  * Stage, branch [stage](https:////tree/stage)
-  * Production, branch [master](https:////tree/master)
+[Repository](https://github.com/sebastianpozoga/events.pozoga.eu)
+* Development, branch [dev](https://github.com/sebastianpozoga/events.pozoga.eu/tree/dev)
+* Stage, branch [stage](https://github.com/sebastianpozoga/events.pozoga.eu/tree/stage)
+* Production, branch [master](https://github.com/sebastianpozoga/events.pozoga.eu/tree/master)
 
 ## goatcli
-[Repository](https:///)
+[Repository](https://github.com/goatcms/goatcli)
 
 ## goatcms
-[Repository](https:///)
-  * Development, branch [dev](https:////tree/dev)
-  * Stage, branch [stage](https:////tree/stage)
-  * Production, branch [master](https:////tree/master)
+[Repository](https://github.com/goatcms/goatcms)
+* Development, branch [dev](https://github.com/goatcms/goatcms/tree/dev)
+* Stage, branch [stage](https://github.com/goatcms/goatcms/tree/stage)
+* Production, branch [master](https://github.com/goatcms/goatcms/tree/master)
 
 ## goatcmsemptyapp
-[Repository](https:///)
-  * Development, branch [dev](https:////tree/dev)
+[Repository](https://github.com/goatcms/emptyapp)
+* Development, branch [dev](https://github.com/goatcms/emptyapp/tree/dev)
 
 ## goatcore
-[Repository](https:///)
+[Repository](https://github.com/goatcms/goatcore)
 
 ## webslots
-[Repository](https:///)
-  * Development, branch [dev](https:////tree/dev)
-  * Production, branch [master](https:////tree/master)
+[Repository](https://github.com/goatcms/webslots)
+* Development, branch [dev](https://github.com/goatcms/webslots/tree/dev)
+* Production, branch [master](https://github.com/goatcms/webslots/tree/master)
 "}
 ]

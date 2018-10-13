@@ -2,5 +2,5 @@
   "name": "BuildGoatCLI",
   "entrypoint": true,
   "executor": "onlylast",
-  "trigger": ["BuildDevGoatCLI", "BuildProdGoatCLI"]
+  "trigger": ["BuildProdGoatCLI"]
 }

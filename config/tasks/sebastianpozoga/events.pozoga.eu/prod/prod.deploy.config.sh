@@ -26,7 +26,6 @@ services:
       - "DB_PORT=3306"
       - "DB_NAME=prod.EventsPozogaEu"
       - "DB_USER=$EVENTSPOZOGAEU_DB_USER"
-      - "DB_SNAPSHOT=$EVENTSPOZOGAEU_DB_SNAPSHOT"
       - "DB_PASS=$EVENTSPOZOGAEU_DB_PASS"
       - "WP_USER=$EVENTSPOZOGAEU_WP_USER_NAME"
       - "WP_PASS=$EVENTSPOZOGAEU_WP_USER_PASS"
@@ -36,7 +35,7 @@ services:
     volumes:
       - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
       - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
-      - "/dockerdata/$REPO/$TAG/certs/pozoga.eu:/certs"
+      - "/dockerdata/certs/pozoga.eu:/certs"
     ports:
       - 4011:443
   db:

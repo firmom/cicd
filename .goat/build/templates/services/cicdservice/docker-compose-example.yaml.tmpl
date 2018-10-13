@@ -67,7 +67,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/dockerdata/firmom/cicd/data:/data"
       - "/dockerdata/firmom/cicd/ssh:/root/.ssh"
-      - "/dockerdata/firmom/cicd/certs:/certs"
+      - "/dockerdata/certs:/certs"
     ports:
       - 1333:443
 

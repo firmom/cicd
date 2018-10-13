@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+### Add random variables
+if [[ ! $API_SECRET ]]; then
+  export API_SECRET=$(openssl rand -hex 36)
+  echo "Generated API_SECRET=$API_SECRET"
+fi
+mkdir -p /secrets
+echo $API_SECRET > /secrets/api
+
 # prepare docker password file
 echo $DOCKER_PASSWORD > $DOCKER_PASSWORD_FILE
 
@@ -10,7 +18,10 @@ if [ -f "/root/.ssh/id_rsa" ]; then
   ssh-add /root/.ssh/id_rsa
 fi
 
-# Routing
+# prepare config
+/bin/bash -x /app/docker/config.sh
+
+# prepare routing
 mkdir -p /data/archive
 cat > /app/config/routing.json << EndOfMessage
 {"static":[{
@@ -22,5 +33,8 @@ cat > /app/config/routing.json << EndOfMessage
 }]}
 EndOfMessage
 
-# run base entrypoint
-sh -x "/app/docker/entrypoint.sh"
+# load default data like fragments
+./webslots db:fixtures:load --path=fixtures
+
+### run app
+./webslots run --loglvl=$LOGLVL
