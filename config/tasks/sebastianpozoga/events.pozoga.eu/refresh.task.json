@@ -11,7 +11,7 @@
       "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "sebastianpozoga/events.pozoga.eu", "stage", "BuildStageEventsPozogaEu"]
     }, {
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "sebastianpozoga/events.pozoga.eu", "master", "BuildProdEventsPozogaEu"]
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "sebastianpozoga/events.pozoga.eu", "prod", "BuildProdEventsPozogaEu"]
     }]
   }
 }

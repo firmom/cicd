@@ -8,7 +8,7 @@
       "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/webslots", "dev", "BuildDevWebslots"]
     }, {
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/webslots", "master", "BuildProdWebslots"]
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/webslots", "prod", "BuildProdWebslots"]
     }]
   }
 }

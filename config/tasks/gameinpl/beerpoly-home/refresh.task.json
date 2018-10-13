@@ -8,7 +8,7 @@
       "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "gameinpl/beerpoly-home", "dev", "BuildDevBeerpolyHome"]
     }, {
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "gameinpl/beerpoly-home", "master", "BuildProdBeerpolyHome"]
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "gameinpl/beerpoly-home", "prod", "BuildProdBeerpolyHome"]
     }]
   }
 }
