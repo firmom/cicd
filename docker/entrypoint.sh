@@ -34,7 +34,7 @@ cat > /app/config/routing.json << EndOfMessage
 EndOfMessage
 
 # load default data like fragments
-./webslots db:fixtures:load --path=fixtures
+./webslots db:fixtures:load --path=fixtures ||:
 
 ### run app
 ./webslots run --loglvl=$LOGLVL
