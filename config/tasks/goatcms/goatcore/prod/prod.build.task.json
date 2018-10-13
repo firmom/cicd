@@ -4,7 +4,7 @@
   "extends": ["CloneProdGoatCore"],
   "locks": ["/data/code/goatcms/goatcore-prod"],
   "executor": "onlylast",
-  "trigger": ["DeployProdGoatCore", "BuildGoatCLI", "BuildGoatCMS", "BuildCentosDevtools"],
+  "trigger": [, "BuildGoatCLI", "BuildGoatCMS", "BuildCentosDevtools"],
   "script": {
     "cwd": "/data/code/goatcms/goatcore-prod/src/github.com/goatcms/goatcore",
     "commands": [{

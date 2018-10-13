@@ -4,7 +4,7 @@
   "extends": ["CloneProdGoatCLI"],
   "locks": ["/data/code/goatcms/goatcli-prod"],
   "executor": "onlylast",
-  "trigger": ["DeployProdGoatCLI"],
+  "trigger": [],
   "script": {
     "cwd": "/data/code/goatcms/goatcli-prod/src/github.com/goatcms/goatcli",
     "commands": [{
