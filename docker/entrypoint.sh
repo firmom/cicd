@@ -19,7 +19,9 @@ if [ -f "/root/.ssh/id_rsa" ]; then
 fi
 
 # link data directory
-ln -s /data /app/data 
+if [ ! -d /app/data ]; then
+  ln -s /data /app/data
+fi
 
 # prepare config
 /bin/bash -x /app/docker/config.sh
