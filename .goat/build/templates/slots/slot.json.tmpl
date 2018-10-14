@@ -1,0 +1,10 @@
+{{- define "slot.json" -}}
+{{- $ctx := . -}}
+
+{
+  "name": "{{$ctx.slot}}",
+  "secret": [],
+  "task": "{{$ctx.task}}"
+}
+
+{{- end -}}

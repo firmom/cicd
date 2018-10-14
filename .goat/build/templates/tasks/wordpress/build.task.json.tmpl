@@ -1,0 +1,31 @@
+{{- define "wordpress.build_task_json" -}}
+
+{{- $ctx := . -}}
+{{- $name := (index $ctx.Data (print $ctx.From ".name")) -}}
+{{- $repo := (index $ctx.Data (print $ctx.From ".repo.path")) -}}
+{{- $type := (index $ctx.Data (print $ctx.From ".type")) -}}
+{{- $image := (index $ctx.Data (print $ctx.From ".docker.image")) -}}
+{{- $devPort := (index $ctx.Data (print $ctx.From ".dev.port")) -}}
+{{- $stagePort := (index $ctx.Data (print $ctx.From ".stage.port")) -}}
+{{- $prodPort := (index $ctx.Data (print $ctx.From ".prod.port")) -}}
+
+{
+  "name": "Build{{camelcaseuf $name}}",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "trigger": [
+{{- if ne $devPort "" -}}
+    "BuildDev{{camelcaseuf $name}}"
+{{- end -}}
+{{- if ne $stagePort "" -}}
+    {{- if ne $devPort "" -}}, {{ end -}}
+    "BuildStage{{camelcaseuf $name}}"
+{{- end -}}
+{{- if ne $prodPort "" -}}
+    {{- if (or (ne $devPort "") (ne $stagePort "")) -}}, {{ end -}}
+    "BuildProd{{camelcaseuf $name}}"
+{{- end -}}
+  ]
+}
+
+{{- end -}}

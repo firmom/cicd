@@ -1,0 +1,68 @@
+{{- define "docker_compose_yaml" -}}
+{{- $ctx := . -}}
+{{- $cicdHost := (index $ctx.Properties.Project "cicd.host") -}}
+{{- $cicdCert := (index $ctx.Properties.Project "cicd.cert") -}}
+{{- $registryPort := (index $ctx.Properties.Secrets "registry.port") -}}
+
+version: '3.4'
+
+services:
+  reverseproxy:
+    image: firmom/docker-proxy
+    restart: always
+    environment:
+{{- range $index, $key := (keys .Data "app.") -}}
+{{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
+{{- $prodHost := (index $ctx.Data (print "app." $key ".prod.host")) -}}
+{{- $prodPort := (index $ctx.Data (print "app." $key ".prod.port")) -}}
+{{- $prodCert := (index $ctx.Data (print "app." $key ".prod.cert")) -}}
+
+{{- if and (ne $prodPort "") (ne $prodPort "!") }}
+      - "PROXY_Build{{camelcaseuf $name}}_FROM={{$prodHost}}"
+      - "PROXY_Build{{camelcaseuf $name}}_CERT={{$prodCert}}"
+      - "PROXY_Build{{camelcaseuf $name}}_TO={{$cicdHost}}"
+      - "PROXY_Build{{camelcaseuf $name}}_PORT={{$prodPort}}"
+{{- end }}
+{{- end }}
+      - "PROXY_BuildFirmomCICD_FROM={{$cicdHost}}"
+      - "PROXY_BuildFirmomCICD_CERT={{$cicdCert}}"
+      - "PROXY_BuildFirmomCICD_TO={{$cicdHost}}"
+      - "PROXY_BuildFirmomCICD_PORT=1333"
+    networks:
+      - nproxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/dockerdata/certs:/certs"
+
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - {{$registryPort}}:5000
+    environment:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/fullchain.pem
+      REGISTRY_HTTP_TLS_KEY: /certs/privkey.pem
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+    volumes:
+      - /dockerdata/_registry/registry:/var/lib/registry
+      - /dockerdata/_registry/auth:/auth
+      - /dockerdata/certs/{{$cicdCert}}:/certs
+
+  cleaner:
+    image: spozoga/docker-cleaner
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+
+networks:
+  nproxy:
+    external:
+      name: nproxy
+  default:
+
+
+{{- end -}}

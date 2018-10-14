@@ -1,0 +1,5 @@
+{
+  "name": "BuildGoatCMSEmptyapp",
+  "secret": [],
+  "task": "RefreshGoatCMSEmptyapp"
+}

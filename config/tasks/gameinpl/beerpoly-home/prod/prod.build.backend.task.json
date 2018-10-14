@@ -1,0 +1,23 @@
+{
+  "name": "BuildBackendProdBeerpolyHome",
+  "entrypoint": false,
+  "extends": ["CloneProdBeerpolyHome"],
+  "executor": "onlylast",
+  "locks": ["BuildBackendProdBeerpolyHome"],
+  "script": {
+    "cwd": "/data/code/gameinpl/beerpoly-home-prod/src/github.com/gameinpl/beerpoly-home",
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/goatcms-secrets.sh", "github.com", "gameinpl/beerpoly-home", "prod"]
+    }, {
+      "command": "goatcli",
+      "args": ["build", "--interactive=false"]
+    }, {
+      "command": "rm",
+      "args": ["-rf", "vendor"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "gameinpl/beerpoly-home", "prod"]
+    }]
+  }
+}

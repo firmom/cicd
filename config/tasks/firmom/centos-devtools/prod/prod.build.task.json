@@ -1,0 +1,18 @@
+{
+  "name": "BuildProdCentosDevtools",
+  "entrypoint": true,
+  "extends": ["CloneProdCentosDevtools"],
+  "locks": ["/data/code/firmom/centos-devtools-prod"],
+  "executor": "onlylast",
+  "trigger": [],
+  "script": {
+    "cwd": "/data/code/firmom/centos-devtools-prod",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "firmom/centos-devtools:prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-push.sh", "firmom/centos-devtools:prod"]
+    }]
+  }
+}

@@ -1,0 +1,35 @@
+{{- define "kubernetes.master-remote.sh" -}}
+{{- $ctx := . -}}
+
+# based on https://kubernetes.io/docs/tasks/tools/install-kubeadm/
+
+# Installing Docker
+{{template "install-docker" $ctx}}
+
+# Installing kubeadm, kubelet and kubectl
+apt-get update && apt-get install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat {{noescape "<<EOF >"}}/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+apt-get update
+apt-get install -y kubelet kubeadm kubectl
+
+# Configure cgroup driver used by kubelet on Master Node
+docker info | grep -i cgroup
+cat /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+sed -i "s/cgroup-driver=systemd/cgroup-driver=cgroupfs/g" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+systemctl daemon-reload
+systemctl restart kubelet
+
+# Initializing your master
+kubeadm init --pod-network-cidr=10.244.0.0/16
+
+# Installing a pod network
+sysctl net.bridge.bridge-nf-call-iptables=1
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.10.0/Documentation/kube-flannel.yml
+
+# Master Isolation - allow run pods on master
+kubectl taint nodes --all node-role.kubernetes.io/master-
+
+{{- end -}}

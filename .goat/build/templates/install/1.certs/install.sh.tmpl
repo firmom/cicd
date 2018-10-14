@@ -1,0 +1,9 @@
+{{- define "certs.install.sh" -}}
+{{- $ctx := . -}}
+
+####
+## Install docker
+####
+{{template "install-docker" $ctx}}
+
+{{- end -}}

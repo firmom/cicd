@@ -1,0 +1,22 @@
+{
+  "name": "DeployStageGoatCMS",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["docker!goatcms/goatcms:stage"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-domain.sh", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-deploy.sh", "goatcms/goatcms", "stage", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/tasks/goatcms/goatcms/stage.deploy.config.sh", "goatcms/goatcms", "stage", "goatcms/goatcms:stage"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "goatcms/goatcms", "stage", "goatcms/goatcms:stage"]
+    }]
+  }
+}

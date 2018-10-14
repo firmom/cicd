@@ -3,8 +3,8 @@ set -e
 
 REPO="$1"
 TAG="$2"
-IMAGE="$REPO:$TAG"
-DEST_DIR_PATH="/data/docker/$REPO-$TAG"
+IMAGE="$3"
+DEST_DIR_PATH="/data/deploy/$REPO-$TAG"
 DEST_FILE_PATH="$DEST_DIR_PATH/docker-compose.yaml"
 
 mkdir -p $DEST_DIR_PATH
@@ -14,41 +14,37 @@ cat > $DEST_FILE_PATH << EndOfMessage
 version: '3.4'
 
 services:
-  goatcms:
+  events:
     image: $IMAGE
-    networks:
-      - nproxy
+    environment:
+      TZ: 'Europe/Warsaw'
     restart: always
     environment:
-      - "TZ=Europe/Warsaw"
-      # routing
-      - "SECURITY_MODE=TLS"
-      # App settings and secrets
-      - "APP_HOST=goatcms.org"
-      - "APP_BASE_URL=https://goatcms.org"
-      - "OAUTH_GITHUB_APP=Insert_your_app_id"
-      - "OAUTH_GITHUB_SECRET=Insert_your_app_secret"
-      # Users
-EndOfMessage
-
-
-# Copy users environments
-for i in `env | grep -E "^USER_"`; do
-    echo "      - \"$i\"" >> $DEST_FILE_PATH
-done
-
-# Add rest of config file
-cat >> $DEST_FILE_PATH << EndOfMessage
     volumes:
-      - "/dockerdata/$REPO-$TAG/data:/data"
-      - "/dockerdata/$REPO/$TAG/certs/firmom.com:/certs"
+      - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
+      - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
+      - "/dockerdata/certs/firmom.com:/certs"
     ports:
-     - 2010:80
-
-networks:
-  nproxy:
-    external:
-      name: nproxy
-  default:
+      - 2333:443
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      - "MYSQL_DATABASE=dev.Webslots"
+      - "MYSQL_USER=$WEBSLOTS_DB_USER"
+      - "MYSQL_PASSWORD=$WEBSLOTS_DB_PASS"
+      - "MYSQL_ROOT_PASSWORD=$WEBSLOTS_DB_PASS"
+    volumes:
+      - "/dockerdata/$REPO/$TAG/mysql:/var/lib/mysql"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+     - 12333:80
+    environment:
+      - "PMA_HOST=db"
+      - "PMA_VERBOSE=dev.Webslots"
+      - "PMA_PORT=3306"
+      - "PMA_ARBITRARY=1"
 
 EndOfMessage

@@ -1,0 +1,22 @@
+[{
+  "to":"bin/install/0.docker",
+  "template":"install/0.docker",
+},{
+  "to":"bin/install/1.certs",
+  "template":"install/1.certs",
+},{
+  "to":"bin/install/2.kubernetes",
+  "template":"install/2.kubernetes",
+},{
+  "to":"config/slots",
+  "template":"slots",
+},{
+  "to":"config/tasks",
+  "template":"tasks",
+},{
+  "to":"/fixtures",
+  "template":"fixtures",
+},{
+  "to":"/services",
+  "template":"services",
+}]

@@ -1,0 +1,6 @@
+{
+  "name": "BuildCentosDevtools",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "trigger": ["BuildProdCentosDevtools"]
+}

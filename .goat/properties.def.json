@@ -1,0 +1,13 @@
+[{
+  "prompt":"Insert your cicd hostname",
+  "key":"cicd.host",
+  "type":"line",
+  "min":1,
+  "max":1024
+}, {
+  "prompt":"Insert your cicd certificate name",
+  "key":"cicd.cert",
+  "type":"line",
+  "min":1,
+  "max":1024
+}]

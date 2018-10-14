@@ -2,7 +2,7 @@
   "name": "DeployProdEventsPozogaEu",
   "entrypoint": true,
   "extends": [],
-  "locks": ["docker!events.pozoga.eu:prod"],
+  "locks": ["docker!spozoga/events.pozoga.eu:prod"],
   "executor": "onlylast",
   "script": {
     "commands": [{

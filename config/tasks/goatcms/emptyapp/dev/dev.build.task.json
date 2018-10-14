@@ -1,0 +1,22 @@
+{
+  "name": "BuildDevGoatCMSEmptyapp",
+  "entrypoint": true,
+  "extends": [
+    "CloneDevGoatCMSEmptyapp",
+    "BuildBackendDevGoatCMSEmptyapp",
+    "BuildFrontendDevGoatCMSEmptyapp"
+  ],
+  "locks": ["/data/code/goatcms/emptyapp-dev!deploy"],
+  "executor": "onlylast",
+  "trigger": ["DeployDevGoatCMSEmptyapp"],
+  "script": {
+    "cwd": "/data/code/goatcms/emptyapp-dev/src/github.com/goatcms/emptyapp",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "goatcms/emptyapp:dev"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-push.sh", "goatcms/emptyapp:dev"]
+    }]
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "BuildFirmomCICD",
+  "secret": [],
+  "task": "RefreshFirmomCICD"
+}

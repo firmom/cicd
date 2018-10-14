@@ -1,0 +1,14 @@
+{{- define "ipsv4" -}}
+{{- $ctx := . -}}
+
+{{- $rows := (unique (split $ctx.data " ")) -}}
+
+{{- range $i, $row := $rows -}}
+  {{- $arr := (split $row "+") -}}
+  {{- if ne $i 0 -}}
+    {{$ctx.sep}}
+  {{- end -}}
+  {{- index $arr 0 -}}
+{{- end -}}
+
+{{- end -}}

@@ -1,0 +1,6 @@
+{
+  "cicd": {
+    "cert": "firmom.com",
+    "host": "cicd.firmom.com"
+  }
+}

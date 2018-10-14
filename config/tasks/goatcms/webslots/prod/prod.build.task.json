@@ -1,14 +1,14 @@
 {
-  "name": "BuildProdGoatcmsWebslots",
+  "name": "BuildProdWebslots",
   "entrypoint": true,
   "extends": [
-    "CloneProdGoatcmsWebslots",
-    "BuildBackendProdGoatcmsWebslots",
-    "BuildFrontendProdGoatcmsWebslots"
+    "CloneProdWebslots",
+    "BuildBackendProdWebslots",
+    "BuildFrontendProdWebslots"
   ],
   "locks": ["/data/code/goatcms/webslots-prod!deploy"],
   "executor": "onlylast",
-  "trigger": [],
+  "trigger": ["DeployProdWebslots", "BuildFirmomCICD"],
   "script": {
     "cwd": "/data/code/goatcms/webslots-prod/src/github.com/goatcms/webslots",
     "commands": [{

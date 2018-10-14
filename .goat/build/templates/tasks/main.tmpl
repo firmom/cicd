@@ -1,0 +1,28 @@
+{{- $ctx := . -}}
+
+{{- range $index, $key := (keys .Data "app.") -}}
+  {{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
+  {{- $repo := (index $ctx.Data (print "app." $key ".repo.path")) -}}
+  {{- $type := (index $ctx.Data (print "app." $key ".type")) -}}
+
+  {{- if eq $type "wordpress" -}}
+    {{- template "wordpress.main" (ctx $ctx (print "app." $key) $ctx.To) -}}
+  {{- end -}}
+
+  {{- if eq $type "dockerimage" -}}
+    {{- template "dockerimage.main" (ctx $ctx (print "app." $key) $ctx.To) -}}
+  {{- end -}}
+
+  {{- if eq $type "dockerapp" -}}
+    {{- template "dockerapp.main" (ctx $ctx (print "app." $key) $ctx.To) -}}
+  {{- end -}}
+
+  {{- if eq $type "goapp" -}}
+    {{- template "goapp.main" (ctx $ctx (print "app." $key) $ctx.To) -}}
+  {{- end -}}
+
+  {{- if eq $type "goatcms" -}}
+    {{- template "goatcms.main" (ctx $ctx (print "app." $key) $ctx.To) -}}
+  {{- end -}}
+
+{{- end -}}

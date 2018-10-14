@@ -1,0 +1,37 @@
+{
+  "app": {
+    "goatcms": {
+      "dev": {
+        "port": "2011"
+      },
+      "docker": {
+        "image": "goatcms/goatcms"
+      },
+      "name": "GoatCMS",
+      "prod": {
+        "cert": "goatcms.org",
+        "host": "goatcms.org",
+        "port": "4011"
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "goatcms/goatcms"
+      },
+      "stage": {
+        "port": "3011"
+      },
+      "type": "goatcms",
+      "trigger": {
+        "1": {
+          "name": "BuildWebslots"
+        },
+        "2": {
+          "name": "BuildGoatCMSEmptyapp"
+        },
+        "2": {
+          "name": "BuildBeerpolyHome"
+        }
+      }
+    }
+  }
+}

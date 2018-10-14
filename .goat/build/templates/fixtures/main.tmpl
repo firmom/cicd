@@ -1,0 +1,8 @@
+{{- $ctx := . -}}
+
+{{- $path := (print $ctx.To "/main.fragments.json") -}}
+{{- if not ($ctx.Filesystem.IsFile $path) -}}
+  {{- $ctx.Out.File $path -}}
+    {{- template "main_fragments_json" $ctx -}}
+  {{- $ctx.Out.EOF -}}
+{{- end -}}

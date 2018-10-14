@@ -1,0 +1,31 @@
+{
+  "app": {
+    "webslots": {
+      "dev": {
+        "port": "2333"
+      },
+      "docker": {
+        "image": "goatcms/webslots"
+      },
+      "name": "Webslots",
+      "prod": {
+        "cert": "firmom.com",
+        "host": "webslots.firmom.com",
+        "port": "4333"
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "goatcms/webslots"
+      },
+      "stage": {
+        "port": ""
+      },
+      "type": "goatcms",
+      "trigger": {
+        "1": {
+          "name": "BuildFirmomCICD"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{{- define "main_fragments_json" -}}
+{{- $ctx := . -}}
+{{- $cicdHost := (index $ctx.Properties.Project "cicd.host") -}}
+
+[{"ID": 1, "Lang": "pl", "Name": "view.custom.home.main.introduction", "Content": "
+# Witamy w Firmom CI/CD
+Zobacz [archiwum](/archive/). Lista projektów:
+
+{{- range $index, $key := (keys .Data "app.") -}}
+{{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
+{{- $repoHost := (index $ctx.Data (print "app." $key ".repo.host")) -}}
+{{- $repo := (index $ctx.Data (print "app." $key  ".repo.path")) -}}
+{{- $prodHost := (index $ctx.Data (print "app." $key ".prod.host")) -}}
+{{- $prodPort := (index $ctx.Data (print "app." $key ".prod.port")) -}}
+{{- $prodCert := (index $ctx.Data (print "app." $key ".prod.cert")) -}}
+{{- $devPort := (index $ctx.Data (print "app." $key ".dev.port")) -}}
+{{- $stagePort := (index $ctx.Data (print "app." $key ".stage.port")) }}
+
+## {{lower $name}}
+[Repozytorium](https://{{$repoHost}}/{{$repo}})
+{{- if and (ne $devPort "") (ne $devPort "!") }}
+* [Deweloperska](https://{{$cicdHost}}:{{$devPort}}), branch [dev](https://{{$repoHost}}/{{$repo}}/tree/dev)
+{{- end }}
+{{- if and (ne $stagePort "") (ne $stagePort "!") }}
+* [Testowa](https://{{$cicdHost}}:{{$devPort}}), branch [stage](https://{{$repoHost}}/{{$repo}}/tree/stage)
+{{- end }}
+{{- if and (ne $prodPort "") (ne $prodPort "!") }}
+* [Produkcja](https://{{$cicdHost}}:{{$devPort}}), branch [master](https://{{$repoHost}}/{{$repo}}/tree/master)
+{{- end }}
+{{- end }}
+
+"}, {"ID": 2, "Lang": "en", "Name": "view.custom.home.main.introduction", "Content": "
+# Index of Firmom CI/CD
+See [archive](/archives/). Projects list:
+
+{{- range $index, $key := (keys .Data "app.") -}}
+{{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
+{{- $repoHost := (index $ctx.Data (print "app." $key ".repo.host")) -}}
+{{- $repo := (index $ctx.Data (print "app." $key  ".repo.path")) -}}
+{{- $prodHost := (index $ctx.Data (print "app." $key ".prod.host")) -}}
+{{- $prodPort := (index $ctx.Data (print "app." $key ".prod.port")) -}}
+{{- $prodCert := (index $ctx.Data (print "app." $key ".prod.cert")) -}}
+{{- $devPort := (index $ctx.Data (print "app." $key ".dev.port")) -}}
+{{- $stagePort := (index $ctx.Data (print "app." $key ".stage.port")) }}
+
+## {{lower $name}}
+[Repository](https://{{$repoHost}}/{{$repo}})
+{{- if and (ne $devPort "") (ne $devPort "!") }}
+* Development, branch [dev](https://{{$repoHost}}/{{$repo}}/tree/dev)
+{{- end }}
+{{- if and (ne $stagePort "") (ne $stagePort "!") }}
+* Stage, branch [stage](https://{{$repoHost}}/{{$repo}}/tree/stage)
+{{- end }}
+{{- if and (ne $prodPort "") (ne $prodPort "!") }}
+* Production, branch [master](https://{{$repoHost}}/{{$repo}}/tree/master)
+{{- end }}
+{{- end }}
+"}
+]
+
+{{- end -}}

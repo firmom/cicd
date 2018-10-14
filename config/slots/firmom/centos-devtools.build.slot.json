@@ -1,0 +1,5 @@
+{
+  "name": "BuildCentosDevtools",
+  "secret": [],
+  "task": "RefreshCentosDevtools"
+}

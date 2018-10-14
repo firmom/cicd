@@ -4,7 +4,7 @@ set -e
 REPO="$1"
 TAG="$2"
 IMAGE="$3"
-DEST_DIR_PATH="/data/docker/$REPO-$TAG"
+DEST_DIR_PATH="/data/deploy/$REPO-$TAG"
 DEST_FILE_PATH="$DEST_DIR_PATH/docker-compose.yaml"
 
 mkdir -p $DEST_DIR_PATH
@@ -21,44 +21,44 @@ services:
     restart: always
     environment:
       - "MODE=SSL"
-      - "DOMAIN=firmom.com:2012"
+      - "DOMAIN=cicd.firmom.com:2012"
       - "DB_HOST=db"
       - "DB_PORT=3306"
-      - "DB_NAME=dev.events.pozoga.eu"
-      - "DB_USER=$EVENTS_POZOGA_EU_DB_USER"
-      - "DB_SNAPSHOT=$EVENTS_POZOGA_EU_DB_SNAPSHOT"
-      - "DB_PASS=$EVENTS_POZOGA_EU_DB_PASS"
-      - "WP_USER=$EVENTS_POZOGA_EU_WP_USER_NAME"
-      - "WP_PASS=$EVENTS_POZOGA_EU_WP_USER_PASS"
-      - "WP_EMAIL=$EVENTS_POZOGA_EU_WP_USER_EMAIL"
+      - "DB_NAME=dev.EventsPozogaEu"
+      - "DB_USER=$EVENTSPOZOGAEU_DB_USER"
+      - "DB_PASS=$EVENTSPOZOGAEU_DB_PASS"
+      - "WP_USER=$EVENTSPOZOGAEU_WP_USER_NAME"
+      - "WP_PASS=$EVENTSPOZOGAEU_WP_USER_PASS"
+      - "WP_EMAIL=$EVENTSPOZOGAEU_WP_USER_EMAIL"
       - "WP_HOST=$DEPLOY_DEV_REMOTE_HOST:2012"
       - "WP_TITLE=Events Poznań"
-      - "MIGRATE_FROM=http://events.pozoga.eu"
-      - "MIGRATE_TO=http://$DEPLOY_DEV_REMOTE_HOST:2012"
+      - "DB_SNAPSHOT=$EVENTSPOZOGAEU_DB_SNAPSHOT"
+      - "MIGRATE_FROM=events.pozoga.eu"
+      - "MIGRATE_TO=cicd.firmom.com:2012"
     volumes:
       - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
       - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
-      - "/dockerdata/$REPO/$TAG/certs/firmom.com:/certs"
+      - "/dockerdata/certs/firmom.com:/certs"
     ports:
       - 2012:443
   db:
     image: mariadb
     restart: always
     environment:
-      - "MYSQL_DATABASE=dev.events.pozoga.eu"
-      - "MYSQL_USER=$EVENTS_POZOGA_EU_DB_USER"
-      - "MYSQL_PASSWORD=$EVENTS_POZOGA_EU_DB_PASS"
-      - "MYSQL_ROOT_PASSWORD=$EVENTS_POZOGA_EU_DB_PASS"
+      - "MYSQL_DATABASE=dev.EventsPozogaEu"
+      - "MYSQL_USER=$EVENTSPOZOGAEU_DB_USER"
+      - "MYSQL_PASSWORD=$EVENTSPOZOGAEU_DB_PASS"
+      - "MYSQL_ROOT_PASSWORD=$EVENTSPOZOGAEU_DB_PASS"
     volumes:
       - "/dockerdata/$REPO/$TAG/mysql:/var/lib/mysql"
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-     - 2013:80
+     - 12012:80
     environment:
       - "PMA_HOST=db"
-      - "PMA_VERBOSE=dev.events.pozoga.eu"
+      - "PMA_VERBOSE=dev.EventsPozogaEu"
       - "PMA_PORT=3306"
       - "PMA_ARBITRARY=1"
 

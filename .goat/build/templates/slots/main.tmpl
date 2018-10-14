@@ -1,0 +1,15 @@
+{{- $ctx := . -}}
+
+{{- range $index, $key := (keys .Data "app.") -}}
+  {{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
+  {{- $repo := (index $ctx.Data (print "app." $key ".repo.path")) -}}
+
+  {{- $path := (print $ctx.To "/" (lower $repo) ".build.slot.json") -}}
+  {{- if not ($ctx.Filesystem.IsFile $path) -}}
+    {{- $ctx.Out.File $path -}}
+      {{- template "slot.json" (dict "slot" (print "Build" (camelcaseuf $name)) "task" (print "Refresh" (camelcaseuf $name))) -}}
+    {{- $ctx.Out.EOF -}}
+  {{- end -}}
+
+
+{{- end -}}

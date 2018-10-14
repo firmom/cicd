@@ -1,0 +1,66 @@
+version: '3.4'
+
+services:
+  reverseproxy:
+    image: firmom/docker-proxy
+    restart: always
+    environment:
+      - "PROXY_BuildBeerpoly_FROM=beerpolygo.gamein.pl"
+      - "PROXY_BuildBeerpoly_CERT=gamein.pl"
+      - "PROXY_BuildBeerpoly_TO=cicd.firmom.com"
+      - "PROXY_BuildBeerpoly_PORT=4077"
+      - "PROXY_BuildBeerpolyHome_FROM=beerpolygo.gamein.pl"
+      - "PROXY_BuildBeerpolyHome_CERT=gamein.pl"
+      - "PROXY_BuildBeerpolyHome_TO=cicd.firmom.com"
+      - "PROXY_BuildBeerpolyHome_PORT=4078"
+      - "PROXY_BuildEventsPozogaEu_FROM=events.pozoga.eu"
+      - "PROXY_BuildEventsPozogaEu_CERT=pozoga.eu"
+      - "PROXY_BuildEventsPozogaEu_TO=cicd.firmom.com"
+      - "PROXY_BuildEventsPozogaEu_PORT=4012"
+      - "PROXY_BuildGoatCMS_FROM=goatcms.org"
+      - "PROXY_BuildGoatCMS_CERT=goatcms.org"
+      - "PROXY_BuildGoatCMS_TO=cicd.firmom.com"
+      - "PROXY_BuildGoatCMS_PORT=4011"
+      - "PROXY_BuildWebslots_FROM=webslots.firmom.com"
+      - "PROXY_BuildWebslots_CERT=firmom.com"
+      - "PROXY_BuildWebslots_TO=cicd.firmom.com"
+      - "PROXY_BuildWebslots_PORT=4333"
+      - "PROXY_BuildFirmomCICD_FROM=cicd.firmom.com"
+      - "PROXY_BuildFirmomCICD_CERT=firmom.com"
+      - "PROXY_BuildFirmomCICD_TO=cicd.firmom.com"
+      - "PROXY_BuildFirmomCICD_PORT=1333"
+    networks:
+      - nproxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/dockerdata/certs:/certs"
+
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - 1555:5000
+    environment:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/fullchain.pem
+      REGISTRY_HTTP_TLS_KEY: /certs/privkey.pem
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+    volumes:
+      - /dockerdata/_registry/registry:/var/lib/registry
+      - /dockerdata/_registry/auth:/auth
+      - /dockerdata/certs/firmom.com:/certs
+
+  cleaner:
+    image: spozoga/docker-cleaner
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+
+networks:
+  nproxy:
+    external:
+      name: nproxy
+  default:

@@ -1,0 +1,22 @@
+{
+  "name": "DeployProdBeerpolyHome",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["docker!gameinpl/beerpoly-home:prod"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-domain.sh", "gamein.pl"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-deploy.sh", "gameinpl/beerpoly-home", "prod", "gamein.pl"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/tasks/gameinpl/beerpoly-home/prod.deploy.config.sh", "gameinpl/beerpoly-home", "prod", "gameinpl/beerpoly-home:prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "gameinpl/beerpoly-home", "prod", "gameinpl/beerpoly-home:prod"]
+    }]
+  }
+}

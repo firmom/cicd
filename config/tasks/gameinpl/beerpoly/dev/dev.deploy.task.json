@@ -1,0 +1,22 @@
+{
+  "name": "DeployDevBeerpoly",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["docker!gameinpl/beerpoly:dev"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-domain.sh", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-deploy.sh", "gameinpl/beerpoly", "dev", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/tasks/gameinpl/beerpoly/dev.deploy.config.sh", "gameinpl/beerpoly", "dev", "gameinpl/beerpoly:dev"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "gameinpl/beerpoly", "dev", "gameinpl/beerpoly:dev"]
+    }]
+  }
+}

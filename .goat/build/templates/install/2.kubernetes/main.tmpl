@@ -1,0 +1,15 @@
+{{- $ctx := . -}}
+
+{{- $path := (print $ctx.To "/kubernetes/install.sh") -}}
+{{- if not ($ctx.Filesystem.IsFile $path) -}}
+  {{- $ctx.Out.File $path -}}
+    {{- template "kubernetes.install.sh" $ctx -}}
+  {{- $ctx.Out.EOF -}}
+{{- end -}}
+
+{{- $path := (print $ctx.To "/kubernetes/master-remote.sh") -}}
+{{- if not ($ctx.Filesystem.IsFile $path) -}}
+  {{- $ctx.Out.File $path -}}
+    {{- template "kubernetes.master-remote.sh" $ctx -}}
+  {{- $ctx.Out.EOF -}}
+{{- end -}}

@@ -1,15 +1,6 @@
 {
   "name": "BuildFirmomCICD",
   "entrypoint": true,
-  "extends": ["CloneFirmomCICD"],
-  "locks": ["/data/code/firmom/cicd:deploy"],
   "executor": "onlylast",
-  "trigger": ["DeployFirmomCICD"],
-  "script": {
-    "cwd": "/data/code/firmom/cicd",
-    "commands": [{
-      "command": "docker",
-      "args": ["build", ".", "-t", "firmom/cicd"]
-    }]
-  }
+  "trigger": ["BuildDevFirmomCICD", "BuildProdFirmomCICD"]
 }

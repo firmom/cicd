@@ -1,0 +1,26 @@
+{
+  "app": {
+    "cicd": {
+      "dev": {
+        "port": "1510"
+      },
+      "docker": {
+        "image": "firmom/cicd"
+      },
+      "name": "FirmomCICD",
+      "prod": {
+        "cert": "",
+        "host": "",
+        "port": "!"
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "firmom/cicd"
+      },
+      "stage": {
+        "port": ""
+      },
+      "type": "dockerimage"
+    }
+  }
+}
