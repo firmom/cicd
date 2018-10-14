@@ -24,3 +24,7 @@ docker run -it --rm --name certbot \
   certbot/certbot \
   certonly --manual --preferred-challenges dns-01 --agree-tos --cert-name "$DOMAIN" -d "$DOMAIN" -d "*.$DOMAIN" --email "$CERT_EMAIL" --server "$SERVER"
 ```
+You can verification DNS record deployment by:
+```
+nslookup -q=txt _acme-challenge.gamein.pl
+```
