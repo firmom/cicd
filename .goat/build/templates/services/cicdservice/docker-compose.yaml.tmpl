@@ -14,7 +14,7 @@ services:
     environment:
       - "TZ=Europe/Warsaw"
       - "MODE=HTTPS"
-      - "APP_HOST=localhost"
+      - "APP_HOST={{index $ctx.Properties.Project "cicd.host"}}"
       - "APP_BASE_URL=https://{{index $ctx.Properties.Project "cicd.host"}}"
       - "OAUTH_GITHUB_APP={{index $ctx.Properties.Secrets "oauth.github.app"}}"
       - "OAUTH_GITHUB_SECRET={{index $ctx.Properties.Secrets "oauth.github.secret"}}"
