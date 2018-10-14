@@ -2,6 +2,7 @@
 {{- $ctx := . -}}
 {{- $cicdHost := (index $ctx.Properties.Project "cicd.host") -}}
 {{- $cicdCert := (index $ctx.Properties.Project "cicd.cert") -}}
+{{- $registryPort := (index $ctx.Properties.Secrets "registry.port") -}}
 
 version: '3.4'
 
@@ -39,7 +40,7 @@ services:
     restart: always
     image: registry:2
     ports:
-      - 5000:5000
+      - {{$registryPort}}:5000
     environment:
       REGISTRY_HTTP_TLS_CERTIFICATE: /certs/fullchain.pem
       REGISTRY_HTTP_TLS_KEY: /certs/privkey.pem
