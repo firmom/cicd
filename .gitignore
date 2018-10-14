@@ -1,1 +1,44 @@
-/docker-compose.yaml
+# docker
+/services/docker-compose.yaml
+/services/docker-compose-old.yaml
+/services/cicdservice/docker-compose.yaml
+/services/cicdservice/docker-compose-old.yaml
+
+# .goat - personal data
+/.goat/secrets.json
+/.goat/data/user
+
+# genereted files
+/bin
+
+# logs files
+*.log
+
+# database
+*.db
+*.db-journal
+
+# web
+/web/.DS_STORE
+/web/node_modules
+/web/dist/build
+/web/coverage
+/assets/images
+npm-debug.log
+
+# system
+*.test
+*~
+*.exe
+*.log
+/tmp/
+
+# build
+./main
+
+# debug
+debug
+
+# IDEs
+.idea/
+/configuration.json
