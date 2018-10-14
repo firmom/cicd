@@ -7,7 +7,7 @@ IMAGE="$3"
 
 # Deploy config
 ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST "mkdir -p ~/$REPO-$TAG/"
-scp -o "StrictHostKeyChecking no" "/data/docker/$REPO-$TAG/docker-compose.yaml" "$DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/$REPO-$TAG/docker-compose.yaml"
+scp -o "StrictHostKeyChecking no" "/data/deploy/$REPO-$TAG/docker-compose.yaml" "$DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST:~/$REPO-$TAG/docker-compose.yaml"
 
 # Deploy App
 ssh -o "StrictHostKeyChecking no" $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST << ENDSSH
