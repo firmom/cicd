@@ -64,6 +64,7 @@ services:
       - "USER_1_PASSWORD=Insert_password"
       - "USER_1_CONNECT_GITHUB=Insert_github_name"
     volumes:
+      - "/etc/letsencrypt/live:/etc/letsencrypt/live"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/dockerdata/firmom/cicd/data:/data"
       - "/dockerdata/firmom/cicd/ssh:/root/.ssh"

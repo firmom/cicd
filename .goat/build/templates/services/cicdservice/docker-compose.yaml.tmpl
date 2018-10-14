@@ -72,6 +72,7 @@ services:
       - "USER_{{upper $key}}_CONNECT_GITHUB={{$githubID}}"
 {{- end }}
     volumes:
+      - "/etc/letsencrypt/live:/etc/letsencrypt/live"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/dockerdata/firmom/cicd/data:/data"
       - "/dockerdata/firmom/cicd/ssh:/root/.ssh"
