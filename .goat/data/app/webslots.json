@@ -10,7 +10,7 @@
       "name": "Webslots",
       "prod": {
         "cert": "firmom.com",
-        "host": "cicd.firmom.com",
+        "host": "webslots.firmom.com",
         "port": "4333"
       },
       "repo": {
