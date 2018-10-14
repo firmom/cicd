@@ -36,13 +36,17 @@ RUN apt-get install -y ruby-full
 # sass install
 RUN gem install sass
 
-# Add config
+# load fixtures (contains fragments)
+RUN rm -rf data && rm -rf config && rm -rf data
+RUN rm main.db ||:
+
 COPY config/helpers /app/config/helpers
 COPY config/slots /app/config/slots
 COPY config/tasks /app/config/tasks
+COPY fixtures /app/fixtures
 
 # entrypoint
-COPY custom-entrypoint.sh "/app/docker/custom-entrypoint.sh"
-RUN chmod +x "/app/docker/custom-entrypoint.sh"
-ENTRYPOINT ["/app/docker/custom-entrypoint.sh"]
+COPY docker/entrypoint.sh "/app/docker/entrypoint.sh"
+RUN chmod +x "/app/docker/entrypoint.sh"
+ENTRYPOINT ["/app/docker/entrypoint.sh"]
 CMD []

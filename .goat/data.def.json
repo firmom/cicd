@@ -1,0 +1,132 @@
+[{
+  "type":"app",
+  "properties":[{
+    "prompt":"Insert app name",
+    "key":"name",
+    "type":"line",
+    "pattern": "^[a-zA-Z]+[a-zA-Z0-9_.]*[a-zA-Z0-9]+$",
+    "min":1,
+    "max":250
+  }, {
+    "prompt":"Insert app type (like wordpress, dockerimage, goatcms...)",
+    "key":"type",
+    "type":"line",
+    "pattern": "^(wordpress|goatcms|dockerimage)$",
+    "min":1,
+    "max":250
+  }, {
+    "prompt":"Insert test config (it is flag or path to test for goapp)",
+    "key":"test",
+    "type":"line",
+    "min":1,
+    "max":2000
+  }, {
+    "prompt":"Insert repository host (like github.com or bitbucket.org)",
+    "key":"repo.host",
+    "type":"line",
+    "min":1,
+    "max":1024
+  }, {
+    "prompt":"Insert code repository path (like goatcms/goatcore or sebastianpozoga/events.pozoga.eu)",
+    "key":"repo.path",
+    "type":"line",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert docker image name",
+    "key":"docker.image",
+    "type":"line",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert development port",
+    "key":"dev.port",
+    "type":"line",
+    "pattern": "^[0-9]*$",
+    "min":0,
+    "max":1000
+  }, {
+    "prompt":"Insert stage port",
+    "key":"stage.port",
+    "type":"line",
+    "pattern": "^[0-9]*$",
+    "min":0,
+    "max":1000
+  }, {
+    "prompt":"Insert production port",
+    "key":"prod.port",
+    "type":"line",
+    "pattern": "^[0-9]*$",
+    "min":0,
+    "max":1000
+  }, {
+    "prompt":"Insert production cert",
+    "key":"prod.cert",
+    "type":"line",
+    "min":0,
+    "max":1024
+  }, {
+    "prompt":"Insert production domain (host)",
+    "key":"prod.host",
+    "type":"line",
+    "min":0,
+    "max":1024
+  }],
+  "collections":[{
+    "key": "prod.trigger",
+    "type": "array",
+    "prompt": "Insert task name",
+    "properties": [{
+      "prompt":"Insert task name to run",
+      "key":"name",
+      "type":"line",
+      "min":1,
+      "max":1000,
+      "pattern": "^[A-Za-z]+$"
+    }]
+  }]
+}, {
+  "type":"user",
+  "properties":[{
+    "prompt":"Insert username",
+    "key":"name",
+    "type":"line",
+    "pattern": "^[a-zA-Z]+[a-zA-Z0-9_.]*[a-zA-Z0-9]+$",
+    "min":1,
+    "max":500
+  }, {
+    "prompt":"Insert password",
+    "key":"password",
+    "type":"line",
+    "pattern": "^[a-zA-Z]+[a-zA-Z0-9_.]*[a-zA-Z0-9]+$",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert firstname",
+    "key":"firstname",
+    "type":"line",
+    "pattern": "^[a-zA-Z]+[a-zA-Z0-9_.]*[a-zA-Z0-9]+$",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert lastname",
+    "key":"lastname",
+    "type":"line",
+    "pattern": "^[a-zA-Z]+[a-zA-Z0-9_.]*[a-zA-Z0-9]+$",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert email",
+    "key":"email",
+    "type":"line",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert github username (to connect account)",
+    "key":"connect.github",
+    "type":"line",
+    "min":1,
+    "max":1000
+  }],
+  "collections":[]
+}]

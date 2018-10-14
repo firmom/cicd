@@ -1,0 +1,7 @@
+{{- define "kubernetes.install.sh" -}}
+{{- $ctx := . -}}
+{{- $masterIP := (index .Properties.Secrets "master.ip") -}}
+
+ssh root@{{template "ipv4" $masterIP}} 'bash -s' < master-remote.sh
+
+{{- end -}}

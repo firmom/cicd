@@ -1,0 +1,38 @@
+{
+  "app": {
+    "goatcore": {
+      "dev": {
+        "port": ""
+      },
+      "docker": {
+        "image": ""
+      },
+      "name": "GoatCore",
+      "prod": {
+        "cert": "",
+        "host": "",
+        "port": "!"
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "goatcms/goatcore"
+      },
+      "stage": {
+        "port": ""
+      },
+      "test": "",
+      "type": "goapp",
+      "trigger": {
+        "1": {
+          "name": "BuildGoatCLI"
+        },
+        "2": {
+          "name": "BuildGoatCMS"
+        },
+        "4": {
+          "name": "BuildCentosDevtools"
+        }
+      }
+    }
+  }
+}

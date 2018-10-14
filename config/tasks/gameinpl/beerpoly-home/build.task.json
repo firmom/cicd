@@ -1,0 +1,6 @@
+{
+  "name": "BuildBeerpolyHome",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "trigger": ["BuildDevBeerpolyHome", "BuildProdBeerpolyHome"]
+}

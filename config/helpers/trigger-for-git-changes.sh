@@ -13,11 +13,17 @@ if [ -d "$DIRECTORY" ]; then
     echo "$DIRECTORY no changes"
   else
     echo "$DIRECTORY changed"
-    curl -X POST "https://localhost/api/task/$TASK/$API_SECRET"
+    # Set silent mode. API_SECRET musn't be logged.
+    set +x
+    curl --insecure -X POST "https://localhost/api/task/$TASK/$API_SECRET"
+    set -x
   fi
 fi
 
 if [ ! -d "$DIRECTORY" ]; then
   echo "$DIRECTORY doesn't exists - trigger to pull"
-  curl -X POST "https://localhost/api/task/$TASK/$API_SECRET"
+  # Set silent mode. API_SECRET musn't be logged.
+  set +x
+  curl --insecure -X POST "https://localhost/api/task/$TASK/$API_SECRET" &>/dev/null
+  set -x
 fi

@@ -1,0 +1,26 @@
+{
+  "app": {
+    "centosdevtools": {
+      "dev": {
+        "port": ""
+      },
+      "docker": {
+        "image": "firmom/centos-devtools"
+      },
+      "name": "CentosDevtools",
+      "prod": {
+        "cert": "",
+        "host": "",
+        "port": "!"
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "firmom/centos-devtools"
+      },
+      "stage": {
+        "port": ""
+      },
+      "type": "dockerimage"
+    }
+  }
+}

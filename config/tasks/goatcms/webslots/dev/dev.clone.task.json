@@ -1,6 +1,7 @@
 {
-  "name": "CloneDevGoatcmsWebslots",
+  "name": "CloneDevWebslots",
   "entrypoint": false,
+  "extends": [],
   "locks": ["/data/code/goatcms/webslots-dev"],
   "executor": "fifo",
   "script": {

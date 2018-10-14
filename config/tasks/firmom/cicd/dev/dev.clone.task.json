@@ -1,0 +1,13 @@
+{
+  "name": "CloneDevFirmomCICD",
+  "entrypoint": false,
+  "extends": [],
+  "locks": ["/data/code/firmom/cicd-dev"],
+  "executor": "fifo",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/git-clone.sh", "github.com", "firmom/cicd", "dev", "dev"]
+    }]
+  }
+}

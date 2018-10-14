@@ -1,0 +1,42 @@
+{{- define "goatcms.main" -}}
+{{- $ctx := . -}}
+{{- $name := (index $ctx.Data (print $ctx.From ".name")) -}}
+{{- $repo := (index $ctx.Data (print $ctx.From ".repo.path")) -}}
+{{- $type := (index $ctx.Data (print $ctx.From ".type")) -}}
+{{- $devPort := (index $ctx.Data (print $ctx.From ".dev.port")) -}}
+{{- $stagePort := (index $ctx.Data (print $ctx.From ".stage.port")) -}}
+{{- $prodPort := (index $ctx.Data (print $ctx.From ".prod.port")) -}}
+
+{{- $path := (print $ctx.To "/" (lower $repo) "/build.task.json") -}}
+{{- if not ($ctx.Filesystem.IsFile $path) -}}
+  {{- $ctx.Out.File $path -}}
+    {{- template "goatcms.build_task_json" $ctx -}}
+  {{- $ctx.Out.EOF -}}
+{{- end -}}
+
+{{- $path := (print $ctx.To "/" (lower $repo) "/refresh.task.json") -}}
+{{- if not ($ctx.Filesystem.IsFile $path) -}}
+  {{- $ctx.Out.File $path -}}
+    {{- template "goatcms.refresh_task_json" $ctx -}}
+  {{- $ctx.Out.EOF -}}
+{{- end -}}
+
+{{- if ne $devPort "" }}
+  {{- $host := (index .Properties.Project "cicd.host") -}}
+  {{- $cert := (index .Properties.Project "cicd.cert") -}}
+  {{- template "goatcms.env" (dict "ctx" $ctx "env" "dev" "branch" "dev" "port" $devPort "cert" $cert "host" $host) -}}
+{{- end }}
+
+{{- if ne $stagePort "" }}
+  {{- $host := (index .Properties.Project "cicd.host") -}}
+  {{- $cert := (index .Properties.Project "cicd.cert") -}}
+  {{- template "goatcms.env" (dict "ctx" $ctx "env" "stage" "branch" "stage" "port" $stagePort "cert" $cert "host" $host) -}}
+{{- end }}
+
+{{- if ne $prodPort "" }}
+  {{- $host := index $ctx.Data (print $ctx.From ".prod.host") -}}
+  {{- $cert := index $ctx.Data (print $ctx.From ".prod.cert") -}}
+  {{- template "goatcms.env" (dict "ctx" $ctx "env" "prod" "branch" "master" "port" $prodPort "cert" $cert "host" $host) -}}
+{{- end }}
+
+{{- end -}}

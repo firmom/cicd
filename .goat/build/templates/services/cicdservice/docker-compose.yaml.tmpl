@@ -1,0 +1,89 @@
+{{- define "cicdservice_docker_compose_yaml" -}}
+{{- $ctx := . -}}
+{{- $cicdHost := (index $ctx.Properties.Project "cicd.host") -}}
+{{- $cicdCert := (index $ctx.Properties.Project "cicd.cert") -}}
+
+version: '3.4'
+
+services:
+  cicd:
+    image: firmom/cicd:prod
+    networks:
+      - nproxy
+    restart: always
+    environment:
+      - "TZ=Europe/Warsaw"
+      - "MODE=HTTPS"
+      - "APP_HOST=localhost"
+      - "APP_BASE_URL=https://{{index $ctx.Properties.Project "cicd.host"}}"
+      - "OAUTH_GITHUB_APP={{index $ctx.Properties.Secrets "oauth.github.app"}}"
+      - "OAUTH_GITHUB_SECRET={{index $ctx.Properties.Secrets "oauth.github.secret"}}"
+
+      # Letsencrypt
+      - "CERT_EMAIL={{index $ctx.Properties.Secrets "cert.email"}}"
+
+      # Deploy
+      - "DEPLOY_DEV_REMOTE_USER={{index $ctx.Properties.Secrets "deploy.remote.user"}}"
+      - "DEPLOY_DEV_REMOTE_HOST={{index $ctx.Properties.Secrets "deploy.remote.host"}}"
+
+      # DockerHUB secrets
+      - "DOCKER_PASSWORD_FILE=/docker-password"
+      - "DOCKER_USERNAME={{index $ctx.Properties.Secrets "dockerhub.user"}}"
+      - "DOCKER_PASSWORD={{index $ctx.Properties.Secrets "dockerhub.password"}}"
+
+      # slots
+{{- range $index, $key := (keys .Data "app.") -}}
+{{- $name := (index $ctx.Data (print "app." $key ".name")) }}
+      - "SLOT_Build{{camelcaseuf $name}}_SECRET_1={{template "secret" (dict "ctx" $ctx "name" $name)}}"
+{{- end }}
+
+      # Projects
+{{- range $index, $key := (keys .Data "app.") -}}
+{{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
+{{- $type := (index $ctx.Data (print "app." $key ".type")) -}}
+{{- $prodHost := (index $ctx.Data (print "app." $key ".prod.host")) -}}
+
+{{- if eq $type "wordpress" }}
+      - "{{upper $name}}_DB_USER={{template "randomuser" (dict "length" 22)}}"
+      - "{{upper $name}}_DB_PASS={{template "randomsecret" (dict "length" 62)}}"
+      - "{{upper $name}}_DB_SNAPSHOT=/data/snapshots/latest.sql"
+      - "{{upper $name}}_WP_HOST={{$prodHost}}"
+      - "{{upper $name}}_WP_USER_NAME={{index $ctx.Properties.Secrets "user.default.user"}}"
+      - "{{upper $name}}_WP_USER_PASS={{index $ctx.Properties.Secrets "user.default.password"}}"
+      - "{{upper $name}}_WP_USER_EMAIL={{index $ctx.Properties.Secrets "user.default.email"}}"
+{{- end -}}
+
+{{- end }}
+
+      # Users
+{{- range $index, $key := (keys .Data "user.") -}}
+{{- $name := (index $ctx.Data (print "user." $key ".name")) -}}
+{{- $password := (index $ctx.Data (print "user." $key ".password")) -}}
+{{- $firstname := (index $ctx.Data (print "user." $key ".firstname")) -}}
+{{- $lastname := (index $ctx.Data (print "user." $key ".lastname")) -}}
+{{- $email := (index $ctx.Data (print "user." $key ".email")) -}}
+{{- $githubID := (index $ctx.Data (print "user." $key ".connect.github")) }}
+      - "USER_{{upper $key}}_USERNAME={{$name}}"
+      - "USER_{{upper $key}}_FIRSTNAME={{$firstname}}"
+      - "USER_{{upper $key}}_LASTNAME={{$lastname}}"
+      - "USER_{{upper $key}}_EMAIL={{$email}}"
+      - "USER_{{upper $key}}_ROLES=superadmin&admin"
+      - "USER_{{upper $key}}_PASSWORD={{$password}}"
+      - "USER_{{upper $key}}_CONNECT_GITHUB={{$githubID}}"
+{{- end }}
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/dockerdata/firmom/cicd/data:/data"
+      - "/dockerdata/firmom/cicd/ssh:/root/.ssh"
+      - "/dockerdata/certs/{{$cicdCert}}:/certs"
+    ports:
+      - 1333:443
+
+networks:
+  nproxy:
+    external:
+      name: nproxy
+  default:
+
+
+{{- end -}}

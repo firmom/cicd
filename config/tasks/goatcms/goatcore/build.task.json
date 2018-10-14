@@ -1,22 +1,6 @@
 {
-  "name": "BuildGoatcmsGoatcore",
+  "name": "BuildGoatCore",
   "entrypoint": true,
-  "extends": ["CloneGoatcmsGoatcore"],
-  "locks": [],
   "executor": "onlylast",
-  "trigger": ["BuildGoatcmsGoatcms", "BuildGoatcmsGoatcli"],
-  "script": {
-    "cwd": "/data/code/goatcms/goatcore-prod/src/github.com/goatcms/goatcore",
-    "commands": [{
-      "command": "sh",
-      "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "goatcms/goatcore", "prod"]
-    }, {
-      "cwd": ".",
-      "command": "sh",
-      "args": ["-x", "config/tasks/goatcms/goatcore/build-secrets.sh"]
-    }, {
-      "command": "sh",
-      "args": ["-x", "/app/config/helpers/golang/test.sh", "github.com", "goatcms/goatcore", "prod", "./..."]
-    }]
-  }
+  "trigger": ["BuildProdGoatCore"]
 }

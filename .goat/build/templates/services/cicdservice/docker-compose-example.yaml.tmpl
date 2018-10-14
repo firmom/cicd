@@ -1,0 +1,81 @@
+{{- define "cicdservice_docker_compose_example_yaml" -}}
+{{- $ctx := . -}}
+{{- $cicdHost := (index $ctx.Properties.Project "cicd.host") -}}
+{{- $cicdCert := (index $ctx.Properties.Project "cicd.cert") -}}
+
+version: '3.4'
+
+services:
+  cicd:
+    image: firmom/cicd:prod
+    networks:
+      - nproxy
+    restart: always
+    environment:
+      - "TZ=Europe/Warsaw"
+      - "MODE=HTTPS"
+      - "APP_HOST=Insert_your_cicd_host_like_cicd.firmom.com"
+      - "APP_BASE_URL=Insert_your_cicd_baseurl_like_https://cicd.firmom.com"
+      - "OAUTH_GITHUB_APP=Insert_your_github_oauth_app_id"
+      - "OAUTH_GITHUB_SECRET=Insert_your_github_oauth_secret"
+
+      # Letsencrypt
+      - "CERT_EMAIL=Insert_your_email_for_letsencrypt"
+
+      # Deploy
+      - "DEPLOY_DEV_REMOTE_USER=Insert_your_remote_user_name_to_deploy_app"
+      - "DEPLOY_DEV_REMOTE_HOST=Insert_your_remote_host_to_deploy_app"
+
+      # DockerHUB secrets
+      - "DOCKER_PASSWORD_FILE=/docker-password"
+      - "DOCKER_USERNAME=Insert_your_dockerhub_password_to_deploy_app_image"
+      - "DOCKER_PASSWORD=Insert_your_dockerhub_password_to_deploy_app_image"
+
+      # slots
+{{- range $index, $key := (keys .Data "app.") -}}
+{{- $name := (index $ctx.Data (print "app." $key ".name")) }}
+      - "SLOT_Build{{camelcaseuf $name}}_SECRET_1=Insert_your_secret"
+{{- end }}
+
+      # Projects
+{{- range $index, $key := (keys .Data "app.") -}}
+{{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
+{{- $type := (index $ctx.Data (print "app." $key ".type")) -}}
+{{- $prodHost := (index $ctx.Data (print "app." $key ".prod.host")) -}}
+
+{{- if eq $type "wordpress" }}
+      - "{{upper $name}}_DB_USER=Insert_your_database_username"
+      - "{{upper $name}}_DB_PASS=Insert_your_database_password"
+      - "{{upper $name}}_DB_SNAPSHOT=/data/snapshots/latest.sql"
+      - "{{upper $name}}_WP_HOST=Insert_your_host"
+      - "{{upper $name}}_WP_USER_NAME=Insert_your_wordpress_username"
+      - "{{upper $name}}_WP_USER_PASS=Insert_your_wordpress_password"
+      - "{{upper $name}}_WP_USER_EMAIL=Insert_your_wordpress_email"
+{{- end -}}
+
+{{- end }}
+
+      # Users
+      - "USER_1_USERNAME=Insert_user_name"
+      - "USER_1_FIRSTNAME=Insert_first_name"
+      - "USER_1_LASTNAME=Insert_last_name"
+      - "USER_1_EMAIL=Insert_email"
+      - "USER_1_ROLES=superadmin&admin"
+      - "USER_1_PASSWORD=Insert_password"
+      - "USER_1_CONNECT_GITHUB=Insert_github_name"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/dockerdata/firmom/cicd/data:/data"
+      - "/dockerdata/firmom/cicd/ssh:/root/.ssh"
+      - "/dockerdata/certs:/certs"
+    ports:
+      - 1333:443
+
+networks:
+  nproxy:
+    external:
+      name: nproxy
+  default:
+
+
+{{- end -}}

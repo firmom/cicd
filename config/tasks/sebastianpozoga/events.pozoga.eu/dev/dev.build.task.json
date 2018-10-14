@@ -2,7 +2,7 @@
   "name": "BuildDevEventsPozogaEu",
   "entrypoint": true,
   "extends": ["CloneDevEventsPozogaEu"],
-  "locks": ["/data/code/sebastianpozoga/events.pozoga.eu-dev", "docker!events.pozoga.eu:dev"],
+  "locks": ["/data/code/sebastianpozoga/events.pozoga.eu-dev", "docker!spozoga/events.pozoga.eu:dev"],
   "executor": "onlylast",
   "trigger": ["DeployDevEventsPozogaEu"],
   "script": {

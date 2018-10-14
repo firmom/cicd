@@ -1,0 +1,22 @@
+{
+  "name": "DeployDevGoatCMSEmptyapp",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["docker!goatcms/emptyapp:dev"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-domain.sh", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-deploy.sh", "goatcms/emptyapp", "dev", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/tasks/goatcms/emptyapp/dev.deploy.config.sh", "goatcms/emptyapp", "dev", "goatcms/emptyapp:dev"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "goatcms/emptyapp", "dev", "goatcms/emptyapp:dev"]
+    }]
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "BuildGoatCLI",
+  "secret": [],
+  "task": "RefreshGoatCLI"
+}

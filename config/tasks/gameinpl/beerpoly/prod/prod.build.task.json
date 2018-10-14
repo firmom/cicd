@@ -1,0 +1,18 @@
+{
+  "name": "BuildProdBeerpoly",
+  "entrypoint": true,
+  "extends": ["CloneProdBeerpoly"],
+  "locks": ["/data/code/gameinpl/beerpoly-prod"],
+  "executor": "onlylast",
+  "trigger": ["DeployProdBeerpoly"],
+  "script": {
+    "cwd": "/data/code/gameinpl/beerpoly-prod",
+    "commands": [{
+      "command": "docker",
+      "args": ["build", ".", "-t", "gameinpl/beerpoly:prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-push.sh", "gameinpl/beerpoly:prod"]
+    }]
+  }
+}

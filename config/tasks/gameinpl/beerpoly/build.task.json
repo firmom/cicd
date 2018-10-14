@@ -1,18 +1,6 @@
 {
-  "name": "BuildGameinplBeerpoly",
+  "name": "BuildBeerpoly",
   "entrypoint": true,
-  "extends": ["CloneGameinplBeerpoly"],
-  "locks": ["/data/code/gameinpl/beerpoly:deploy", "/data/code/gameinpl/beerpoly:archive"],
   "executor": "onlylast",
-  "trigger": ["DeployGameinplBeerpoly"],
-  "script": {
-    "cwd": "/data/code/gameinpl/beerpoly",
-    "commands": [{
-      "command": "npm",
-      "args": ["install"]
-    }, {
-      "command": "npm",
-      "args": ["run", "build:production"]
-    }]
-  }
+  "trigger": ["BuildDevBeerpoly", "BuildProdBeerpoly"]
 }

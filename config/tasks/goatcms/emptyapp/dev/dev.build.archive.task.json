@@ -1,0 +1,13 @@
+{
+  "name": "ArchiveDevGoatCMSEmptyapp",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["/data/archive/goatcms/emptyapp"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/archive.sh", "goatcms/emptyapp", "dev", "goatcmsemptyapp"]
+    }]
+  }
+}

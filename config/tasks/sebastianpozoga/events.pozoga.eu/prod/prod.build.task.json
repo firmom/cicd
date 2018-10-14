@@ -2,7 +2,7 @@
   "name": "BuildProdEventsPozogaEu",
   "entrypoint": true,
   "extends": ["CloneProdEventsPozogaEu"],
-  "locks": ["/data/code/sebastianpozoga/events.pozoga.eu-prod", "docker!events.pozoga.eu:prod"],
+  "locks": ["/data/code/sebastianpozoga/events.pozoga.eu-prod", "docker!spozoga/events.pozoga.eu:prod"],
   "executor": "onlylast",
   "trigger": ["DeployProdEventsPozogaEu"],
   "script": {

@@ -1,0 +1,22 @@
+{
+  "name": "DeployStageEventsPozogaEu",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["docker!spozoga/events.pozoga.eu:stage"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-domain.sh", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-deploy.sh", "sebastianpozoga/events.pozoga.eu", "stage", "firmom.com"]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/tasks/sebastianpozoga/events.pozoga.eu/stage.deploy.config.sh", "sebastianpozoga/events.pozoga.eu", "stage", "spozoga/events.pozoga.eu:stage"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "sebastianpozoga/events.pozoga.eu", "stage", "spozoga/events.pozoga.eu:stage"]
+    }]
+  }
+}
