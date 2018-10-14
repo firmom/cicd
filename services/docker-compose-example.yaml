@@ -21,8 +21,8 @@ services:
       - "PROXY_BuildGoatCMS_CERT=goatcms.org"
       - "PROXY_BuildGoatCMS_TO=cicd.firmom.com"
       - "PROXY_BuildGoatCMS_PORT=4011"
-      - "PROXY_BuildWebslots_FROM=goatcms.org"
-      - "PROXY_BuildWebslots_CERT=goatcms.org"
+      - "PROXY_BuildWebslots_FROM=cicd.firmom.com"
+      - "PROXY_BuildWebslots_CERT=firmom.com"
       - "PROXY_BuildWebslots_TO=cicd.firmom.com"
       - "PROXY_BuildWebslots_PORT=4333"
       - "PROXY_BuildFirmomCICD_FROM=cicd.firmom.com"
@@ -51,7 +51,7 @@ services:
     volumes:
       - /dockerdata/_registry/registry:/var/lib/registry
       - /dockerdata/_registry/auth:/auth
-      - /dockerdata/certs/cicd.firmom.com:/certs
+      - /dockerdata/certs/firmom.com:/certs
 
   cleaner:
     image: spozoga/docker-cleaner

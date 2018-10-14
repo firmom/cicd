@@ -9,8 +9,8 @@
       },
       "name": "Webslots",
       "prod": {
-        "cert": "goatcms.org",
-        "host": "goatcms.org",
+        "cert": "firmom.com",
+        "host": "cicd.firmom.com",
         "port": "4333"
       },
       "repo": {

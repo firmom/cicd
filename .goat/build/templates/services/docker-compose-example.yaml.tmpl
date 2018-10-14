@@ -49,7 +49,7 @@ services:
     volumes:
       - /dockerdata/_registry/registry:/var/lib/registry
       - /dockerdata/_registry/auth:/auth
-      - /dockerdata/certs/{{$cicdHost}}:/certs
+      - /dockerdata/certs/{{$cicdCert}}:/certs
 
   cleaner:
     image: spozoga/docker-cleaner

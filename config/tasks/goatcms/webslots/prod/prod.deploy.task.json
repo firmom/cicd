@@ -7,10 +7,10 @@
   "script": {
     "commands": [{
       "command": "sh",
-      "args": ["/app/config/helpers/cert-domain.sh", "goatcms.org"]
+      "args": ["/app/config/helpers/cert-domain.sh", "firmom.com"]
     }, {
       "command": "sh",
-      "args": ["/app/config/helpers/cert-deploy.sh", "goatcms/webslots", "prod", "goatcms.org"]
+      "args": ["/app/config/helpers/cert-deploy.sh", "goatcms/webslots", "prod", "firmom.com"]
     }, {
       "command": "sh",
       "args": ["/app/config/tasks/goatcms/webslots/prod.deploy.config.sh", "goatcms/webslots", "prod", "goatcms/webslots:prod"]
