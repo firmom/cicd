@@ -21,7 +21,7 @@ services:
     restart: always
     environment:
       - "MODE=SSL"
-      - "DOMAIN=events.pozoga.eu:4011"
+      - "DOMAIN=events.pozoga.eu:4012"
       - "DB_HOST=db"
       - "DB_PORT=3306"
       - "DB_NAME=prod.EventsPozogaEu"
@@ -30,14 +30,14 @@ services:
       - "WP_USER=$EVENTSPOZOGAEU_WP_USER_NAME"
       - "WP_PASS=$EVENTSPOZOGAEU_WP_USER_PASS"
       - "WP_EMAIL=$EVENTSPOZOGAEU_WP_USER_EMAIL"
-      - "WP_HOST=$DEPLOY_DEV_REMOTE_HOST:4011"
+      - "WP_HOST=$DEPLOY_DEV_REMOTE_HOST:4012"
       - "WP_TITLE=Events Poznań"
     volumes:
       - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
       - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
       - "/dockerdata/certs/pozoga.eu:/certs"
     ports:
-      - 4011:443
+      - 4012:443
   db:
     image: mariadb
     restart: always
@@ -52,7 +52,7 @@ services:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-     - 14011:80
+     - 14012:80
     environment:
       - "PMA_HOST=db"
       - "PMA_VERBOSE=prod.EventsPozogaEu"

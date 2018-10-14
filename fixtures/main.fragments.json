@@ -21,9 +21,9 @@ Zobacz [archiwum](/archive/). Lista projektów:
 
 ## eventspozogaeu
 [Repozytorium](https://github.com/sebastianpozoga/events.pozoga.eu)
-* [Deweloperska](https://cicd.firmom.com:2011), branch [dev](https://github.com/sebastianpozoga/events.pozoga.eu/tree/dev)
-* [Testowa](https://cicd.firmom.com:2011), branch [stage](https://github.com/sebastianpozoga/events.pozoga.eu/tree/stage)
-* [Produkcja](https://cicd.firmom.com:2011), branch [master](https://github.com/sebastianpozoga/events.pozoga.eu/tree/master)
+* [Deweloperska](https://cicd.firmom.com:2012), branch [dev](https://github.com/sebastianpozoga/events.pozoga.eu/tree/dev)
+* [Testowa](https://cicd.firmom.com:2012), branch [stage](https://github.com/sebastianpozoga/events.pozoga.eu/tree/stage)
+* [Produkcja](https://cicd.firmom.com:2012), branch [master](https://github.com/sebastianpozoga/events.pozoga.eu/tree/master)
 
 ## goatcli
 [Repozytorium](https://github.com/goatcms/goatcli)
@@ -48,7 +48,7 @@ Zobacz [archiwum](/archive/). Lista projektów:
 
 "}, {"ID": 2, "Lang": "en", "Name": "view.custom.home.main.introduction", "Content": "
 # Index of Firmom CI/CD
-See [archiwum](/archives/). Projects list:
+See [archive](/archives/). Projects list:
 
 ## beerpoly
 [Repository](https://github.com/gameinpl/beerpoly)

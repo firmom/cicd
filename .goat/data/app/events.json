@@ -4,13 +4,13 @@
       "type": "wordpress",
       "docker.image": "spozoga/events.pozoga.eu",
       "dev": {
-        "port": "2011"
+        "port": "2012"
       },
       "name": "EventsPozogaEu",
       "prod": {
         "cert": "pozoga.eu",
         "host": "events.pozoga.eu",
-        "port": "4011",
+        "port": "4012",
         "trigger": {}
       },
       "repo": {
@@ -18,7 +18,7 @@
         "path": "sebastianpozoga/events.pozoga.eu"
       },
       "stage": {
-        "port": "3011"
+        "port": "3012"
       }
     }
   }

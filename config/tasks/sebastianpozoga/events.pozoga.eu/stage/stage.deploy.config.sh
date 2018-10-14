@@ -21,7 +21,7 @@ services:
     restart: always
     environment:
       - "MODE=SSL"
-      - "DOMAIN=cicd.firmom.com:3011"
+      - "DOMAIN=cicd.firmom.com:3012"
       - "DB_HOST=db"
       - "DB_PORT=3306"
       - "DB_NAME=stage.EventsPozogaEu"
@@ -30,17 +30,17 @@ services:
       - "WP_USER=$EVENTSPOZOGAEU_WP_USER_NAME"
       - "WP_PASS=$EVENTSPOZOGAEU_WP_USER_PASS"
       - "WP_EMAIL=$EVENTSPOZOGAEU_WP_USER_EMAIL"
-      - "WP_HOST=$DEPLOY_DEV_REMOTE_HOST:3011"
+      - "WP_HOST=$DEPLOY_DEV_REMOTE_HOST:3012"
       - "WP_TITLE=Events Poznań"
       - "DB_SNAPSHOT=$EVENTSPOZOGAEU_DB_SNAPSHOT"
       - "MIGRATE_FROM=events.pozoga.eu"
-      - "MIGRATE_TO=cicd.firmom.com:3011"
+      - "MIGRATE_TO=cicd.firmom.com:3012"
     volumes:
       - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
       - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
       - "/dockerdata/certs/firmom.com:/certs"
     ports:
-      - 3011:443
+      - 3012:443
   db:
     image: mariadb
     restart: always
@@ -55,7 +55,7 @@ services:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-     - 13011:80
+     - 13012:80
     environment:
       - "PMA_HOST=db"
       - "PMA_VERBOSE=stage.EventsPozogaEu"

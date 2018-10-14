@@ -16,7 +16,7 @@ services:
       - "PROXY_BuildEventsPozogaEu_FROM=events.pozoga.eu"
       - "PROXY_BuildEventsPozogaEu_CERT=pozoga.eu"
       - "PROXY_BuildEventsPozogaEu_TO=cicd.firmom.com"
-      - "PROXY_BuildEventsPozogaEu_PORT=4011"
+      - "PROXY_BuildEventsPozogaEu_PORT=4012"
       - "PROXY_BuildGoatCMS_FROM=goatcms.org"
       - "PROXY_BuildGoatCMS_CERT=goatcms.org"
       - "PROXY_BuildGoatCMS_TO=cicd.firmom.com"
@@ -35,7 +35,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - "/Users/goatcore/work/proxy/certs:/certs"
+      - "/dockerdata/certs:/certs"
 
   registry:
     restart: always
@@ -43,15 +43,15 @@ services:
     ports:
       - 5000:5000
     environment:
-      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
-      REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/fullchain.pem
+      REGISTRY_HTTP_TLS_KEY: /certs/privkey.pem
       REGISTRY_AUTH: htpasswd
       REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
       REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
     volumes:
       - /dockerdata/_registry/registry:/var/lib/registry
-      - /dockerdata/_registry/certs:/certs
       - /dockerdata/_registry/auth:/auth
+      - /dockerdata/certs/cicd.firmom.com:/certs
 
   cleaner:
     image: spozoga/docker-cleaner
