@@ -1,13 +1,23 @@
 {
-  "name": "ArchiveStageGoatCMS",
-  "entrypoint": true,
-  "extends": [],
-  "locks": ["/data/archive/goatcms/goatcms"],
+  "name": "BuildBackendStageGoatCMS",
+  "entrypoint": false,
+  "extends": ["CloneStageGoatCMS"],
   "executor": "onlylast",
+  "locks": ["BuildBackendStageGoatCMS"],
   "script": {
+    "cwd": "/data/code/goatcms/goatcms-stage/src/github.com/goatcms/goatcms",
     "commands": [{
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/archive.sh", "goatcms/goatcms", "stage", "goatcms"]
+      "args": ["-x", "/app/config/helpers/golang/goatcms-secrets.sh", "github.com", "goatcms/goatcms", "stage"]
+    }, {
+      "command": "goatcli",
+      "args": ["build", "--interactive=false"]
+    }, {
+      "command": "rm",
+      "args": ["-rf", "vendor"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "goatcms/goatcms", "stage"]
     }]
   }
 }
