@@ -13,7 +13,7 @@
       "args": ["/app/config/helpers/cert-deploy.sh", "sebastianpozoga/events.pozoga.eu", "prod", "pozoga.eu"]
     }, {
       "command": "sh",
-      "args": ["/app/config/tasks/sebastianpozoga/events.pozoga.eu/prod.deploy.config.sh", "sebastianpozoga/events.pozoga.eu", "prod", "spozoga/events.pozoga.eu:prod"]
+      "args": ["/app/config/tasks/sebastianpozoga/events.pozoga.eu/prod/prod.deploy.config.sh", "sebastianpozoga/events.pozoga.eu", "prod", "spozoga/events.pozoga.eu:prod"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-deploy.sh", "sebastianpozoga/events.pozoga.eu", "prod", "spozoga/events.pozoga.eu:prod"]

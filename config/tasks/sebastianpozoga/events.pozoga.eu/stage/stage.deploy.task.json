@@ -13,7 +13,7 @@
       "args": ["/app/config/helpers/cert-deploy.sh", "sebastianpozoga/events.pozoga.eu", "stage", "firmom.com"]
     }, {
       "command": "sh",
-      "args": ["/app/config/tasks/sebastianpozoga/events.pozoga.eu/stage.deploy.config.sh", "sebastianpozoga/events.pozoga.eu", "stage", "spozoga/events.pozoga.eu:stage"]
+      "args": ["/app/config/tasks/sebastianpozoga/events.pozoga.eu/stage/stage.deploy.config.sh", "sebastianpozoga/events.pozoga.eu", "stage", "spozoga/events.pozoga.eu:stage"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-deploy.sh", "sebastianpozoga/events.pozoga.eu", "stage", "spozoga/events.pozoga.eu:stage"]
