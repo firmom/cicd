@@ -48,5 +48,7 @@ COPY fixtures /app/fixtures
 # entrypoint
 COPY docker/entrypoint.sh "/app/docker/entrypoint.sh"
 RUN chmod +x "/app/docker/entrypoint.sh"
+COPY docker/https-config.sh "/app/docker/https-config.sh"
+RUN chmod +x "/app/docker/https-config.sh"
 ENTRYPOINT ["/app/docker/entrypoint.sh"]
 CMD []

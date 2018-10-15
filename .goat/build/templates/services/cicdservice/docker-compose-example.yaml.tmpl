@@ -13,6 +13,7 @@ services:
     restart: always
     environment:
       - "TZ=Europe/Warsaw"
+      - "CICD_CERT=Insert_your_cicd_certificate_directory_name"
       - "MODE=HTTPS"
       - "APP_HOST=Insert_your_cicd_host_like_cicd.firmom.com"
       - "APP_BASE_URL=Insert_your_cicd_baseurl_like_https://cicd.firmom.com"
@@ -64,7 +65,7 @@ services:
       - "USER_1_PASSWORD=Insert_password"
       - "USER_1_CONNECT_GITHUB=Insert_github_name"
     volumes:
-      - "/etc/letsencrypt/live:/etc/letsencrypt/live"
+      - "/etc/letsencrypt:/etc/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/dockerdata/firmom/cicd/data:/data"
       - "/dockerdata/firmom/cicd/ssh:/root/.ssh"

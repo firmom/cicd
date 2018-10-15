@@ -3,9 +3,9 @@ set -e
 
 REPO="$1"
 TAG="$2"
-DOMAIN="$3"
-SRC="/etc/letsencrypt/live/$DOMAIN/."
-DEST="/dockerdata/certs/$DOMAIN/"
+CERT="$3"
+SRC="/etc/letsencrypt/live/$CERT"
+DEST="/dockerdata/certs/$CERT"
 
 # Deploy certs
 ssh $DEPLOY_DEV_REMOTE_USER@$DEPLOY_DEV_REMOTE_HOST "mkdir -p $DEST"

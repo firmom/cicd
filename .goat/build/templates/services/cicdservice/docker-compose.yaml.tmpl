@@ -13,9 +13,10 @@ services:
     restart: always
     environment:
       - "TZ=Europe/Warsaw"
+      - "CICD_CERT={{$cicdCert}}"
       - "MODE=HTTPS"
-      - "APP_HOST=localhost"
-      - "APP_BASE_URL=https://{{index $ctx.Properties.Project "cicd.host"}}"
+      - "APP_HOST={{$cicdHost}}"
+      - "APP_BASE_URL=https://{{$cicdHost}}"
       - "OAUTH_GITHUB_APP={{index $ctx.Properties.Secrets "oauth.github.app"}}"
       - "OAUTH_GITHUB_SECRET={{index $ctx.Properties.Secrets "oauth.github.secret"}}"
 
@@ -72,11 +73,11 @@ services:
       - "USER_{{upper $key}}_CONNECT_GITHUB={{$githubID}}"
 {{- end }}
     volumes:
-      - "/etc/letsencrypt/live:/etc/letsencrypt/live"
+      - "/etc/letsencrypt:/etc/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/dockerdata/firmom/cicd/data:/data"
       - "/dockerdata/firmom/cicd/ssh:/root/.ssh"
-      - "/dockerdata/certs/{{$cicdCert}}:/certs"
+      - "/dockerdata/certs:/certs"
     ports:
       - 1333:443
 
