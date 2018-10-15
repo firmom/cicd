@@ -14,15 +14,14 @@ cat > $DEST_FILE_PATH << EndOfMessage
 version: '3.4'
 
 services:
-  events:
+  main:
     image: $IMAGE
     environment:
       TZ: 'Europe/Warsaw'
     restart: always
     environment:
     volumes:
-      - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
-      - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
+      - "/dockerdata/$REPO-$TAG/data:/app/data"
       - "/dockerdata/certs/firmom.com:/certs"
     ports:
       - 4333:443
@@ -35,7 +34,7 @@ services:
       - "MYSQL_PASSWORD=$WEBSLOTS_DB_PASS"
       - "MYSQL_ROOT_PASSWORD=$WEBSLOTS_DB_PASS"
     volumes:
-      - "/dockerdata/$REPO/$TAG/mysql:/var/lib/mysql"
+      - "/dockerdata/$REPO-$TAG/mysql:/var/lib/mysql"
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always

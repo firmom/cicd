@@ -13,7 +13,7 @@
       "args": ["/app/config/helpers/cert-deploy.sh", "goatcms/goatcms", "prod", "goatcms.org"]
     }, {
       "command": "sh",
-      "args": ["/app/config/tasks/goatcms/goatcms/prod.deploy.config.sh", "goatcms/goatcms", "prod", "goatcms/goatcms:prod"]
+      "args": ["/app/config/tasks/goatcms/goatcms/prod/prod.deploy.config.sh", "goatcms/goatcms", "prod", "goatcms/goatcms:prod"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-deploy.sh", "goatcms/goatcms", "prod", "goatcms/goatcms:prod"]

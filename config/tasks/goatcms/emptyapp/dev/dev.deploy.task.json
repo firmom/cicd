@@ -13,7 +13,7 @@
       "args": ["/app/config/helpers/cert-deploy.sh", "goatcms/emptyapp", "dev", "firmom.com"]
     }, {
       "command": "sh",
-      "args": ["/app/config/tasks/goatcms/emptyapp/dev.deploy.config.sh", "goatcms/emptyapp", "dev", "goatcms/emptyapp:dev"]
+      "args": ["/app/config/tasks/goatcms/emptyapp/dev/dev.deploy.config.sh", "goatcms/emptyapp", "dev", "goatcms/emptyapp:dev"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-deploy.sh", "goatcms/emptyapp", "dev", "goatcms/emptyapp:dev"]

@@ -13,7 +13,7 @@
       "args": ["/app/config/helpers/cert-deploy.sh", "gameinpl/beerpoly", "prod", "gamein.pl"]
     }, {
       "command": "sh",
-      "args": ["/app/config/tasks/gameinpl/beerpoly/prod.deploy.config.sh", "gameinpl/beerpoly", "prod", "gameinpl/beerpoly:prod"]
+      "args": ["/app/config/tasks/gameinpl/beerpoly/prod/prod.deploy.config.sh", "gameinpl/beerpoly", "prod", "gameinpl/beerpoly:prod"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-deploy.sh", "gameinpl/beerpoly", "prod", "gameinpl/beerpoly:prod"]

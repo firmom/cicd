@@ -36,8 +36,8 @@ services:
       - "MIGRATE_FROM=events.pozoga.eu"
       - "MIGRATE_TO=cicd.firmom.com:3012"
     volumes:
-      - "/dockerdata/$REPO/$TAG/uploads:/app/wp-content/uploads"
-      - "/dockerdata/$REPO/$TAG/snapshots:/data/snapshots"
+      - "/dockerdata/$REPO-$TAG/uploads:/app/wp-content/uploads"
+      - "/dockerdata/$REPO-$TAG/snapshots:/data/snapshots"
       - "/dockerdata/certs/firmom.com:/certs"
     ports:
       - 3012:443
@@ -50,7 +50,7 @@ services:
       - "MYSQL_PASSWORD=$EVENTSPOZOGAEU_DB_PASS"
       - "MYSQL_ROOT_PASSWORD=$EVENTSPOZOGAEU_DB_PASS"
     volumes:
-      - "/dockerdata/$REPO/$TAG/mysql:/var/lib/mysql"
+      - "/dockerdata/$REPO-$TAG/mysql:/var/lib/mysql"
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always

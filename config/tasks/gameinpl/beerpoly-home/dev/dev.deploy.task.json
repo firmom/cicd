@@ -13,7 +13,7 @@
       "args": ["/app/config/helpers/cert-deploy.sh", "gameinpl/beerpoly-home", "dev", "firmom.com"]
     }, {
       "command": "sh",
-      "args": ["/app/config/tasks/gameinpl/beerpoly-home/dev.deploy.config.sh", "gameinpl/beerpoly-home", "dev", "gameinpl/beerpoly-home:dev"]
+      "args": ["/app/config/tasks/gameinpl/beerpoly-home/dev/dev.deploy.config.sh", "gameinpl/beerpoly-home", "dev", "gameinpl/beerpoly-home:dev"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-deploy.sh", "gameinpl/beerpoly-home", "dev", "gameinpl/beerpoly-home:dev"]

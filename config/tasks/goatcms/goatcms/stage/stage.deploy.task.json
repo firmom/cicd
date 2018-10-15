@@ -13,7 +13,7 @@
       "args": ["/app/config/helpers/cert-deploy.sh", "goatcms/goatcms", "stage", "firmom.com"]
     }, {
       "command": "sh",
-      "args": ["/app/config/tasks/goatcms/goatcms/stage.deploy.config.sh", "goatcms/goatcms", "stage", "goatcms/goatcms:stage"]
+      "args": ["/app/config/tasks/goatcms/goatcms/stage/stage.deploy.config.sh", "goatcms/goatcms", "stage", "goatcms/goatcms:stage"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-deploy.sh", "goatcms/goatcms", "stage", "goatcms/goatcms:stage"]
