@@ -22,10 +22,10 @@ Zobacz [archiwum](/archive/). Lista projektów:
 * [Deweloperska](https://{{$cicdHost}}:{{$devPort}}), branch [dev](https://{{$repoHost}}/{{$repo}}/tree/dev)
 {{- end }}
 {{- if and (ne $stagePort "") (ne $stagePort "!") }}
-* [Testowa](https://{{$cicdHost}}:{{$devPort}}), branch [stage](https://{{$repoHost}}/{{$repo}}/tree/stage)
+* [Testowa](https://{{$cicdHost}}:{{$stagePort}}), branch [stage](https://{{$repoHost}}/{{$repo}}/tree/stage)
 {{- end }}
 {{- if and (ne $prodPort "") (ne $prodPort "!") }}
-* [Produkcja](https://{{$cicdHost}}:{{$devPort}}), branch [master](https://{{$repoHost}}/{{$repo}}/tree/master)
+* [Produkcja](https://{{$cicdHost}}:{{$prodPort}}), branch [master](https://{{$repoHost}}/{{$repo}}/tree/master)
 {{- end }}
 {{- end }}
 
@@ -46,13 +46,13 @@ See [archive](/archives/). Projects list:
 ## {{lower $name}}
 [Repository](https://{{$repoHost}}/{{$repo}})
 {{- if and (ne $devPort "") (ne $devPort "!") }}
-* Development, branch [dev](https://{{$repoHost}}/{{$repo}}/tree/dev)
+* [Development](https://{{$cicdHost}}:{{$devPort}}), branch [dev](https://{{$repoHost}}/{{$repo}}/tree/dev)
 {{- end }}
 {{- if and (ne $stagePort "") (ne $stagePort "!") }}
-* Stage, branch [stage](https://{{$repoHost}}/{{$repo}}/tree/stage)
+* [Stage](https://{{$cicdHost}}:{{$stagePort}}), branch [stage](https://{{$repoHost}}/{{$repo}}/tree/stage)
 {{- end }}
 {{- if and (ne $prodPort "") (ne $prodPort "!") }}
-* Production, branch [master](https://{{$repoHost}}/{{$repo}}/tree/master)
+* [Production](https://{{$cicdHost}}:{{$prodPort}}), branch [master](https://{{$repoHost}}/{{$repo}}/tree/master)
 {{- end }}
 {{- end }}
 "}
