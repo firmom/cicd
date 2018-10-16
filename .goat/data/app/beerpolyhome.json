@@ -10,7 +10,7 @@
       "name": "BeerpolyHome",
       "prod": {
         "cert": "gamein.pl",
-        "host": "beerpolygo.gamein.pl",
+        "host": "beerpoly.gamein.pl",
         "port": "4078"
       },
       "repo": {

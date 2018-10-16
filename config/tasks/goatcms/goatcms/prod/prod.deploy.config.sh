@@ -19,7 +19,6 @@ services:
     environment:
       TZ: 'Europe/Warsaw'
     restart: always
-    environment:
     volumes:
       - "/dockerdata/$REPO-$TAG/data:/app/data"
       - "/dockerdata/certs/goatcms.org:/certs"

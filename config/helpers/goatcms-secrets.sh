@@ -15,7 +15,7 @@ cat > $SECRETS_PATH << EndOfMessage
   "smtp": {
     "address": "smtp.gmail.com:465",
     "user": "$SMTP_USERNAME",
-    "password": $SMTP_PASSWRD",
+    "password": "$SMTP_PASSWRD",
     "identity": ""
   },
   "oauth": {

@@ -19,7 +19,6 @@ services:
     environment:
       TZ: 'Europe/Warsaw'
     restart: always
-    environment:
     volumes:
       - "/dockerdata/certs/gamein.pl:/certs"
     ports:
