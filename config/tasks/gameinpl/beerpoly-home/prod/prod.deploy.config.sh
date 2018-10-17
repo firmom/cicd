@@ -19,6 +19,10 @@ services:
     environment:
       TZ: 'Europe/Warsaw'
     restart: always
+    environment:
+      - "MENU_OPEN_SOURCE_LINK=https://github.com/gameinpl"
+      - "MENU_GAME_LINK=https://beerpoly.gamein.pl/"
+      - "MENU_DOWNLOAD_LINK=https://cicd.firmom.com/archive/gameinpl/beerpoly/"
     volumes:
       - "/dockerdata/$REPO-$TAG/data:/app/data"
       - "/dockerdata/certs/gamein.pl:/certs"
