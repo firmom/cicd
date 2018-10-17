@@ -17,32 +17,14 @@ services:
   main:
     image: $IMAGE
     environment:
-      TZ: 'Europe/Warsaw'
+      - "TZ=Europe/Warsaw"
+      - "MODE=HTTPS"
     restart: always
     volumes:
       - "/dockerdata/$REPO-$TAG/data:/app/data"
       - "/dockerdata/certs/firmom.com:/certs"
     ports:
       - 4333:443
-  db:
-    image: mariadb
-    restart: always
-    environment:
-      - "MYSQL_DATABASE=prod.Webslots"
-      - "MYSQL_USER=$WEBSLOTS_DB_USER"
-      - "MYSQL_PASSWORD=$WEBSLOTS_DB_PASS"
-      - "MYSQL_ROOT_PASSWORD=$WEBSLOTS_DB_PASS"
-    volumes:
-      - "/dockerdata/$REPO-$TAG/mysql:/var/lib/mysql"
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    ports:
-     - 14333:80
-    environment:
-      - "PMA_HOST=db"
-      - "PMA_VERBOSE=prod.Webslots"
-      - "PMA_PORT=3306"
-      - "PMA_ARBITRARY=1"
+
 
 EndOfMessage

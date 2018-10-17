@@ -17,32 +17,14 @@ services:
   main:
     image: $IMAGE
     environment:
-      TZ: 'Europe/Warsaw'
+      - "TZ=Europe/Warsaw"
+      - "MODE=HTTPS"
     restart: always
     volumes:
       - "/dockerdata/$REPO-$TAG/data:/app/data"
       - "/dockerdata/certs/firmom.com:/certs"
     ports:
       - 3011:443
-  db:
-    image: mariadb
-    restart: always
-    environment:
-      - "MYSQL_DATABASE=stage.GoatCMS"
-      - "MYSQL_USER=$GOATCMS_DB_USER"
-      - "MYSQL_PASSWORD=$GOATCMS_DB_PASS"
-      - "MYSQL_ROOT_PASSWORD=$GOATCMS_DB_PASS"
-    volumes:
-      - "/dockerdata/$REPO-$TAG/mysql:/var/lib/mysql"
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    ports:
-     - 13011:80
-    environment:
-      - "PMA_HOST=db"
-      - "PMA_VERBOSE=stage.GoatCMS"
-      - "PMA_PORT=3306"
-      - "PMA_ARBITRARY=1"
+
 
 EndOfMessage

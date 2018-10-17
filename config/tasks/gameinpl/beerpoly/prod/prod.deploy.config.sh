@@ -17,7 +17,8 @@ services:
   main:
     image: $IMAGE
     environment:
-      TZ: 'Europe/Warsaw'
+      - "TZ=Europe/Warsaw"
+      - "MODE=HTTPS"
     restart: always
     volumes:
       - "/dockerdata/certs/gamein.pl:/certs"
