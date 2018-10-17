@@ -25,7 +25,7 @@ Zobacz [archiwum](/archive/). Lista projektów:
 * [Testowa](https://{{$cicdHost}}:{{$stagePort}}), branch [stage](https://{{$repoHost}}/{{$repo}}/tree/stage)
 {{- end }}
 {{- if and (ne $prodPort "") (ne $prodPort "!") }}
-* [Produkcja](https://{{$cicdHost}}:{{$prodPort}}), branch [master](https://{{$repoHost}}/{{$repo}}/tree/master)
+* [Produkcja](https://{{$prodHost}}:{{$prodPort}}), branch [master](https://{{$repoHost}}/{{$repo}}/tree/master)
 {{- end }}
 {{- end }}
 
@@ -52,7 +52,7 @@ See [archive](/archives/). Projects list:
 * [Stage](https://{{$cicdHost}}:{{$stagePort}}), branch [stage](https://{{$repoHost}}/{{$repo}}/tree/stage)
 {{- end }}
 {{- if and (ne $prodPort "") (ne $prodPort "!") }}
-* [Production](https://{{$cicdHost}}:{{$prodPort}}), branch [master](https://{{$repoHost}}/{{$repo}}/tree/master)
+* [Production](https://{{$prodHost}}:{{$prodPort}}), branch [master](https://{{$repoHost}}/{{$repo}}/tree/master)
 {{- end }}
 {{- end }}
 "}
