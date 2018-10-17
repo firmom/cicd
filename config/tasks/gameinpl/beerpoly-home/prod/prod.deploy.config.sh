@@ -22,7 +22,7 @@ services:
     environment:
       - "MODE=HTTPS"
       - "MENU_OPEN_SOURCE_LINK=https://github.com/gameinpl"
-      - "MENU_GAME_LINK=https://beerpoly.gamein.pl/"
+      - "MENU_GAME_LINK=https://beerpolygo.gamein.pl/"
       - "MENU_DOWNLOAD_LINK=https://cicd.firmom.com/archive/gameinpl/beerpoly/"
     volumes:
       - "/dockerdata/$REPO-$TAG/data:/app/data"
