@@ -20,6 +20,7 @@ services:
       TZ: 'Europe/Warsaw'
     restart: always
     environment:
+      - "MODE=HTTPS"
       - "MENU_OPEN_SOURCE_LINK=https://github.com/gameinpl"
       - "MENU_GAME_LINK=https://beerpoly.gamein.pl/"
       - "MENU_DOWNLOAD_LINK=https://cicd.firmom.com/archive/gameinpl/beerpoly/"
