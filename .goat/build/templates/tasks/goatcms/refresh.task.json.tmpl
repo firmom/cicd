@@ -3,6 +3,7 @@
 {{- $ctx := . -}}
 {{- $name := (index $ctx.Data (print $ctx.From ".name")) -}}
 {{- $repo := (index $ctx.Data (print $ctx.From ".repo.path")) -}}
+{{- $repoHost := (index $ctx.Data (print $ctx.From ".repo.host")) -}}
 {{- $type := (index $ctx.Data (print $ctx.From ".type")) -}}
 {{- $image := (index $ctx.Data (print $ctx.From ".docker.image")) -}}
 {{- $devPort := (index $ctx.Data (print $ctx.From ".dev.port")) -}}
@@ -18,19 +19,19 @@
 {{- if ne $devPort "" -}}
     {
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "{{$repo}}", "dev", "BuildDev{{camelcaseuf $name}}"]
+      "args": ["-x", "/app/config/helpers/golang/trigger-for-git-changes.sh", "$repoHost", "{{$repo}}", "dev", "BuildDev{{camelcaseuf $name}}"]
     }
 {{- end -}}
 {{- if ne $stagePort "" -}}
     {{- if ne $devPort "" -}}, {{end}}{
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "{{$repo}}", "stage", "BuildStage{{camelcaseuf $name}}"]
+      "args": ["-x", "/app/config/helpers/golang/trigger-for-git-changes.sh", "$repoHost", "{{$repo}}", "stage", "BuildStage{{camelcaseuf $name}}"]
     }
 {{- end -}}
 {{- if ne $prodPort "" -}}
     {{- if (or (ne $devPort "") (ne $stagePort "")) -}}, {{ end -}}{
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "{{$repo}}", "prod", "BuildProd{{camelcaseuf $name}}"]
+      "args": ["-x", "/app/config/helpers/golang/trigger-for-git-changes.sh", "$repoHost", "{{$repo}}", "prod", "BuildProd{{camelcaseuf $name}}"]
     }
 {{- end -}}]
   }

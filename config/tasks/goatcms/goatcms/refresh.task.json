@@ -5,13 +5,13 @@
   "script": {
     "commands": [{
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/goatcms", "dev", "BuildDevGoatCMS"]
+      "args": ["-x", "/app/config/helpers/golang/trigger-for-git-changes.sh", "$repoHost", "goatcms/goatcms", "dev", "BuildDevGoatCMS"]
     }, {
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/goatcms", "stage", "BuildStageGoatCMS"]
+      "args": ["-x", "/app/config/helpers/golang/trigger-for-git-changes.sh", "$repoHost", "goatcms/goatcms", "stage", "BuildStageGoatCMS"]
     }, {
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "goatcms/goatcms", "prod", "BuildProdGoatCMS"]
+      "args": ["-x", "/app/config/helpers/golang/trigger-for-git-changes.sh", "$repoHost", "goatcms/goatcms", "prod", "BuildProdGoatCMS"]
     }]
   }
 }
