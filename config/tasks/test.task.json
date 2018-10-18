@@ -1,0 +1,11 @@
+{
+  "name": "RefreshEventsPozogaEu",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "echo",
+      "args": ["Linux SysOps"]
+    }]
+  }
+}
