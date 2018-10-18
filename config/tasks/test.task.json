@@ -1,5 +1,5 @@
 {
-  "name": "RefreshEventsPozogaEu",
+  "name": "TestTask",
   "entrypoint": true,
   "executor": "onlylast",
   "script": {
