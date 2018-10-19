@@ -28,3 +28,6 @@ You can verification DNS record deployment by:
 ```
 nslookup -q=txt _acme-challenge.gamein.pl
 ```
+
+## Presentations
+* [FirmomCICD PL](https://www.youtube.com/watch?v=4c4zM516vdI) [Slides](https://docs.google.com/presentation/d/1R78ygNlO7AlBMNNqVb4wn2dAGwFCtPUbfmexWaNZ6R8/edit?usp=sharing)
