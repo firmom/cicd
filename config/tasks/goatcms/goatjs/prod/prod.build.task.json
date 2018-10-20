@@ -9,6 +9,9 @@
     "cwd": "/data/code/goatcms/goatjs-prod",
     "commands": [{
       "command": "npm",
+      "args": ["i"]
+    }, {
+      "command": "npm",
       "args": ["run", "test"]
     }, {
       "command": "npm",
