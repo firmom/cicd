@@ -1,0 +1,6 @@
+{
+  "name": "BuildGoatJS",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "trigger": ["BuildProdGoatJS"]
+}

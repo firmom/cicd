@@ -1,0 +1,27 @@
+{{- define "npmapp.main" -}}
+{{- $ctx := . -}}
+{{- $name := (index $ctx.Data (print $ctx.From ".name")) -}}
+{{- $repo := (index $ctx.Data (print $ctx.From ".repo.path")) -}}
+{{- $type := (index $ctx.Data (print $ctx.From ".type")) -}}
+{{- $devPort := (index $ctx.Data (print $ctx.From ".dev.port")) -}}
+{{- $stagePort := (index $ctx.Data (print $ctx.From ".stage.port")) -}}
+{{- $prodPort := (index $ctx.Data (print $ctx.From ".prod.port")) -}}
+
+{{- $path := (print $ctx.To "/" (lower $repo) "/build.task.json") -}}
+{{- if not ($ctx.Filesystem.IsFile $path) -}}
+  {{- $ctx.Out.File $path -}}
+    {{- template "npmapp.build_task_json" $ctx -}}
+  {{- $ctx.Out.EOF -}}
+{{- end -}}
+
+{{- $path := (print $ctx.To "/" (lower $repo) "/refresh.task.json") -}}
+{{- if not ($ctx.Filesystem.IsFile $path) -}}
+  {{- $ctx.Out.File $path -}}
+    {{- template "npmapp.refresh_task_json" $ctx -}}
+  {{- $ctx.Out.EOF -}}
+{{- end -}}
+
+{{- $host := index $ctx.Data (print $ctx.From ".prod.host") -}}
+{{- template "npmapp.env" (dict "ctx" $ctx "env" "prod" "branch" "master") -}}
+
+{{- end -}}

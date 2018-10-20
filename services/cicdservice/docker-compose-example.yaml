@@ -27,6 +27,9 @@ services:
       - "DOCKER_USERNAME=Insert_your_dockerhub_password_to_deploy_app_image"
       - "DOCKER_PASSWORD=Insert_your_dockerhub_password_to_deploy_app_image"
 
+      # NPM Token
+      - "NPM_TOKEN=Insert_your_npm_token_to_publish_projects"
+
       # slots
       - "SLOT_BuildBeerpoly_SECRET_1=Insert_your_secret"
       - "SLOT_BuildBeerpolyHome_SECRET_1=Insert_your_secret"
@@ -38,6 +41,7 @@ services:
       - "SLOT_BuildGoatCMSEmptyapp_SECRET_1=Insert_your_secret"
       - "SLOT_BuildGoatCore_SECRET_1=Insert_your_secret"
       - "SLOT_BuildWebslots_SECRET_1=Insert_your_secret"
+      - "SLOT_BuildGoatJS_SECRET_1=Insert_your_secret"
 
       # Projects
       - "EVENTSPOZOGAEU_DB_USER=Insert_your_database_username"

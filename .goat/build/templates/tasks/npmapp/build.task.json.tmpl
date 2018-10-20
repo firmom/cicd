@@ -1,0 +1,15 @@
+{{- define "npmapp.build_task_json" -}}
+
+{{- $ctx := . -}}
+{{- $name := (index $ctx.Data (print $ctx.From ".name")) -}}
+{{- $image := (index $ctx.Data (print $ctx.From ".docker.image")) -}}
+
+
+{
+  "name": "Build{{camelcaseuf $name}}",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "trigger": ["BuildProd{{camelcaseuf $name}}"]
+}
+
+{{- end -}}

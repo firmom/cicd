@@ -32,9 +32,16 @@ services:
       - "DOCKER_USERNAME=Insert_your_dockerhub_password_to_deploy_app_image"
       - "DOCKER_PASSWORD=Insert_your_dockerhub_password_to_deploy_app_image"
 
+      # NPM Token
+      - "NPM_TOKEN=Insert_your_npm_token_to_publish_projects"
+
       # slots
 {{- range $index, $key := (keys .Data "app.") -}}
 {{- $name := (index $ctx.Data (print "app." $key ".name")) }}
+      - "SLOT_Build{{camelcaseuf $name}}_SECRET_1=Insert_your_secret"
+{{- end }}
+{{- range $index, $key := (keys .Data "npmapp.") -}}
+{{- $name := (index $ctx.Data (print "npmapp." $key ".name")) }}
       - "SLOT_Build{{camelcaseuf $name}}_SECRET_1=Insert_your_secret"
 {{- end }}
 

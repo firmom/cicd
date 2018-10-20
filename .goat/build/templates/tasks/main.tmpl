@@ -26,3 +26,9 @@
   {{- end -}}
 
 {{- end -}}
+
+{{- range $index, $key := (keys .Data "npmapp.") -}}
+  {{- $name := (index $ctx.Data (print "npmapp." $key ".name")) -}}
+  {{- $repo := (index $ctx.Data (print "npmapp." $key ".repo.path")) -}}
+  {{- template "npmapp.main" (ctx $ctx (print "npmapp." $key) $ctx.To) -}}
+{{- end -}}

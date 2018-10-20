@@ -1,0 +1,18 @@
+{
+  "npmapp": {
+    "goatjs": {
+      "name": "GoatJS",
+      "prod": {
+        "trigger": {
+          "0": {
+            "name": "BuildGoatCMS"
+          }
+        }
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "goatcms/goatjs"
+      }
+    }
+  }
+}

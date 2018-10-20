@@ -9,7 +9,7 @@ services:
       - "PROXY_BuildBeerpoly_CERT=gamein.pl"
       - "PROXY_BuildBeerpoly_TO=cicd.firmom.com"
       - "PROXY_BuildBeerpoly_PORT=4077"
-      - "PROXY_BuildBeerpolyHome_FROM=beerpolygo.gamein.pl"
+      - "PROXY_BuildBeerpolyHome_FROM=beerpoly.gamein.pl"
       - "PROXY_BuildBeerpolyHome_CERT=gamein.pl"
       - "PROXY_BuildBeerpolyHome_TO=cicd.firmom.com"
       - "PROXY_BuildBeerpolyHome_PORT=4078"

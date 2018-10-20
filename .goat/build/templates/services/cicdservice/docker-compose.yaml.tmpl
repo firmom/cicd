@@ -32,9 +32,16 @@ services:
       - "DOCKER_USERNAME={{index $ctx.Properties.Secrets "dockerhub.user"}}"
       - "DOCKER_PASSWORD={{index $ctx.Properties.Secrets "dockerhub.password"}}"
 
+      # NPM Token
+      - "NPM_TOKEN={{index $ctx.Properties.Secrets "npm.token"}}"
+
       # slots
 {{- range $index, $key := (keys .Data "app.") -}}
 {{- $name := (index $ctx.Data (print "app." $key ".name")) }}
+      - "SLOT_Build{{camelcaseuf $name}}_SECRET_1={{template "secret" (dict "ctx" $ctx "name" $name)}}"
+{{- end }}
+{{- range $index, $key := (keys .Data "npmapp.") -}}
+{{- $name := (index $ctx.Data (print "npmapp." $key ".name")) }}
       - "SLOT_Build{{camelcaseuf $name}}_SECRET_1={{template "secret" (dict "ctx" $ctx "name" $name)}}"
 {{- end }}
 

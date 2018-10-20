@@ -1,8 +1,9 @@
 {{- $ctx := . -}}
 
-{{- range $index, $key := (keys .Data "app.") -}}
-  {{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
-  {{- $repo := (index $ctx.Data (print "app." $key ".repo.path")) -}}
+{{- define "SlotTemplate" -}}
+  {{- $ctx := .ctx -}}
+  {{- $name := .name -}}
+  {{- $repo := .repo -}}
 
   {{- $path := (print $ctx.To "/" (lower $repo) ".build.slot.json") -}}
   {{- if not ($ctx.Filesystem.IsFile $path) -}}
@@ -10,6 +11,17 @@
       {{- template "slot.json" (dict "slot" (print "Build" (camelcaseuf $name)) "task" (print "Refresh" (camelcaseuf $name))) -}}
     {{- $ctx.Out.EOF -}}
   {{- end -}}
+{{- end -}}
 
 
+{{- range $index, $key := (keys .Data "app.") -}}
+  {{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
+  {{- $repo := (index $ctx.Data (print "app." $key ".repo.path")) -}}
+  {{- template "SlotTemplate" (dict "ctx" $ctx "name" $name "repo" $repo) -}}
+{{- end -}}
+
+{{- range $index, $key := (keys .Data "npmapp.") -}}
+  {{- $name := (index $ctx.Data (print "npmapp." $key ".name")) -}}
+  {{- $repo := (index $ctx.Data (print "npmapp." $key ".repo.path")) -}}
+  {{- template "SlotTemplate" (dict "ctx" $ctx "name" $name "repo" $repo) -}}
 {{- end -}}

@@ -1,0 +1,24 @@
+{{- define "npmapp.refresh_task_json" -}}
+
+{{- $ctx := . -}}
+{{- $name := (index $ctx.Data (print $ctx.From ".name")) -}}
+{{- $repo := (index $ctx.Data (print $ctx.From ".repo.path")) -}}
+{{- $type := (index $ctx.Data (print $ctx.From ".type")) -}}
+{{- $image := (index $ctx.Data (print $ctx.From ".docker.image")) -}}
+{{- $devPort := (index $ctx.Data (print $ctx.From ".dev.port")) -}}
+{{- $stagePort := (index $ctx.Data (print $ctx.From ".stage.port")) -}}
+{{- $prodPort := (index $ctx.Data (print $ctx.From ".prod.port")) -}}
+
+{
+  "name": "Refresh{{camelcaseuf $name}}",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "{{$repo}}", "prod", "BuildProd{{camelcaseuf $name}}"]
+    }]
+  }
+}
+
+{{- end -}}

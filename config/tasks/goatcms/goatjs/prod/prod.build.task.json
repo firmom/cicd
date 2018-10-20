@@ -1,0 +1,21 @@
+{
+  "name": "BuildProdGoatJS",
+  "entrypoint": true,
+  "extends": ["CloneProdGoatJS"],
+  "locks": ["/data/code/goatcms/goatjs-prod"],
+  "executor": "onlylast",
+  "trigger": [],
+  "script": {
+    "cwd": "/data/code/goatcms/goatjs-prod",
+    "commands": [{
+      "command": "npm",
+      "args": ["run", "test"]
+    }, {
+      "command": "npm",
+      "args": ["run", "build"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/npm-publish.sh", "public"]
+    }]
+  }
+}
