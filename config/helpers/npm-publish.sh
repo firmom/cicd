@@ -15,7 +15,6 @@ PACKAGE_NAME=$(cat package.json \
 
 LATEST_VERSION=$(npm show $PACKAGE_NAME version)
 
-npm version $LATEST_VERSION
 npm version --no-git-tag-version --allow-same-version $LATEST_VERSION
 npm version patch --no-git-tag-version
 
