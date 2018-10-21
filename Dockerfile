@@ -6,6 +6,7 @@ RUN apt-get -y install \
      apt-transport-https \
      ca-certificates \
      curl \
+     vim \
      gnupg2 \
      software-properties-common
 
