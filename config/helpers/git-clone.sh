@@ -12,6 +12,7 @@ if [ -d "$DIRECTORY" ]; then
   cd "$DIRECTORY"
   git fetch --all
   git reset --hard origin/$BRANCH
+  git clean -f
   git pull
 fi
 
