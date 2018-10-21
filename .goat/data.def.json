@@ -108,7 +108,7 @@
     "max":1000
   }],
   "collections":[{
-    "key": "prod.trigger",
+    "key": "trigger",
     "type": "array",
     "prompt": "Insert task name",
     "properties": [{

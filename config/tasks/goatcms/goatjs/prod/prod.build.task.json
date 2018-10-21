@@ -4,7 +4,7 @@
   "extends": ["CloneProdGoatJS"],
   "locks": ["/data/code/goatcms/goatjs-prod"],
   "executor": "onlylast",
-  "trigger": [],
+  "trigger": ["BuildGoatCMS"],
   "script": {
     "cwd": "/data/code/goatcms/goatjs-prod",
     "commands": [{

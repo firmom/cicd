@@ -2,11 +2,9 @@
   "npmapp": {
     "goatjs": {
       "name": "GoatJS",
-      "prod": {
-        "trigger": {
-          "0": {
-            "name": "BuildGoatCMS"
-          }
+      "trigger": {
+        "0": {
+          "name": "BuildGoatCMS"
         }
       },
       "repo": {
