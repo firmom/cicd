@@ -1,0 +1,22 @@
+{
+  "name": "DeployProdFirmomCICD",
+  "entrypoint": true,
+  "extends": [],
+  "locks": ["docker!firmom/cicd:prod"],
+  "executor": "onlylast",
+  "script": {
+    "commands": [{
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-domain.sh", ""]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/helpers/cert-deploy.sh", "firmom/cicd", "prod", ""]
+    }, {
+      "command": "sh",
+      "args": ["/app/config/tasks/firmom/cicd/prod/prod.deploy.config.sh", "firmom/cicd", "prod", "firmom/cicd:prod"]
+    }, {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/docker-deploy.sh", "firmom/cicd", "prod", "firmom/cicd:prod"]
+    }]
+  }
+}
