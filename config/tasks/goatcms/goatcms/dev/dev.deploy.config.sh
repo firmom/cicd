@@ -37,7 +37,7 @@ eval lastname=\${${baseKey}LASTNAME}
 eval email=\${${baseKey}EMAIL}
 eval roles=\${${baseKey}ROLSE}
 eval password=\${${baseKey}PASSWORD}
-eval github=\${${baseKey}_CONNECT_GITHUB}
+eval github=\${${baseKey}CONNECT_GITHUB}
 
 cat >> $DEST_FILE_PATH << EndOfMessage
       - "USER_${i}_USERNAME=${username}"
