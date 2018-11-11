@@ -39,12 +39,38 @@ services:
       - "NPM_TOKEN={{index $ctx.Properties.Secrets "npm.token"}}"
 
       # slots
-{{- range $index, $key := (keys .Data "app.") -}}
-{{- $name := (index $ctx.Data (print "app." $key ".name")) }}
+{{- range $index, $key := (keys .Data "devtools.") -}}
+{{- $name := (index $ctx.Data (print "devtools." $key ".name")) }}
       - "SLOT_Build{{camelcaseuf $name}}_SECRET_1={{template "secret" (dict "ctx" $ctx "name" $name)}}"
 {{- end }}
+
+{{- range $index, $key := (keys .Data "dockerapp.") -}}
+{{- $name := (index $ctx.Data (print "dockerapp." $key ".name")) }}
+      - "SLOT_Build{{camelcaseuf $name}}_SECRET_1={{template "secret" (dict "ctx" $ctx "name" $name)}}"
+{{- end }}
+
+{{- range $index, $key := (keys .Data "dockerimage.") -}}
+{{- $name := (index $ctx.Data (print "dockerimage." $key ".name")) }}
+      - "SLOT_Build{{camelcaseuf $name}}_SECRET_1={{template "secret" (dict "ctx" $ctx "name" $name)}}"
+{{- end }}
+
+{{- range $index, $key := (keys .Data "goapp.") -}}
+{{- $name := (index $ctx.Data (print "goapp." $key ".name")) }}
+      - "SLOT_Build{{camelcaseuf $name}}_SECRET_1={{template "secret" (dict "ctx" $ctx "name" $name)}}"
+{{- end }}
+
+{{- range $index, $key := (keys .Data "goatcms.") -}}
+{{- $name := (index $ctx.Data (print "goatcms." $key ".name")) }}
+      - "SLOT_Build{{camelcaseuf $name}}_SECRET_1={{template "secret" (dict "ctx" $ctx "name" $name)}}"
+{{- end }}
+
 {{- range $index, $key := (keys .Data "npmapp.") -}}
 {{- $name := (index $ctx.Data (print "npmapp." $key ".name")) }}
+      - "SLOT_Build{{camelcaseuf $name}}_SECRET_1={{template "secret" (dict "ctx" $ctx "name" $name)}}"
+{{- end }}
+
+{{- range $index, $key := (keys .Data "wordpress.") -}}
+{{- $name := (index $ctx.Data (print "wordpress." $key ".name")) }}
       - "SLOT_Build{{camelcaseuf $name}}_SECRET_1={{template "secret" (dict "ctx" $ctx "name" $name)}}"
 {{- end }}
 
