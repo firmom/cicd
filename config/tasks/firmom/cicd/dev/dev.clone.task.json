@@ -7,7 +7,7 @@
   "script": {
     "commands": [{
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/git-clone.sh", "github.com", "firmom/cicd", "dev", "dev"]
+      "args": ["-x", "/app/config/helpers/golang/git-clone.sh", "github.com", "firmom/cicd", "dev", "dev"]
     }]
   }
 }

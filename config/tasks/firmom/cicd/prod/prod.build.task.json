@@ -1,12 +1,16 @@
 {
   "name": "BuildProdFirmomCICD",
   "entrypoint": true,
-  "extends": ["CloneProdFirmomCICD"],
-  "locks": ["/data/code/firmom/cicd-prod"],
+  "extends": [
+    "CloneProdFirmomCICD",
+    "BuildBackendProdFirmomCICD",
+    "BuildFrontendProdFirmomCICD"
+  ],
+  "locks": ["/data/code/firmom/cicd-prod!deploy"],
   "executor": "onlylast",
-  "trigger": [],
+  "trigger": ["DeployProdFirmomCICD"],
   "script": {
-    "cwd": "/data/code/firmom/cicd-prod",
+    "cwd": "/data/code/firmom/cicd-prod/src/github.com/firmom/cicd",
     "commands": [{
       "command": "docker",
       "args": ["build", ".", "-t", "firmom/cicd:prod", "--no-cache"]

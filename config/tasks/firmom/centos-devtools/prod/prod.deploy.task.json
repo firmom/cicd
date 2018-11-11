@@ -7,8 +7,13 @@
   "script": {
     "cwd": "/data/code/firmom/centos-devtools-prod",
     "commands": [{
-      "command": "sh",
-      "args": ["-x", "/app/config/helpers/devtools/deploy-all-devtools.sh", "firmom/centos-devtools:prod", "0"]
+      "command": "bash",
+      "args": [
+        "-x", "/app/config/helpers/devtools/run-for-all-users.sh",
+        "/app/config/tasks/firmom/centos-devtools/prod/prod.deploy.config.sh",
+        "firmom/centos-devtools:prod",
+        "0"
+      ]
     }]
   }
 }
