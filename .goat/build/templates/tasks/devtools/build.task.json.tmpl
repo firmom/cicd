@@ -1,0 +1,31 @@
+{{- define "devtools.build_task_json" -}}
+
+{{- $ctx := . -}}
+{{- $name := (index $ctx.Data (print $ctx.From ".name")) -}}
+{{- $repo := (index $ctx.Data (print $ctx.From ".repo.path")) -}}
+{{- $type := (index $ctx.Data (print $ctx.From ".type")) -}}
+{{- $image := (index $ctx.Data (print $ctx.From ".docker.image")) -}}
+{{- $devOffset := (index $ctx.Data (print $ctx.From ".dev.offset")) -}}
+{{- $stageOffset := (index $ctx.Data (print $ctx.From ".stage.offset")) -}}
+{{- $prodOffset := (index $ctx.Data (print $ctx.From ".prod.offset")) -}}
+
+{
+  "name": "Build{{camelcaseuf $name}}",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "trigger": [
+{{- if ne $devOffset "" -}}
+    "BuildDev{{camelcaseuf $name}}"
+{{- end -}}
+{{- if ne $stageOffset "" -}}
+    {{- if ne $devOffset "" -}}, {{ end -}}
+    "BuildStage{{camelcaseuf $name}}"
+{{- end -}}
+{{- if ne $prodOffset "" -}}
+    {{- if (or (ne $devOffset "") (ne $stageOffset "")) -}}, {{ end -}}
+    "BuildProd{{camelcaseuf $name}}"
+{{- end -}}
+  ]
+}
+
+{{- end -}}

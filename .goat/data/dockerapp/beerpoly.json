@@ -1,5 +1,5 @@
 {
-  "app": {
+  "dockerapp": {
     "beerpoly": {
       "dev": {
         "port": "2077"

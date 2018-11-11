@@ -1,0 +1,36 @@
+[{
+  "type":"npmapp",
+  "properties":[{
+    "prompt":"Insert app name",
+    "key":"name",
+    "type":"line",
+    "pattern": "^[a-zA-Z]+[a-zA-Z0-9_.]*[a-zA-Z0-9]+$",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert repository host (like github.com or bitbucket.org)",
+    "key":"repo.host",
+    "type":"line",
+    "min":1,
+    "max":1024
+  }, {
+    "prompt":"Insert code repository path (like goatcms/goatcore or sebastianpozoga/events.pozoga.eu)",
+    "key":"repo.path",
+    "type":"line",
+    "min":1,
+    "max":1000
+  }],
+  "collections":[{
+    "key": "trigger",
+    "type": "array",
+    "prompt": "Insert task name",
+    "properties": [{
+      "prompt":"Insert task name to run",
+      "key":"name",
+      "type":"line",
+      "min":1,
+      "max":1000,
+      "pattern": "^[A-Za-z]+$"
+    }]
+  }]
+}]

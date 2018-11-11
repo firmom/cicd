@@ -1,0 +1,42 @@
+{{- define "devtools.main" -}}
+{{- $ctx := . -}}
+{{- $name := (index $ctx.Data (print $ctx.From ".name")) -}}
+{{- $repo := (index $ctx.Data (print $ctx.From ".repo.path")) -}}
+{{- $type := (index $ctx.Data (print $ctx.From ".type")) -}}
+{{- $devOffset := (index $ctx.Data (print $ctx.From ".dev.offset")) -}}
+{{- $stageOffset := (index $ctx.Data (print $ctx.From ".stage.offset")) -}}
+{{- $prodOffset := (index $ctx.Data (print $ctx.From ".prod.offset")) -}}
+
+{{- $path := (print $ctx.To "/" (lower $repo) "/build.task.json") -}}
+{{- if not ($ctx.Filesystem.IsFile $path) -}}
+  {{- $ctx.Out.File $path -}}
+    {{- template "devtools.build_task_json" $ctx -}}
+  {{- $ctx.Out.EOF -}}
+{{- end -}}
+
+{{- $path := (print $ctx.To "/" (lower $repo) "/refresh.task.json") -}}
+{{- if not ($ctx.Filesystem.IsFile $path) -}}
+  {{- $ctx.Out.File $path -}}
+    {{- template "devtools.refresh_task_json" $ctx -}}
+  {{- $ctx.Out.EOF -}}
+{{- end -}}
+
+{{- if ne $devOffset "" }}
+  {{- $host := (index .Properties.Project "cicd.host") -}}
+  {{- $cert := (index .Properties.Project "cicd.cert") -}}
+  {{- template "devtools.env" (dict "ctx" $ctx "env" "dev" "branch" "dev" "offset" $devOffset "cert" $cert "host" $host) -}}
+{{- end }}
+
+{{- if ne $stageOffset "" }}
+  {{- $host := (index .Properties.Project "cicd.host") -}}
+  {{- $cert := (index .Properties.Project "cicd.cert") -}}
+  {{- template "devtools.env" (dict "ctx" $ctx "env" "stage" "branch" "stage" "offset" $stageOffset "cert" $cert "host" $host) -}}
+{{- end }}
+
+{{- if ne $prodOffset "" }}
+  {{- $host := index $ctx.Data (print $ctx.From ".prod.host") -}}
+  {{- $cert := index $ctx.Data (print $ctx.From ".prod.cert") -}}
+  {{- template "devtools.env" (dict "ctx" $ctx "env" "prod" "branch" "master" "offset" $prodOffset "cert" $cert "host" $host) -}}
+{{- end }}
+
+{{- end -}}

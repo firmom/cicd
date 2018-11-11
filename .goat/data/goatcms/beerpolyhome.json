@@ -1,0 +1,54 @@
+{
+  "goatcms": {
+    "beerpolyhome": {
+      "dev": {
+        "port": "2078",
+        "envs": {
+          "1": {
+            "key": "MENU_OPEN_SOURCE_LINK",
+            "value": "https://github.com/gameinpl"
+          },
+          "2": {
+            "key": "MENU_GAME_LINK",
+            "value": "https://cicd.firmom.com:2077"
+          },
+          "2": {
+            "key": "MENU_DOWNLOAD_LINK",
+            "value": "https://cicd.firmom.com/archive/gameinpl/beerpoly/"
+          }
+        }
+      },
+      "docker": {
+        "image": "gameinpl/beerpoly-home"
+      },
+      "name": "BeerpolyHome",
+      "prod": {
+        "cert": "gamein.pl",
+        "host": "beerpoly.gamein.pl",
+        "port": "4078",
+        "envs": {
+          "1": {
+            "key": "MENU_OPEN_SOURCE_LINK",
+            "value": "https://github.com/gameinpl"
+          },
+          "2": {
+            "key": "MENU_GAME_LINK",
+            "value": "https://beerpolygo.gamein.pl"
+          },
+          "2": {
+            "key": "MENU_DOWNLOAD_LINK",
+            "value": "https://cicd.firmom.com/archive/gameinpl/beerpoly/"
+          }
+        }
+      },
+      "repo": {
+        "host": "github.com",
+        "path": "gameinpl/beerpoly-home"
+      },
+      "stage": {
+        "port": ""
+      },
+      "type": "goatcms"
+    }
+  }
+}

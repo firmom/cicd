@@ -1,13 +1,13 @@
 {
-  "app": {
-    "cicd": {
+  "goapp": {
+    "goatcli": {
       "dev": {
-        "port": "1510"
+        "port": ""
       },
       "docker": {
-        "image": "firmom/cicd"
+        "image": ""
       },
-      "name": "FirmomCICD",
+      "name": "GoatCLI",
       "prod": {
         "cert": "",
         "host": "",
@@ -15,12 +15,13 @@
       },
       "repo": {
         "host": "github.com",
-        "path": "firmom/cicd"
+        "path": "goatcms/goatcli"
       },
       "stage": {
         "port": ""
       },
-      "type": "dockerimage"
+      "test": "./cliapp/...",
+      "type": "goapp"
     }
   }
 }

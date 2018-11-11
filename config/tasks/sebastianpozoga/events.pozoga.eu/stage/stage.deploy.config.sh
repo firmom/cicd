@@ -32,9 +32,34 @@ services:
       - "WP_EMAIL=$EVENTSPOZOGAEU_WP_USER_EMAIL"
       - "WP_HOST=$DEPLOY_DEV_REMOTE_HOST:3012"
       - "WP_TITLE=Events Poznań"
-      - "DB_SNAPSHOT=$EVENTSPOZOGAEU_DB_SNAPSHOT"
       - "MIGRATE_FROM=events.pozoga.eu"
       - "MIGRATE_TO=cicd.firmom.com:3012"
+      - "DB_SNAPSHOT=$EVENTSPOZOGAEU_DB_SNAPSHOT"
+EndOfMessage
+
+### Add users
+for i in `env | grep -E "^USER_.*_USERNAME="`; do
+key=$(echo $i| cut -d'_' -f 2)
+baseKey="USER_${key}_"
+eval username=\${${baseKey}USERNAME}
+eval firstname=\${${baseKey}FIRSTNAME}
+eval lastname=\${${baseKey}LASTNAME}
+eval email=\${${baseKey}EMAIL}
+eval roles=\${${baseKey}ROLSE}
+eval password=\${${baseKey}PASSWORD}
+eval github=\${${baseKey}_CONNECT_GITHUB}
+
+cat >> $DEST_FILE_PATH << EndOfMessage
+      - "USER_${i}_USERNAME=${username}"
+      - "USER_${i}_FIRSTNAME=${firstname}"
+      - "USER_${i}_LASTNAME=${lastname}"
+      - "USER_${i}_EMAIL=${email}"
+      - "USER_${i}_ROLES=${roles}"
+      - "USER_${i}_PASSWORD=${password}"
+      - "USER_${i}_CONNECT_GITHUB=${github}"
+EndOfMessage
+done
+cat >> $DEST_FILE_PATH << EndOfMessage
     volumes:
       - "/dockerdata/$REPO-$TAG/uploads:/app/wp-content/uploads"
       - "/dockerdata/$REPO-$TAG/snapshots:/data/snapshots"

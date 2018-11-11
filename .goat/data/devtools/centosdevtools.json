@@ -1,8 +1,8 @@
 {
-  "app": {
+  "devtools": {
     "centosdevtools": {
       "dev": {
-        "port": ""
+        "offset": ""
       },
       "docker": {
         "image": "firmom/centos-devtools"
@@ -11,14 +11,14 @@
       "prod": {
         "cert": "",
         "host": "",
-        "port": "!"
+        "offset": "0"
       },
       "repo": {
         "host": "github.com",
         "path": "firmom/centos-devtools"
       },
       "stage": {
-        "port": ""
+        "offset": ""
       },
       "type": "dockerimage"
     }

@@ -1,5 +1,5 @@
 {
-  "app": {
+  "goatcms": {
     "goatcmsemptyapp": {
       "dev": {
         "port": "2079"
@@ -19,8 +19,7 @@
       },
       "stage": {
         "port": ""
-      },
-      "type": "goatcms"
+      }
     }
   }
 }

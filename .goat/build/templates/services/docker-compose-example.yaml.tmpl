@@ -10,11 +10,53 @@ services:
     image: firmom/docker-proxy
     restart: always
     environment:
-{{- range $index, $key := (keys .Data "app.") -}}
-{{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
-{{- $prodHost := (index $ctx.Data (print "app." $key ".prod.host")) -}}
-{{- $prodPort := (index $ctx.Data (print "app." $key ".prod.port")) -}}
-{{- $prodCert := (index $ctx.Data (print "app." $key ".prod.cert")) -}}
+{{- range $index, $key := (keys .Data "dockerapp.") -}}
+{{- $name := (index $ctx.Data (print "dockerapp." $key ".name")) -}}
+{{- $prodHost := (index $ctx.Data (print "dockerapp." $key ".prod.host")) -}}
+{{- $prodPort := (index $ctx.Data (print "dockerapp." $key ".prod.port")) -}}
+{{- $prodCert := (index $ctx.Data (print "dockerapp." $key ".prod.cert")) -}}
+
+{{- if and (ne $prodPort "") (ne $prodPort "!") }}
+      - "PROXY_Build{{camelcaseuf $name}}_FROM={{$prodHost}}"
+      - "PROXY_Build{{camelcaseuf $name}}_CERT={{$prodCert}}"
+      - "PROXY_Build{{camelcaseuf $name}}_TO={{$cicdHost}}"
+      - "PROXY_Build{{camelcaseuf $name}}_PORT={{$prodPort}}"
+{{- end }}
+{{- end }}
+
+{{- range $index, $key := (keys .Data "goapp.") -}}
+{{- $name := (index $ctx.Data (print "goapp." $key ".name")) -}}
+{{- $prodHost := (index $ctx.Data (print "goapp." $key ".prod.host")) -}}
+{{- $prodPort := (index $ctx.Data (print "goapp." $key ".prod.port")) -}}
+{{- $prodCert := (index $ctx.Data (print "goapp." $key ".prod.cert")) -}}
+
+{{- if and (ne $prodPort "") (ne $prodPort "!") }}
+      - "PROXY_Build{{camelcaseuf $name}}_FROM={{$prodHost}}"
+      - "PROXY_Build{{camelcaseuf $name}}_CERT={{$prodCert}}"
+      - "PROXY_Build{{camelcaseuf $name}}_TO={{$cicdHost}}"
+      - "PROXY_Build{{camelcaseuf $name}}_PORT={{$prodPort}}"
+{{- end }}
+{{- end }}
+
+{{- range $index, $key := (keys .Data "goatcms.") -}}
+{{- $name := (index $ctx.Data (print "goatcms." $key ".name")) -}}
+{{- $prodHost := (index $ctx.Data (print "goatcms." $key ".prod.host")) -}}
+{{- $prodPort := (index $ctx.Data (print "goatcms." $key ".prod.port")) -}}
+{{- $prodCert := (index $ctx.Data (print "goatcms." $key ".prod.cert")) -}}
+
+{{- if and (ne $prodPort "") (ne $prodPort "!") }}
+      - "PROXY_Build{{camelcaseuf $name}}_FROM={{$prodHost}}"
+      - "PROXY_Build{{camelcaseuf $name}}_CERT={{$prodCert}}"
+      - "PROXY_Build{{camelcaseuf $name}}_TO={{$cicdHost}}"
+      - "PROXY_Build{{camelcaseuf $name}}_PORT={{$prodPort}}"
+{{- end }}
+{{- end }}
+
+{{- range $index, $key := (keys .Data "wordpress.") -}}
+{{- $name := (index $ctx.Data (print "wordpress." $key ".name")) -}}
+{{- $prodHost := (index $ctx.Data (print "wordpress." $key ".prod.host")) -}}
+{{- $prodPort := (index $ctx.Data (print "wordpress." $key ".prod.port")) -}}
+{{- $prodCert := (index $ctx.Data (print "wordpress." $key ".prod.cert")) -}}
 
 {{- if and (ne $prodPort "") (ne $prodPort "!") }}
       - "PROXY_Build{{camelcaseuf $name}}_FROM={{$prodHost}}"
@@ -56,6 +98,7 @@ services:
     restart: always
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
+      - /var/lib/docker:/var/lib/docker
 
 networks:
   nproxy:

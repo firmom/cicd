@@ -13,10 +13,6 @@ services:
       - "PROXY_BuildBeerpolyHome_CERT=gamein.pl"
       - "PROXY_BuildBeerpolyHome_TO=cicd.firmom.com"
       - "PROXY_BuildBeerpolyHome_PORT=4078"
-      - "PROXY_BuildEventsPozogaEu_FROM=events.pozoga.eu"
-      - "PROXY_BuildEventsPozogaEu_CERT=pozoga.eu"
-      - "PROXY_BuildEventsPozogaEu_TO=cicd.firmom.com"
-      - "PROXY_BuildEventsPozogaEu_PORT=4012"
       - "PROXY_BuildGoatCMS_FROM=goatcms.org"
       - "PROXY_BuildGoatCMS_CERT=goatcms.org"
       - "PROXY_BuildGoatCMS_TO=cicd.firmom.com"
@@ -25,6 +21,10 @@ services:
       - "PROXY_BuildWebslots_CERT=firmom.com"
       - "PROXY_BuildWebslots_TO=cicd.firmom.com"
       - "PROXY_BuildWebslots_PORT=4333"
+      - "PROXY_BuildEventsPozogaEu_FROM=events.pozoga.eu"
+      - "PROXY_BuildEventsPozogaEu_CERT=pozoga.eu"
+      - "PROXY_BuildEventsPozogaEu_TO=cicd.firmom.com"
+      - "PROXY_BuildEventsPozogaEu_PORT=4012"
       - "PROXY_BuildFirmomCICD_FROM=cicd.firmom.com"
       - "PROXY_BuildFirmomCICD_CERT=firmom.com"
       - "PROXY_BuildFirmomCICD_TO=cicd.firmom.com"
@@ -58,6 +58,7 @@ services:
     restart: always
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
+      - /var/lib/docker:/var/lib/docker
 
 networks:
   nproxy:

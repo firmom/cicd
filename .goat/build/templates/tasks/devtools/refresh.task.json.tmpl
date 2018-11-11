@@ -1,0 +1,39 @@
+{{- define "devtools.refresh_task_json" -}}
+
+{{- $ctx := . -}}
+{{- $name := (index $ctx.Data (print $ctx.From ".name")) -}}
+{{- $repo := (index $ctx.Data (print $ctx.From ".repo.path")) -}}
+{{- $type := (index $ctx.Data (print $ctx.From ".type")) -}}
+{{- $image := (index $ctx.Data (print $ctx.From ".docker.image")) -}}
+{{- $devOffset := (index $ctx.Data (print $ctx.From ".dev.offset")) -}}
+{{- $stageOffset := (index $ctx.Data (print $ctx.From ".stage.offset")) -}}
+{{- $prodOffset := (index $ctx.Data (print $ctx.From ".prod.offset")) -}}
+
+{
+  "name": "Refresh{{camelcaseuf $name}}",
+  "entrypoint": true,
+  "executor": "onlylast",
+  "script": {
+    "commands": [
+{{- if ne $devOffset "" -}}
+    {
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "{{$repo}}", "dev", "BuildDev{{camelcaseuf $name}}"]
+    }
+{{- end -}}
+{{- if ne $stageOffset "" -}}
+    {{- if ne $devOffset "" -}}, {{end}}{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "{{$repo}}", "stage", "BuildStage{{camelcaseuf $name}}"]
+    }
+{{- end -}}
+{{- if ne $prodOffset "" -}}
+    {{- if (or (ne $devOffset "") (ne $stageOffset "")) -}}, {{ end -}}{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "{{$repo}}", "prod", "BuildProd{{camelcaseuf $name}}"]
+    }
+{{- end -}}]
+  }
+}
+
+{{- end -}}

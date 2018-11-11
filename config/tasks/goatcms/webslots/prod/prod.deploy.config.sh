@@ -16,15 +16,37 @@ version: '3.4'
 services:
   main:
     image: $IMAGE
-    environment:
-      - "TZ=Europe/Warsaw"
-      - "MODE=HTTPS"
     restart: always
     volumes:
       - "/dockerdata/$REPO-$TAG/data:/app/data"
       - "/dockerdata/certs/firmom.com:/certs"
     ports:
       - 4333:443
-
-
+    environment:
+      - "TZ=Europe/Warsaw"
+      - "MODE=HTTPS"
 EndOfMessage
+
+### Add users
+for i in `env | grep -E "^USER_.*_USERNAME="`; do
+key=$(echo $i| cut -d'_' -f 2)
+baseKey="USER_${key}_"
+eval username=\${${baseKey}USERNAME}
+eval firstname=\${${baseKey}FIRSTNAME}
+eval lastname=\${${baseKey}LASTNAME}
+eval email=\${${baseKey}EMAIL}
+eval roles=\${${baseKey}ROLSE}
+eval password=\${${baseKey}PASSWORD}
+eval github=\${${baseKey}_CONNECT_GITHUB}
+
+cat >> $DEST_FILE_PATH << EndOfMessage
+      - "USER_${i}_USERNAME=${username}"
+      - "USER_${i}_FIRSTNAME=${firstname}"
+      - "USER_${i}_LASTNAME=${lastname}"
+      - "USER_${i}_EMAIL=${email}"
+      - "USER_${i}_ROLES=${roles}"
+      - "USER_${i}_PASSWORD=${password}"
+      - "USER_${i}_CONNECT_GITHUB=${github}"
+EndOfMessage
+
+done

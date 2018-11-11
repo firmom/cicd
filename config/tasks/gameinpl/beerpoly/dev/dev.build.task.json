@@ -9,7 +9,7 @@
     "cwd": "/data/code/gameinpl/beerpoly-dev",
     "commands": [{
       "command": "docker",
-      "args": ["build", ".", "-t", "gameinpl/beerpoly:dev"]
+      "args": ["build", ".", "-t", "gameinpl/beerpoly:dev", "--no-cache"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-push.sh", "gameinpl/beerpoly:dev"]

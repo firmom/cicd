@@ -1,0 +1,14 @@
+{
+  "name": "DeployProdCentosDevtoolsForAllUsers",
+  "entrypoint": true,
+  "extends": [],
+  "executor": "onlylast",
+  "trigger": [],
+  "script": {
+    "cwd": "/data/code/firmom/centos-devtools-prod",
+    "commands": [{
+      "command": "sh",
+      "args": ["-x", "/app/config/helpers/devtools/deploy-all-devtools.sh", "firmom/centos-devtools:prod", "0"]
+    }]
+  }
+}

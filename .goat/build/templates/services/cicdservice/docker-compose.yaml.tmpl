@@ -46,23 +46,18 @@ services:
 {{- end }}
 
       # Projects
-{{- range $index, $key := (keys .Data "app.") -}}
-{{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
-{{- $type := (index $ctx.Data (print "app." $key ".type")) -}}
-{{- $prodHost := (index $ctx.Data (print "app." $key ".prod.host")) -}}
-
-{{- if eq $type "wordpress" }}
-      - "{{upper $name}}_DB_USER={{template "randomuser" (dict "length" 22)}}"
-      - "{{upper $name}}_DB_PASS={{template "randomsecret" (dict "length" 62)}}"
+{{- range $index, $key := (keys .Data "wordpress.") -}}
+{{- $name := (index $ctx.Data (print "wordpress." $key ".name")) -}}
+{{- $prodHost := (index $ctx.Data (print "wordpress." $key ".prod.host")) -}}
+      - "{{upper $name}}_DB_USER={{index $ctx.Properties.Secrets (print "site." $name ".db.user") }}"
+      - "{{upper $name}}_DB_PASS={{index $ctx.Properties.Secrets (print "site." $name ".db.password") }}"
       - "{{upper $name}}_DB_SNAPSHOT=/data/snapshots/latest.sql"
       - "{{upper $name}}_WP_HOST={{$prodHost}}"
       - "{{upper $name}}_WP_USER_NAME={{index $ctx.Properties.Secrets "user.default.user"}}"
       - "{{upper $name}}_WP_USER_PASS={{index $ctx.Properties.Secrets "user.default.password"}}"
       - "{{upper $name}}_WP_USER_EMAIL={{index $ctx.Properties.Secrets "user.default.email"}}"
-{{- end -}}
 
-{{- end }}
-
+{{ end }}
       # Users
 {{- range $index, $key := (keys .Data "user.") -}}
 {{- $name := (index $ctx.Data (print "user." $key ".name")) -}}
@@ -71,14 +66,20 @@ services:
 {{- $lastname := (index $ctx.Data (print "user." $key ".lastname")) -}}
 {{- $email := (index $ctx.Data (print "user." $key ".email")) -}}
 {{- $githubID := (index $ctx.Data (print "user." $key ".connect.github")) }}
+{{- $devtoolsBasePort := (index $ctx.Data (print "user." $key ".devtools.port")) -}}
+{{- $devtoolsVNCResolution := (index $ctx.Data (print "user." $key ".devtools.vnc.resolution")) -}}
+{{- $devtoolsVNCDepth := (index $ctx.Data (print "user." $key ".devtools.vnc.depth")) }}
       - "USER_{{upper $key}}_USERNAME={{$name}}"
       - "USER_{{upper $key}}_FIRSTNAME={{$firstname}}"
       - "USER_{{upper $key}}_LASTNAME={{$lastname}}"
       - "USER_{{upper $key}}_EMAIL={{$email}}"
       - "USER_{{upper $key}}_ROLES=superadmin&admin"
       - "USER_{{upper $key}}_PASSWORD={{$password}}"
+      - "USER_{{upper $key}}_BASE_PORT={{$devtoolsBasePort}}"
+      - "USER_{{upper $key}}_VNC_RESOLUTION={{$devtoolsVNCResolution}}"
+      - "USER_{{upper $key}}_VNC_COL_DEPTH={{$devtoolsVNCDepth}}"
       - "USER_{{upper $key}}_CONNECT_GITHUB={{$githubID}}"
-{{- end }}
+{{ end }}
     volumes:
       - "/etc/letsencrypt:/etc/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock"

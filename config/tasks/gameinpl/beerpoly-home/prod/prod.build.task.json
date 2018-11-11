@@ -13,7 +13,7 @@
     "cwd": "/data/code/gameinpl/beerpoly-home-prod/src/github.com/gameinpl/beerpoly-home",
     "commands": [{
       "command": "docker",
-      "args": ["build", ".", "-t", "gameinpl/beerpoly-home:prod"]
+      "args": ["build", ".", "-t", "gameinpl/beerpoly-home:prod", "--no-cache"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-push.sh", "gameinpl/beerpoly-home:prod"]

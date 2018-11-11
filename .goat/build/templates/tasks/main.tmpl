@@ -1,34 +1,29 @@
 {{- $ctx := . -}}
 
-{{- range $index, $key := (keys .Data "app.") -}}
-  {{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
-  {{- $repo := (index $ctx.Data (print "app." $key ".repo.path")) -}}
-  {{- $type := (index $ctx.Data (print "app." $key ".type")) -}}
+{{- range $index, $key := (keys .Data "devtools.") -}}
+  {{- template "devtools.main" (ctx $ctx (print "devtools." $key) $ctx.To) -}}
+{{- end -}}
 
-  {{- if eq $type "wordpress" -}}
-    {{- template "wordpress.main" (ctx $ctx (print "app." $key) $ctx.To) -}}
-  {{- end -}}
+{{- range $index, $key := (keys .Data "dockerapp.") -}}
+  {{- template "dockerapp.main" (ctx $ctx (print "dockerapp." $key) $ctx.To) -}}
+{{- end -}}
 
-  {{- if eq $type "dockerimage" -}}
-    {{- template "dockerimage.main" (ctx $ctx (print "app." $key) $ctx.To) -}}
-  {{- end -}}
+{{- range $index, $key := (keys .Data "dockerimage.") -}}
+  {{- template "dockerimage.main" (ctx $ctx (print "dockerimage." $key) $ctx.To) -}}
+{{- end -}}
 
-  {{- if eq $type "dockerapp" -}}
-    {{- template "dockerapp.main" (ctx $ctx (print "app." $key) $ctx.To) -}}
-  {{- end -}}
+{{- range $index, $key := (keys .Data "goapp.") -}}
+  {{- template "goapp.main" (ctx $ctx (print "goapp." $key) $ctx.To) -}}
+{{- end -}}
 
-  {{- if eq $type "goapp" -}}
-    {{- template "goapp.main" (ctx $ctx (print "app." $key) $ctx.To) -}}
-  {{- end -}}
-
-  {{- if eq $type "goatcms" -}}
-    {{- template "goatcms.main" (ctx $ctx (print "app." $key) $ctx.To) -}}
-  {{- end -}}
-
+{{- range $index, $key := (keys .Data "goatcms.") -}}
+  {{- template "goatcms.main" (ctx $ctx (print "goatcms." $key) $ctx.To) -}}
 {{- end -}}
 
 {{- range $index, $key := (keys .Data "npmapp.") -}}
-  {{- $name := (index $ctx.Data (print "npmapp." $key ".name")) -}}
-  {{- $repo := (index $ctx.Data (print "npmapp." $key ".repo.path")) -}}
   {{- template "npmapp.main" (ctx $ctx (print "npmapp." $key) $ctx.To) -}}
+{{- end -}}
+
+{{- range $index, $key := (keys .Data "wordpress.") -}}
+  {{- template "wordpress.main" (ctx $ctx (print "wordpress." $key) $ctx.To) -}}
 {{- end -}}

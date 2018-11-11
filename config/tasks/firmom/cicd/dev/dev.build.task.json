@@ -9,7 +9,7 @@
     "cwd": "/data/code/firmom/cicd-dev",
     "commands": [{
       "command": "docker",
-      "args": ["build", ".", "-t", "firmom/cicd:dev"]
+      "args": ["build", ".", "-t", "firmom/cicd:dev", "--no-cache"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-push.sh", "firmom/cicd:dev"]

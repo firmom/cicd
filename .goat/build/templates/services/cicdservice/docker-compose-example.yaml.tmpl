@@ -46,12 +46,9 @@ services:
 {{- end }}
 
       # Projects
-{{- range $index, $key := (keys .Data "app.") -}}
-{{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
-{{- $type := (index $ctx.Data (print "app." $key ".type")) -}}
-{{- $prodHost := (index $ctx.Data (print "app." $key ".prod.host")) -}}
-
-{{- if eq $type "wordpress" }}
+{{- range $index, $key := (keys .Data "wordpress.") -}}
+{{- $name := (index $ctx.Data (print "wordpress." $key ".name")) -}}
+{{- $prodHost := (index $ctx.Data (print "wordpress." $key ".prod.host")) }}
       - "{{upper $name}}_DB_USER=Insert_your_database_username"
       - "{{upper $name}}_DB_PASS=Insert_your_database_password"
       - "{{upper $name}}_DB_SNAPSHOT=/data/snapshots/latest.sql"
@@ -59,8 +56,6 @@ services:
       - "{{upper $name}}_WP_USER_NAME=Insert_your_wordpress_username"
       - "{{upper $name}}_WP_USER_PASS=Insert_your_wordpress_password"
       - "{{upper $name}}_WP_USER_EMAIL=Insert_your_wordpress_email"
-{{- end -}}
-
 {{- end }}
 
       # Users
@@ -71,6 +66,9 @@ services:
       - "USER_1_ROLES=superadmin&admin"
       - "USER_1_PASSWORD=Insert_password"
       - "USER_1_CONNECT_GITHUB=Insert_github_name"
+      - "USER_1_BASE_PORT=Insert_devtools_baseport"
+      - "USER_1_VNC_RESOLUTION=Insert_VNC_resolution_for_remote_desktop"
+      - "USER_1_VNC_COL_DEPTH=Insert_VNC_color_depth_for_remote_desktop"
     volumes:
       - "/etc/letsencrypt:/etc/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock"

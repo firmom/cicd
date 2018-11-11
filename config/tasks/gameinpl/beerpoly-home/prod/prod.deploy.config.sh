@@ -16,38 +16,39 @@ version: '3.4'
 services:
   main:
     image: $IMAGE
-    environment:
-      TZ: 'Europe/Warsaw'
     restart: always
-    environment:
-      - "MODE=HTTPS"
-      - "MENU_OPEN_SOURCE_LINK=https://github.com/gameinpl"
-      - "MENU_GAME_LINK=https://beerpolygo.gamein.pl/"
-      - "MENU_DOWNLOAD_LINK=https://cicd.firmom.com/archive/gameinpl/beerpoly/"
     volumes:
       - "/dockerdata/$REPO-$TAG/data:/app/data"
       - "/dockerdata/certs/gamein.pl:/certs"
     ports:
       - 4078:443
-  db:
-    image: mariadb
-    restart: always
     environment:
-      - "MYSQL_DATABASE=prod.BeerpolyHome"
-      - "MYSQL_USER=$BEERPOLYHOME_DB_USER"
-      - "MYSQL_PASSWORD=$BEERPOLYHOME_DB_PASS"
-      - "MYSQL_ROOT_PASSWORD=$BEERPOLYHOME_DB_PASS"
-    volumes:
-      - "/dockerdata/$REPO-$TAG/mysql:/var/lib/mysql"
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    ports:
-     - 14078:80
-    environment:
-      - "PMA_HOST=db"
-      - "PMA_VERBOSE=prod.BeerpolyHome"
-      - "PMA_PORT=3306"
-      - "PMA_ARBITRARY=1"
-
+      - "TZ=Europe/Warsaw"
+      - "MODE=HTTPS"
+      - "${key}=${value}"
+      - "${key}=${value}"
 EndOfMessage
+
+### Add users
+for i in `env | grep -E "^USER_.*_USERNAME="`; do
+key=$(echo $i| cut -d'_' -f 2)
+baseKey="USER_${key}_"
+eval username=\${${baseKey}USERNAME}
+eval firstname=\${${baseKey}FIRSTNAME}
+eval lastname=\${${baseKey}LASTNAME}
+eval email=\${${baseKey}EMAIL}
+eval roles=\${${baseKey}ROLSE}
+eval password=\${${baseKey}PASSWORD}
+eval github=\${${baseKey}_CONNECT_GITHUB}
+
+cat >> $DEST_FILE_PATH << EndOfMessage
+      - "USER_${i}_USERNAME=${username}"
+      - "USER_${i}_FIRSTNAME=${firstname}"
+      - "USER_${i}_LASTNAME=${lastname}"
+      - "USER_${i}_EMAIL=${email}"
+      - "USER_${i}_ROLES=${roles}"
+      - "USER_${i}_PASSWORD=${password}"
+      - "USER_${i}_CONNECT_GITHUB=${github}"
+EndOfMessage
+
+done

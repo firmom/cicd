@@ -9,7 +9,7 @@
     "cwd": "/data/code/firmom/cicd-prod",
     "commands": [{
       "command": "docker",
-      "args": ["build", ".", "-t", "firmom/cicd:prod"]
+      "args": ["build", ".", "-t", "firmom/cicd:prod", "--no-cache"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-push.sh", "firmom/cicd:prod"]

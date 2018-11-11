@@ -4,12 +4,12 @@
   "extends": ["CloneProdCentosDevtools"],
   "locks": ["/data/code/firmom/centos-devtools-prod"],
   "executor": "onlylast",
-  "trigger": [],
+  "trigger": ["DeployProdCentosDevtoolsForAllUsers"],
   "script": {
     "cwd": "/data/code/firmom/centos-devtools-prod",
     "commands": [{
       "command": "docker",
-      "args": ["build", ".", "-t", "firmom/centos-devtools:prod"]
+      "args": ["build", ".", "-t", "firmom/centos-devtools:prod", "--no-cache"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-push.sh", "firmom/centos-devtools:prod"]

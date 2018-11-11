@@ -13,15 +13,38 @@
   {{- end -}}
 {{- end -}}
 
+{{- range $index, $key := (keys .Data "devtools.") -}}
+  {{- $name := (index $ctx.Data (print "devtools." $key ".name")) -}}
+  {{- $repo := (index $ctx.Data (print "devtools." $key ".repo.path")) -}}
+  {{- template "SlotTemplate" (dict "ctx" $ctx "name" $name "repo" $repo) -}}
+{{- end -}}
 
-{{- range $index, $key := (keys .Data "app.") -}}
-  {{- $name := (index $ctx.Data (print "app." $key ".name")) -}}
-  {{- $repo := (index $ctx.Data (print "app." $key ".repo.path")) -}}
+{{- range $index, $key := (keys .Data "dockerapp.") -}}
+  {{- $name := (index $ctx.Data (print "dockerapp." $key ".name")) -}}
+  {{- $repo := (index $ctx.Data (print "dockerapp." $key ".repo.path")) -}}
+  {{- template "SlotTemplate" (dict "ctx" $ctx "name" $name "repo" $repo) -}}
+{{- end -}}
+
+{{- range $index, $key := (keys .Data "goapp.") -}}
+  {{- $name := (index $ctx.Data (print "goapp." $key ".name")) -}}
+  {{- $repo := (index $ctx.Data (print "goapp." $key ".repo.path")) -}}
+  {{- template "SlotTemplate" (dict "ctx" $ctx "name" $name "repo" $repo) -}}
+{{- end -}}
+
+{{- range $index, $key := (keys .Data "goatcms.") -}}
+  {{- $name := (index $ctx.Data (print "goatcms." $key ".name")) -}}
+  {{- $repo := (index $ctx.Data (print "goatcms." $key ".repo.path")) -}}
   {{- template "SlotTemplate" (dict "ctx" $ctx "name" $name "repo" $repo) -}}
 {{- end -}}
 
 {{- range $index, $key := (keys .Data "npmapp.") -}}
   {{- $name := (index $ctx.Data (print "npmapp." $key ".name")) -}}
   {{- $repo := (index $ctx.Data (print "npmapp." $key ".repo.path")) -}}
+  {{- template "SlotTemplate" (dict "ctx" $ctx "name" $name "repo" $repo) -}}
+{{- end -}}
+
+{{- range $index, $key := (keys .Data "wordpress.") -}}
+  {{- $name := (index $ctx.Data (print "wordpress." $key ".name")) -}}
+  {{- $repo := (index $ctx.Data (print "wordpress." $key ".repo.path")) -}}
   {{- template "SlotTemplate" (dict "ctx" $ctx "name" $name "repo" $repo) -}}
 {{- end -}}

@@ -9,7 +9,7 @@
     "cwd": "/data/code/sebastianpozoga/events.pozoga.eu-dev",
     "commands": [{
       "command": "docker",
-      "args": ["build", ".", "-t", "spozoga/events.pozoga.eu:dev"]
+      "args": ["build", ".", "-t", "spozoga/events.pozoga.eu:dev", "--no-cache"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-push.sh", "spozoga/events.pozoga.eu:dev"]

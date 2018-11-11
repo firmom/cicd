@@ -1,0 +1,63 @@
+[{
+  "type":"user",
+  "properties":[{
+    "prompt":"Insert username",
+    "key":"name",
+    "type":"line",
+    "pattern": "^[a-zA-Z]+[a-zA-Z0-9_.]*[a-zA-Z0-9]+$",
+    "min":1,
+    "max":500
+  }, {
+    "prompt":"Insert password",
+    "key":"password",
+    "type":"line",
+    "pattern": "^[a-zA-Z]+[a-zA-Z0-9_.]*[a-zA-Z0-9]+$",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert firstname",
+    "key":"firstname",
+    "type":"line",
+    "pattern": "^[a-zA-Z]+[a-zA-Z0-9_.]*[a-zA-Z0-9]+$",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert lastname",
+    "key":"lastname",
+    "type":"line",
+    "pattern": "^[a-zA-Z]+[a-zA-Z0-9_.]*[a-zA-Z0-9]+$",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert email",
+    "key":"email",
+    "type":"line",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert github username (to connect account)",
+    "key":"connect.github",
+    "type":"line",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert devtools base port (or empty if user don't have any devtools like desktop, )",
+    "key":"devtools.port",
+    "type":"line",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert VNC devtools resolution (like 1920x1080)",
+    "key":"devtools.vnc.resolution",
+    "type":"line",
+    "min":1,
+    "max":1000
+  }, {
+    "prompt":"Insert VNC devtools resolution like 24. Other possible values are 8, 15 and 16",
+    "key":"devtools.vnc.depth",
+    "type":"line",
+    "min":1,
+    "max":1000
+  }],
+  "collections":[]
+}]

@@ -1,5 +1,5 @@
 {
-  "app": {
+  "wordpress": {
     "events": {
       "type": "wordpress",
       "docker.image": "spozoga/events.pozoga.eu",

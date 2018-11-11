@@ -31,16 +31,6 @@ services:
       - "NPM_TOKEN=Insert_your_npm_token_to_publish_projects"
 
       # slots
-      - "SLOT_BuildBeerpoly_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildBeerpolyHome_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildCentosDevtools_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildFirmomCICD_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildEventsPozogaEu_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildGoatCLI_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildGoatCMS_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildGoatCMSEmptyapp_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildGoatCore_SECRET_1=Insert_your_secret"
-      - "SLOT_BuildWebslots_SECRET_1=Insert_your_secret"
       - "SLOT_BuildGoatJS_SECRET_1=Insert_your_secret"
 
       # Projects
@@ -60,6 +50,9 @@ services:
       - "USER_1_ROLES=superadmin&admin"
       - "USER_1_PASSWORD=Insert_password"
       - "USER_1_CONNECT_GITHUB=Insert_github_name"
+      - "USER_1_BASE_PORT=Insert_devtools_baseport"
+      - "USER_1_VNC_RESOLUTION=Insert_VNC_resolution_for_remote_desktop"
+      - "USER_1_VNC_COL_DEPTH=Insert_VNC_color_depth_for_remote_desktop"
     volumes:
       - "/etc/letsencrypt:/etc/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock"

@@ -13,7 +13,7 @@
     "cwd": "/data/code/goatcms/goatcms-prod/src/github.com/goatcms/goatcms",
     "commands": [{
       "command": "docker",
-      "args": ["build", ".", "-t", "goatcms/goatcms:prod"]
+      "args": ["build", ".", "-t", "goatcms/goatcms:prod", "--no-cache"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-push.sh", "goatcms/goatcms:prod"]

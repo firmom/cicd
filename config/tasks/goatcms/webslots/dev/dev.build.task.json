@@ -13,7 +13,7 @@
     "cwd": "/data/code/goatcms/webslots-dev/src/github.com/goatcms/webslots",
     "commands": [{
       "command": "docker",
-      "args": ["build", ".", "-t", "goatcms/webslots:dev"]
+      "args": ["build", ".", "-t", "goatcms/webslots:dev", "--no-cache"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/docker-push.sh", "goatcms/webslots:dev"]

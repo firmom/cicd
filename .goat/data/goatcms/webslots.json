@@ -1,5 +1,5 @@
 {
-  "app": {
+  "goatcms": {
     "webslots": {
       "dev": {
         "port": "2333"
