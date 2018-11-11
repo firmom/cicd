@@ -22,6 +22,9 @@ services:
       - "DEPLOY_DEV_REMOTE_USER=Insert_your_remote_user_name_to_deploy_app"
       - "DEPLOY_DEV_REMOTE_HOST=Insert_your_remote_host_to_deploy_app"
 
+      - "DEPLOY_DEVTOOLS_REMOTE_USER=Insert_your_remote_user_name_to_deploy_devtools"
+      - "DEPLOY_DEVTOOLS_REMOTE_HOST=Insert_your_remote_host_to_deploy_devtools"
+
       # DockerHUB secrets
       - "DOCKER_PASSWORD_FILE=/docker-password"
       - "DOCKER_USERNAME=Insert_your_dockerhub_password_to_deploy_app_image"

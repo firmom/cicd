@@ -27,6 +27,9 @@ services:
       - "DEPLOY_DEV_REMOTE_USER={{index $ctx.Properties.Secrets "deploy.remote.user"}}"
       - "DEPLOY_DEV_REMOTE_HOST={{index $ctx.Properties.Secrets "deploy.remote.host"}}"
 
+      - "DEPLOY_DEVTOOLS_REMOTE_USER={{index $ctx.Properties.Secrets "deploy.remote.user"}}"
+      - "DEPLOY_DEVTOOLS_REMOTE_HOST={{index $ctx.Properties.Secrets "deploy.remote.host"}}"
+
       # DockerHUB secrets
       - "DOCKER_PASSWORD_FILE=/docker-password"
       - "DOCKER_USERNAME={{index $ctx.Properties.Secrets "dockerhub.user"}}"
