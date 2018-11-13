@@ -5,10 +5,10 @@
   "script": {
     "commands": [{
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/golang/trigger-for-git-changes.sh", "$repoHost", "firmom/cicd", "dev", "BuildDevFirmomCICD"]
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "firmom/cicd", "dev", "BuildDevFirmomCICD"]
     }, {
       "command": "sh",
-      "args": ["-x", "/app/config/helpers/golang/trigger-for-git-changes.sh", "$repoHost", "firmom/cicd", "prod", "BuildProdFirmomCICD"]
+      "args": ["-x", "/app/config/helpers/trigger-for-git-changes.sh", "firmom/cicd", "prod", "BuildProdFirmomCICD"]
     }]
   }
 }

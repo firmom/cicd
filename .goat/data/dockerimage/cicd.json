@@ -1,5 +1,5 @@
 {
-  "goatcms": {
+  "dockerimage": {
     "cicd": {
       "dev": {
         "port": "1510"
@@ -19,8 +19,7 @@
       },
       "stage": {
         "port": ""
-      },
-      "type": "dockerimage"
+      }
     }
   }
 }
