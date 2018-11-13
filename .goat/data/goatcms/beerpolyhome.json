@@ -12,7 +12,7 @@
             "key": "MENU_GAME_LINK",
             "value": "https://cicd.firmom.com:2077"
           },
-          "2": {
+          "3": {
             "key": "MENU_DOWNLOAD_LINK",
             "value": "https://cicd.firmom.com/archive/gameinpl/beerpoly/"
           }
@@ -35,7 +35,7 @@
             "key": "MENU_GAME_LINK",
             "value": "https://beerpolygo.gamein.pl"
           },
-          "2": {
+          "3": {
             "key": "MENU_DOWNLOAD_LINK",
             "value": "https://cicd.firmom.com/archive/gameinpl/beerpoly/"
           }

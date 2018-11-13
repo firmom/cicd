@@ -40,13 +40,13 @@ eval password=\${${baseKey}PASSWORD}
 eval github=\${${baseKey}CONNECT_GITHUB}
 
 cat >> $DEST_FILE_PATH << EndOfMessage
-      - "USER_${i}_USERNAME=${username}"
-      - "USER_${i}_FIRSTNAME=${firstname}"
-      - "USER_${i}_LASTNAME=${lastname}"
-      - "USER_${i}_EMAIL=${email}"
-      - "USER_${i}_ROLES=${roles}"
-      - "USER_${i}_PASSWORD=${password}"
-      - "USER_${i}_CONNECT_GITHUB=${github}"
+      - "USER_${key}_USERNAME=${username}"
+      - "USER_${key}_FIRSTNAME=${firstname}"
+      - "USER_${key}_LASTNAME=${lastname}"
+      - "USER_${key}_EMAIL=${email}"
+      - "USER_${key}_ROLES=${roles}"
+      - "USER_${key}_PASSWORD=${password}"
+      - "USER_${key}_CONNECT_GITHUB=${github}"
 EndOfMessage
 
 done
