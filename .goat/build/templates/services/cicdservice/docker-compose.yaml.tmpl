@@ -20,6 +20,11 @@ services:
       - "OAUTH_GITHUB_APP={{index $ctx.Properties.Secrets "oauth.github.app"}}"
       - "OAUTH_GITHUB_SECRET={{index $ctx.Properties.Secrets "oauth.github.secret"}}"
 
+      # DevTools
+      - "DEVTOOLS_SMTP_SERVER={{index $ctx.Properties.Secrets "devtools.smtp.server"}}"
+      - "DEVTOOLS_SMTP_USERNAME={{index $ctx.Properties.Secrets "devtools.smtp.username"}}"
+      - "DEVTOOLS_SMTP_PASSWORD={{index $ctx.Properties.Secrets "devtools.smtp.password"}}"
+
       # Letsencrypt
       - "CERT_EMAIL={{index $ctx.Properties.Secrets "cert.email"}}"
 
