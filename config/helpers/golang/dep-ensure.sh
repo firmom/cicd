@@ -8,5 +8,6 @@ GOPATH="/data/code/$REPO-$TAG"
 SRC_PATH="$GOPATH/src/$HOST/$REPO"
 
 cd $SRC_PATH
-rm -rf vendor
-dep ensure
+if [ -f "Gopkg.toml" ]; then
+  dep ensure
+fi

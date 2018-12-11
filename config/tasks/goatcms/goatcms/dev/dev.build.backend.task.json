@@ -10,11 +10,11 @@
       "command": "sh",
       "args": ["-x", "/app/config/helpers/golang/goatcms-secrets.sh", "github.com", "goatcms/goatcms", "dev"]
     }, {
-      "command": "goatcli",
-      "args": ["build", "--interactive=false"]
-    }, {
       "command": "rm",
       "args": ["-rf", "vendor"]
+    }, {
+      "command": "goatcli",
+      "args": ["build", "--interactive=false"]
     }, {
       "command": "sh",
       "args": ["-x", "/app/config/helpers/golang/dep-ensure.sh", "github.com", "goatcms/goatcms", "dev"]
