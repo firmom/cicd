@@ -3,7 +3,7 @@
 
 docker-compose rm -fs && docker-compose up -d
 
-{{- if eq (index $ctx.Properties.Project "include.cicd") "y" -}}
+{{- if eq (index $ctx.Properties.Project "include.services.cicd") "y" }}
 cd cicdservice && docker-compose rm -fs && docker-compose up -d
 {{- end -}}
 

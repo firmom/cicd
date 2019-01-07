@@ -7,7 +7,7 @@
 version: '3.4'
 
 services:
-{{- if eq (index $ctx.Properties.Project "services.proxy") "y" }}
+{{- if eq (index $ctx.Properties.Project "include.services.proxy") "y" }}
   reverseproxy:
     image: firmom/docker-proxy
     restart: always
@@ -80,7 +80,7 @@ services:
       - "/dockerdata/certs:/certs"
 {{- end -}}
 
-{{- if eq (index $ctx.Properties.Project "services.registry") "y" }}
+{{- if eq (index $ctx.Properties.Project "include.services.registry") "y" }}
   registry:
     restart: always
     image: registry:2
@@ -98,7 +98,7 @@ services:
       - /dockerdata/certs/{{$cicdCert}}:/certs
 {{- end -}}
 
-{{- if eq (index $ctx.Properties.Project "services.cleaner") "y" }}
+{{- if eq (index $ctx.Properties.Project "include.services.cleaner") "y" }}
   cleaner:
     image: spozoga/docker-cleaner
     restart: always
