@@ -1,4 +1,10 @@
 {
+  "include": {
+    "services.cicd": "y",
+    "services.cleaner": "y",
+    "services.registry": "y",
+    "services.proxy": "y"
+  },
   "cicd": {
     "cert": "firmom.com",
     "host": "cicd.firmom.com"

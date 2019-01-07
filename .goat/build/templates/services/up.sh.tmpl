@@ -2,6 +2,9 @@
 {{- $ctx := . -}}
 
 docker-compose rm -fs && docker-compose up -d
+
+{{- if eq (index $ctx.Properties.Project "include.cicd") "y" -}}
 cd cicdservice && docker-compose rm -fs && docker-compose up -d
+{{- end -}}
 
 {{- end -}}

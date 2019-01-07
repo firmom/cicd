@@ -4,7 +4,7 @@ set -e
 REPO="$1"
 TAG="$2"
 CERT="$3"
-SRC="/etc/letsencrypt/live/$CERT"
+SRC="/etc/letsencrypt/live/$CERT/."
 DEST="/dockerdata/certs/$CERT"
 
 # Deploy certs

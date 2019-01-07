@@ -7,6 +7,7 @@
 version: '3.4'
 
 services:
+{{- if eq (index $ctx.Properties.Project "services.proxy") "y" }}
   reverseproxy:
     image: firmom/docker-proxy
     restart: always
@@ -77,7 +78,9 @@ services:
       - "443:443"
     volumes:
       - "/dockerdata/certs:/certs"
+{{- end -}}
 
+{{- if eq (index $ctx.Properties.Project "services.registry") "y" }}
   registry:
     restart: always
     image: registry:2
@@ -93,13 +96,16 @@ services:
       - /dockerdata/_registry/registry:/var/lib/registry
       - /dockerdata/_registry/auth:/auth
       - /dockerdata/certs/{{$cicdCert}}:/certs
+{{- end -}}
 
+{{- if eq (index $ctx.Properties.Project "services.cleaner") "y" }}
   cleaner:
     image: spozoga/docker-cleaner
     restart: always
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
       - /var/lib/docker:/var/lib/docker
+{{- end }}
 
 networks:
   nproxy:

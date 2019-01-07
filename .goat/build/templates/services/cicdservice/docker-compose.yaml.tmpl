@@ -29,8 +29,14 @@ services:
       - "CERT_EMAIL={{index $ctx.Properties.Secrets "cert.email"}}"
 
       # Deploy
-      - "DEPLOY_DEV_REMOTE_USER={{index $ctx.Properties.Secrets "deploy.remote.user"}}"
-      - "DEPLOY_DEV_REMOTE_HOST={{index $ctx.Properties.Secrets "deploy.remote.host"}}"
+      - "DEPLOY_DEV_REMOTE_USER={{index $ctx.Properties.Secrets "deploy.dev.remote.user"}}"
+      - "DEPLOY_DEV_REMOTE_HOST={{index $ctx.Properties.Secrets "deploy.dev.remote.host"}}"
+
+      - "DEPLOY_TEST_REMOTE_USER={{index $ctx.Properties.Secrets "deploy.test.remote.user"}}"
+      - "DEPLOY_TEST_REMOTE_HOST={{index $ctx.Properties.Secrets "deploy.test.remote.host"}}"
+
+      - "DEPLOY_PROD_REMOTE_USER={{index $ctx.Properties.Secrets "deploy.prod.remote.user"}}"
+      - "DEPLOY_PROD_REMOTE_HOST={{index $ctx.Properties.Secrets "deploy.prod.remote.host"}}"
 
       - "DEPLOY_DEVTOOLS_REMOTE_USER={{index $ctx.Properties.Secrets "deploy.remote.user"}}"
       - "DEPLOY_DEVTOOLS_REMOTE_HOST={{index $ctx.Properties.Secrets "deploy.remote.host"}}"
